@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. Introduction: SmAll-maMMals BrAin MRI &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+  
+
+  
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="index.html"/>
+        <link rel="up" title="User guide: table of contents" href="user_guide.html"/>
+        <link rel="next" title="Gallery of Examples" href="auto_examples/index.html"/>
+        <link rel="prev" title="User guide: table of contents" href="user_guide.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> sammba-MRI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="user_guide.html">User guide: table of contents</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Introduction: SmAll-maMMals BrAin MRI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-sammba-mri-small-mammals-neuroimaging-with-python">1.1. What is sammba-MRI: small mammals neuroimaging with python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dependencies">1.2. Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#interfaces-configuration">1.3. Interfaces configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">1.4. Installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Gallery of Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">sammba-MRI API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">sammba-MRI</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="user_guide.html">User guide: table of contents</a> &raquo;</li>
+        
+      <li>1. Introduction: SmAll-maMMals BrAin MRI</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction-small-mammals-brain-mri">
+<h1>1. Introduction: SmAll-maMMals BrAin MRI<a class="headerlink" href="#introduction-small-mammals-brain-mri" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<p class="topic-title first"><strong>Contents</strong></p>
+<ul class="simple">
+<li><a class="reference internal" href="#what-is-sammba-mri-small-mammals-neuroimaging-with-python" id="id1">What is sammba-MRI: small mammals neuroimaging with python</a></li>
+<li><a class="reference internal" href="#dependencies" id="id2">Dependencies</a></li>
+<li><a class="reference internal" href="#interfaces-configuration" id="id3">Interfaces configuration</a></li>
+<li><a class="reference internal" href="#installation" id="id4">Installation</a></li>
+</ul>
+</div>
+<div class="section" id="what-is-sammba-mri-small-mammals-neuroimaging-with-python">
+<h2><a class="toc-backref" href="#id1">1.1. What is sammba-MRI: small mammals neuroimaging with python</a><a class="headerlink" href="#what-is-sammba-mri-small-mammals-neuroimaging-with-python" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>sammba-MRI builds <strong>easy-to-use</strong> pipelines to process small mammals brain MRI multimodal images. Examples include (but are not restricted to) mouse models of Alzheimer disease.</div></blockquote>
+</div>
+<div class="section" id="dependencies">
+<h2><a class="toc-backref" href="#id2">1.2. Dependencies</a><a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>The required dependencies to use the software are the python packages:</p>
+<ul class="simple">
+<li>Python 2.7</li>
+<li>setuptools</li>
+<li>Numpy &gt;= 1.6.2</li>
+<li>SciPy &gt;= 0.11</li>
+<li>Nibabel &gt;= 2.0.1</li>
+<li>Nilearn &gt;= 0.1.3</li>
+<li>Matplotlib &gt;= 1.1.1</li>
+<li>Nipype 0.11.0</li>
+<li>NetworkX &gt;= 1.7</li>
+<li>Enthought Traits &gt;= 4.3</li>
+<li>Dateutil &gt;= 1.5</li>
+<li>Pandas &gt;= 0.12</li>
+</ul>
+<p>as well as the interfaces:</p>
+<ul class="simple">
+<li>FSL &gt;= 4.1.0</li>
+<li>SPM8/12</li>
+</ul>
+<p>If you want to run the tests, you need nose &gt;= 1.2.1</p>
+</div>
+<div class="section" id="interfaces-configuration">
+<h2><a class="toc-backref" href="#id3">1.3. Interfaces configuration</a><a class="headerlink" href="#interfaces-configuration" title="Permalink to this headline">¶</a></h2>
+<p><strong>Configuring FSL</strong>: On an Ubuntu system, FSL is usually installed at :: /usr/share/fsl. You need to add this location to your .bashrc file. Edit this file by running the shell command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gedit</span> <span class="o">~/.</span><span class="n">bashrc</span>
+</pre></div>
+</div>
+<p>and add the following lines:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span># FSL
+FSLDIR=/usr/share/fsl
+. ${FSLDIR}/5.0/etc/fslconf/fsl.sh
+PATH=${FSLDIR}/5.0/bin:${PATH}
+export FSLDIR PATH
+</pre></div>
+</div>
+<p>To test if FSL is correctly installed, open a new terminal and type in the shell command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsl</span>
+</pre></div>
+</div>
+<p>You should see the FSL GUI with the version number in the header.</p>
+<p><strong>Configuring SPM</strong>: Add the following lines specifying the location of the spm folder to your .bashrc file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># SPM8</span>
+<span class="n">export</span> <span class="n">SPM_PATH</span><span class="o">=/</span><span class="n">i2bm</span><span class="o">/</span><span class="n">local</span><span class="o">/</span><span class="n">spm8</span><span class="o">-</span><span class="n">standalone</span><span class="o">/</span><span class="n">spm8_mcr</span><span class="o">/</span><span class="n">spm8</span>
+</pre></div>
+</div>
+<p><strong>Using SPM MCR</strong>: If you don’t have a matlab licence, specify the location of the Matlab Compiler Runtime and force the
+use of the standalone MCR version of spm by appending the following lines to the .bashrc:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># SPM MCR</span>
+<span class="n">export</span> <span class="n">SPMMCRCMD</span><span class="o">=</span><span class="s1">&#39;/home/salma/Téléchargements/spm8/run_spm8.sh /home/salma/Téléchargements/MCR/v713 script&#39;</span>
+<span class="n">export</span> <span class="n">FORCE_SPMMCR</span><span class="o">=</span><span class="s1">&#39;True&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installation">
+<h2><a class="toc-backref" href="#id4">1.4. Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>For the moment sammba-mri is available as a development version. To download the source code, run the shell command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">sammba</span><span class="o">-</span><span class="n">mri</span><span class="o">/</span><span class="n">sammba</span><span class="o">-</span><span class="n">mri</span>
+</pre></div>
+</div>
+<p>In the <code class="docutils literal"><span class="pre">sammba-mri</span></code> directory created by the previous step, run
+(again, as a shell command):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="auto_examples/index.html" class="btn btn-neutral float-right" title="Gallery of Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="user_guide.html" class="btn btn-neutral" title="User guide: table of contents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The sammba-MRI developers.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

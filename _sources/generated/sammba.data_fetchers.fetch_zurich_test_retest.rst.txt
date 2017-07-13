@@ -1,0 +1,19 @@
+.. note::
+
+   This page is a reference documentation. It only explains the
+   function signature, and not how to use it. Please refer to the
+   :ref:`user guide <user_guide>` for the big picture.
+
+
+sammba.data_fetchers.fetch_zurich_test_retest
+=============================================
+
+.. currentmodule:: sammba.data_fetchers
+
+.. autofunction:: fetch_zurich_test_retest
+
+.. include:: sammba.data_fetchers.fetch_zurich_test_retest.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>
