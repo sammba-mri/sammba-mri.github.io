@@ -6,8 +6,6 @@
 Welcome to sammba-MRI's documentation!
 ======================================
 
-[![Lemur template creation](includes/lemur_video_thumbnail.png)](https://youtu.be/hBtwWBv6vMQ "Lemur template creation")
-
 Contents:
 
 .. toctree::
@@ -17,10 +15,7 @@ Contents:
    auto_examples/index.rst
    reference.rst
 
-Indices and tables
-==================
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. raw:: html
 
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/n0017usHG0U?rel=0" frameborder="0" allowfullscreen></iframe>
