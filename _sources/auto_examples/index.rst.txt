@@ -12,6 +12,42 @@ DICOM to Nifti
 Example for conversion step
 
 
+Template creation
+-----------------
+
+
+
+Registration to standard
+------------------------
+
+
+
+Functional connectivity
+-----------------------
+
+ROI-to-ROI matrices, ROI-to-voxel maps and ICA.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Here we show how to regress out confound signals, in particular statistical CompCor.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_confounds_thumb.png
+
+        :ref:`sphx_glr_auto_examples_plot_confounds.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/plot_confounds
 .. raw:: html
 
     <div style='clear:both'></div>

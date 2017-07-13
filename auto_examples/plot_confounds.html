@@ -1,0 +1,345 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Confounds exploration &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  
+
+  
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../index.html"/>
+        <link rel="up" title="Gallery of Examples" href="index.html"/>
+        <link rel="next" title="sammba-MRI API Reference" href="../reference.html"/>
+        <link rel="prev" title="Gallery of Examples" href="index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> sammba-MRI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide: table of contents</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Gallery of Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#dicom-to-nifti">DICOM to Nifti</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#template-creation">Template creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#registration-to-standard">Registration to standard</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#functional-connectivity">Functional connectivity</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Confounds exploration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#statistical-compcor">Statistical CompCor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#do-my-counfounds-model-noise-properly-voxel-to-voxel-connectivity-tells">Do my counfounds model noise properly? Voxel-to-voxel connectivity tells!</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reference.html">sammba-MRI API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sammba-MRI</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Gallery of Examples</a> &raquo;</li>
+        
+      <li>Confounds exploration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="confounds-exploration">
+<span id="sphx-glr-auto-examples-plot-confounds-py"></span><h1>Confounds exploration<a class="headerlink" href="#confounds-exploration" title="Permalink to this headline">¶</a></h1>
+<p>Here we show how to regress out confound signals, in particular statistical
+CompCor.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Y. Behzadi et al. <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2214855/">A Component Based Noise Correction Method (CompCor) for BOLD and Perfusion Based fMRI</a>,
+NeuroImage Vol 37 (2007), p. 90-101</li>
+</ul>
+</div></blockquote>
+<p>Retrieve the data</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sammba</span> <span class="kn">import</span> <span class="n">data_fetchers</span>
+
+<span class="n">test_retest</span> <span class="o">=</span> <span class="n">data_fetchers</span><span class="o">.</span><span class="n">fetch_zurich_test_retest</span><span class="p">(</span><span class="n">subjects</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">fmri_filename</span> <span class="o">=</span> <span class="n">test_retest</span><span class="o">.</span><span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="section" id="statistical-compcor">
+<h2>Statistical CompCor<a class="headerlink" href="#statistical-compcor" title="Permalink to this headline">¶</a></h2>
+<p>We perform a PCA to extract the 98% most variant components.
+This is done by the function <strong>nilearn.image.high_variance_confounds</strong>,</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">image</span>
+
+<span class="n">hv_array</span> <span class="o">=</span> <a href="http://nilearn.github.io/modules/generated/nilearn.image.high_variance_confounds.html#nilearn.image.high_variance_confounds" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.image.high_variance_confounds"><span class="n">image</span><span class="o">.</span><span class="n">high_variance_confounds</span></a><span class="p">(</span><span class="n">fmri_filename</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Computed {0} confounds array.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hv_array</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Computed</span> <span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="n">confounds</span> <span class="n">array</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="do-my-counfounds-model-noise-properly-voxel-to-voxel-connectivity-tells">
+<h2>Do my counfounds model noise properly? Voxel-to-voxel connectivity tells!<a class="headerlink" href="#do-my-counfounds-model-noise-properly-voxel-to-voxel-connectivity-tells" title="Permalink to this headline">¶</a></h2>
+<p>Check the relevance of chosen confounds: The distribution of voxel-to-voxel
+correlations should be tight and approximately centered to zero.</p>
+<p>Compute voxel-wise time series with and without confounds removal,
+using NiftiMasker.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn.input_data</span> <span class="kn">import</span> <a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a>
+
+<span class="n">brain_masker</span> <span class="o">=</span> <a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="p">(</span><span class="n">detrend</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="s1">&#39;nilearn_cache&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">timeseries_raw</span> <span class="o">=</span> <span class="n">brain_masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">fmri_filename</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">fit</span><span class="p">]</span> <span class="n">Loading</span> <span class="n">data</span> <span class="kn">from</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">salma</span><span class="o">/</span><span class="n">nilearn_data</span><span class="o">/</span><span class="n">zurich_retest</span><span class="o">/</span><span class="n">baseline</span><span class="o">/</span><span class="mi">1367</span><span class="o">/</span><span class="n">rsfMRI</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+<span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">fit</span><span class="p">]</span> <span class="n">Computing</span> <span class="n">the</span> <span class="n">mask</span>
+<span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">fit</span><span class="p">]</span> <span class="n">Resampling</span> <span class="n">mask</span>
+</pre></div>
+</div>
+<p>Next, compute the voxel-to-voxel correlations. We Use only 1% of voxels,
+to save computation time.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">selected_voxels</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">timeseries_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">correlations_raw</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.9.1/reference/generated/numpy.corrcoef.html#numpy.corrcoef" class="sphx-glr-code-links" tooltip="Link to documentation for numpy.corrcoef"><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span></a><span class="p">(</span><span class="n">timeseries_raw</span><span class="p">[:,</span> <span class="n">selected_voxels</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Same thing, with counfounds removed: compute voxelwise time-series</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">timeseries_cleaned</span> <span class="o">=</span> <span class="n">brain_masker</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span>
+    <span class="n">fmri_filename</span><span class="p">,</span> <span class="n">confounds</span><span class="o">=</span><span class="p">[</span><span class="n">hv_array</span><span class="p">])</span>
+<span class="n">correlations_cleaned</span> <span class="o">=</span> <a href="http://docs.scipy.org/doc/numpy-1.9.1/reference/generated/numpy.corrcoef.html#numpy.corrcoef" class="sphx-glr-code-links" tooltip="Link to documentation for numpy.corrcoef"><span class="n">np</span><span class="o">.</span><span class="n">corrcoef</span></a><span class="p">(</span><span class="n">timeseries_cleaned</span><span class="p">[:,</span> <span class="n">selected_voxels</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">fit</span><span class="p">]</span> <span class="n">Loading</span> <span class="n">data</span> <span class="kn">from</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">salma</span><span class="o">/</span><span class="n">nilearn_data</span><span class="o">/</span><span class="n">zurich_retest</span><span class="o">/</span><span class="n">baseline</span><span class="o">/</span><span class="mi">1367</span><span class="o">/</span><span class="n">rsfMRI</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+<span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">fit</span><span class="p">]</span> <span class="n">Computing</span> <span class="n">the</span> <span class="n">mask</span>
+<span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">fit</span><span class="p">]</span> <span class="n">Resampling</span> <span class="n">mask</span>
+</pre></div>
+</div>
+<p>Plot now the histograms of both raw and cleaned correlations.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pylab</span> <span class="kn">as</span> <span class="nn">plt</span>
+
+<a href="http://matplotlib.org/api/figure_api.html#matplotlib.figure" class="sphx-glr-code-links" tooltip="Link to documentation for matplotlib.pylab.figure"><span class="n">plt</span><span class="o">.</span><span class="n">figure</span></a><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">correlations_raw</span><span class="p">[</span><a href="http://docs.scipy.org/doc/numpy-1.9.1/reference/generated/numpy.triu_indices_from.html#numpy.triu_indices_from" class="sphx-glr-code-links" tooltip="Link to documentation for numpy.triu_indices_from"><span class="n">np</span><span class="o">.</span><span class="n">triu_indices_from</span></a><span class="p">(</span><span class="n">correlations_raw</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)],</span>
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;raw&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">correlations_cleaned</span><span class="p">[</span><a href="http://docs.scipy.org/doc/numpy-1.9.1/reference/generated/numpy.triu_indices_from.html#numpy.triu_indices_from" class="sphx-glr-code-links" tooltip="Link to documentation for numpy.triu_indices_from"><span class="n">np</span><span class="o">.</span><span class="n">triu_indices_from</span></a><span class="p">(</span><span class="n">correlations_cleaned</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">)],</span>
+         <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cleaned&#39;</span><span class="p">)</span>
+
+<span class="p">[</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">]</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;correlation values&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;voxel-to-voxel correlations&#39;</span><span class="p">)</span>
+<a href="http://matplotlib.org/api/legend_api.html#matplotlib.legend" class="sphx-glr-code-links" tooltip="Link to documentation for matplotlib.pylab.legend"><span class="n">plt</span><span class="o">.</span><span class="n">legend</span></a><span class="p">()</span>
+<a href="http://matplotlib.org/api/tight_layout_api.html#matplotlib.tight_layout" class="sphx-glr-code-links" tooltip="Link to documentation for matplotlib.pylab.tight_layout"><span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span></a><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../_images/sphx_glr_plot_confounds_001.png" class="align-center" src="../_images/sphx_glr_plot_confounds_001.png" />
+<p>The correlations distribution is wider after statistical CompCor, so these
+confounds are not well suited to our case.</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  1.607 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../_downloads/plot_confounds.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_confounds.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../_downloads/plot_confounds.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_confounds.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../reference.html" class="btn btn-neutral float-right" title="sammba-MRI API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Gallery of Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The sammba-MRI developers.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
