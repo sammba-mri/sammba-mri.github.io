@@ -36,3 +36,7 @@ Results
 
    functional to template coregistration
 
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/mKRWMIJYCfo?rel=0" frameborder="0" allowfullscreen></iframe> 
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/NHwcoKB6H8Q?rel=0" frameborder="0" allowfullscreen></iframe>

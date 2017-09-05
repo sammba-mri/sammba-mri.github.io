@@ -14,12 +14,17 @@ Example for conversion step
 
 Template creation
 -----------------
+.. raw:: html
+
+    <iframe width="224" height="126" src="https://www.youtube.com/embed/oYzeZyV_hes?rel=0" frameborder="0" allowfullscreen></iframe>
 
 
 
 Registration to standard
 ------------------------
+.. raw:: html
 
+    <iframe width="224" height="126" src="https://www.youtube.com/embed/EBqCiaGlvs0?rel=0" frameborder="0" allowfullscreen></iframe>
 
 
 Functional connectivity

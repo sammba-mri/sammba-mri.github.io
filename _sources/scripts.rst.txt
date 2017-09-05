@@ -195,8 +195,9 @@ in differentiating the brain-scalp boundary without including so much head
 tissue that it starts to contaminate the registration with the highly variable
 head tissue.
 
-It is also useful to read the powerpoint presentation of the mouse lemur
-template which visualises the procedure.
+It is also useful to read
+`the powerpoint presentation of the mouse lemur template <https://1drv.ms/p/s!AiISIfrbeHl7upVT_kdYRZ8F_UbXtw>`_
+which visualises the procedure.
 
 List of template scripts
 ------------------------
