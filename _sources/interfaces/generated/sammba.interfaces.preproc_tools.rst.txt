@@ -1,0 +1,74 @@
+.. AUTO-GENERATED FILE -- DO NOT EDIT!
+
+interfaces.preproc_tools
+========================
+
+
+.. _sammba.interfaces.preproc_tools.RatsMM:
+
+
+.. index:: RatsMM
+
+RatsMM
+------
+
+`Link to code <None>`__
+
+Wraps command **RATS_MM**
+
+Mathemetical morphology stage for RATS, as described in:
+RATS: Rapid Automatic Tissue Segmentation in rodent brain MRI. Journal
+of neuroscience methods (2014) vol. 221 pp. 175 - 182.
+
+Author(s): Ipek Oguz, Milan Sonka
+
+Examples
+~~~~~~~~
+
+>>> from sammba.interfaces import RatsMM
+>>> from sammba.data_fetchers import fetch_zurich_test_retest
+>>> data = fetch_zurich_test_retest(subjects=[0])
+>>> rats_masker = RatsMM()
+>>> rats_masker.inputs.in_file = data.anat[0]
+>>> rats_masker.inputs.intensity_threshold = 1000
+>>> rats_masker.inputs.out_file = 'masked.nii'
+>>> rats_masker.cmdline
+'RATS_MM anat.nii masked.nii -t 1000'
+>>> res = rats_masker.run()  # doctest: +SKIP
+
+Inputs::
+
+        [Mandatory]
+        in_file: (a file name)
+                Input Image
+                flag: %s, position: 0
+        out_file: (a file name)
+                Output Image
+                flag: %s, position: 1
+
+        [Optional]
+        args: (a unicode string)
+                Additional parameters to the command
+                flag: %s
+        environ: (a dictionary with keys which are a newbytes or None or a
+                 newstr or None and with values which are a newbytes or None or a
+                 newstr or None, nipype default value: {})
+                Environment variables
+        ignore_exception: (a boolean, nipype default value: False)
+                Print an error message instead of throwing an exception in case the
+                interface fails to run
+        intensity_threshold: (an integer (int or long))
+                Intensity threshold (the parameter T in the paper). [default: 500]
+                flag: -t %s
+        terminal_output: (u'stream' or u'allatonce' or u'file' or u'none')
+                Control terminal output: `stream` - displays to terminal immediately
+                (default), `allatonce` - waits till command is finished to display
+                output, `file` - writes output to file, `none` - output is ignored
+        volume_threshold: (an integer (int or long))
+                Volume threshold (the parameter V in the paper). [default: 1650]
+                flag: -v %s
+
+Outputs::
+
+        out_file: (a file name)
+                Brain masked file

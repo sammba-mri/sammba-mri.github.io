@@ -14,17 +14,12 @@ Example for conversion step
 
 Template creation
 -----------------
-.. raw:: html
-
-    <iframe width="224" height="126" src="https://www.youtube.com/embed/oYzeZyV_hes?rel=0" frameborder="0" allowfullscreen></iframe>
 
 
 
 Registration to standard
 ------------------------
-.. raw:: html
 
-    <iframe width="224" height="126" src="https://www.youtube.com/embed/EBqCiaGlvs0?rel=0" frameborder="0" allowfullscreen></iframe>
 
 
 Functional connectivity
@@ -53,6 +48,26 @@ ROI-to-ROI matrices, ROI-to-voxel maps and ICA.
    :hidden:
 
    /auto_examples/plot_confounds
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Here we show how to create a template from multiple anatomical scans. Initially, registration i...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_register_thumb.png
+
+        :ref:`sphx_glr_auto_examples_plot_register.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/plot_register
 .. raw:: html
 
     <div style='clear:both'></div>

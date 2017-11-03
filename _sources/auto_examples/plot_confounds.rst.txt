@@ -87,29 +87,12 @@ using NiftiMasker.
     ________________________________________________________________________________
     [Memory] Calling nilearn.masking.compute_background_mask...
     compute_background_mask('/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz', verbose=0)
-    __________________________________________compute_background_mask - 0.9s, 0.0min
+    __________________________________________compute_background_mask - 0.7s, 0.0min
     [NiftiMasker.fit] Resampling mask
     ________________________________________________________________________________
     [Memory] Calling nilearn.image.resampling.resample_img...
-    resample_img(<nibabel.nifti1.Nifti1Image object at 0x2b657c196a10>, target_shape=None, target_affine=None, copy=False)
+    resample_img(<nibabel.nifti1.Nifti1Image object at 0x2af01a7c6750>, target_shape=None, target_affine=None, copy=False)
     _____________________________________________________resample_img - 0.0s, 0.0min
-    ________________________________________________________________________________
-    [Memory] Calling nilearn.input_data.nifti_masker.filter_and_mask...
-    filter_and_mask('/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz', <nibabel.nifti1.Nifti1Image object at 0x2b657c196a10>, { 'detrend': True,
-      'high_pass': None,
-      'low_pass': None,
-      'normalize': None,
-      'sample_mask': None,
-      'sessions': None,
-      'smoothing_fwhm': None,
-      'standardize': None,
-      't_r': None,
-      'target_affine': None,
-      'target_shape': None}, confounds=None, copy=True, memory_level=1, verbose=1, memory=Memory(cachedir='nilearn_cache/joblib'))
-    [NiftiMasker.transform_single_imgs] Loading data from Nifti1Image('/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz')
-    [NiftiMasker.transform_single_imgs] Extracting region signals
-    [NiftiMasker.transform_single_imgs] Cleaning extracted signals
-    __________________________________________________filter_and_mask - 1.7s, 0.0min
 
 
 Next, compute the voxel-to-voxel correlations. We Use only 1% of voxels,
@@ -151,25 +134,6 @@ Same thing, with counfounds removed: compute voxelwise time-series
     [NiftiMasker.fit] Loading data from /home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz
     [NiftiMasker.fit] Computing the mask
     [NiftiMasker.fit] Resampling mask
-    ________________________________________________________________________________
-    [Memory] Calling nilearn.input_data.nifti_masker.filter_and_mask...
-    filter_and_mask('/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz', <nibabel.nifti1.Nifti1Image object at 0x2b6596fbbcd0>, { 'detrend': True,
-      'high_pass': None,
-      'low_pass': None,
-      'normalize': None,
-      'sample_mask': None,
-      'sessions': None,
-      'smoothing_fwhm': None,
-      'standardize': None,
-      't_r': None,
-      'target_affine': None,
-      'target_shape': None}, confounds=[array([[ 0.055905, ...,  0.120548],
-           ..., 
-           [ 0.035185, ...,  0.01258 ]], dtype=float32)], copy=True, memory_level=1, verbose=1, memory=Memory(cachedir='nilearn_cache/joblib'))
-    [NiftiMasker.transform_single_imgs] Loading data from Nifti1Image('/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz')
-    [NiftiMasker.transform_single_imgs] Extracting region signals
-    [NiftiMasker.transform_single_imgs] Cleaning extracted signals
-    __________________________________________________filter_and_mask - 1.9s, 0.0min
 
 
 Plot now the histograms of both raw and cleaned correlations.
@@ -207,7 +171,7 @@ The correlations distribution is wider after statistical CompCor, so these
 confounds are not well suited to our case.
 
 
-**Total running time of the script:** ( 0 minutes  6.697 seconds)
+**Total running time of the script:** ( 0 minutes  2.887 seconds)
 
 
 
