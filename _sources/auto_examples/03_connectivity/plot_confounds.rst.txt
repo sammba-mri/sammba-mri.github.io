@@ -1,6 +1,6 @@
 
 
-.. _sphx_glr_auto_examples_plot_confounds.py:
+.. _sphx_glr_auto_examples_03_connectivity_plot_confounds.py:
 
 
 Confounds exploration
@@ -84,15 +84,7 @@ using NiftiMasker.
 
     [NiftiMasker.fit] Loading data from /home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz
     [NiftiMasker.fit] Computing the mask
-    ________________________________________________________________________________
-    [Memory] Calling nilearn.masking.compute_background_mask...
-    compute_background_mask('/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz', verbose=0)
-    __________________________________________compute_background_mask - 0.7s, 0.0min
     [NiftiMasker.fit] Resampling mask
-    ________________________________________________________________________________
-    [Memory] Calling nilearn.image.resampling.resample_img...
-    resample_img(<nibabel.nifti1.Nifti1Image object at 0x2af01a7c6750>, target_shape=None, target_affine=None, copy=False)
-    _____________________________________________________resample_img - 0.0s, 0.0min
 
 
 Next, compute the voxel-to-voxel correlations. We Use only 1% of voxels,
@@ -161,7 +153,7 @@ Plot now the histograms of both raw and cleaned correlations.
 
 
 
-.. image:: /auto_examples/images/sphx_glr_plot_confounds_001.png
+.. image:: /auto_examples/03_connectivity/images/sphx_glr_plot_confounds_001.png
     :align: center
 
 
@@ -171,7 +163,7 @@ The correlations distribution is wider after statistical CompCor, so these
 confounds are not well suited to our case.
 
 
-**Total running time of the script:** ( 0 minutes  2.887 seconds)
+**Total running time of the script:** ( 0 minutes  1.549 seconds)
 
 
 

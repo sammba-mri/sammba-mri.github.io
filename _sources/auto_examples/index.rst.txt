@@ -6,10 +6,10 @@ Gallery of Examples
 
 .. _general_examples:
 
-DICOM to Nifti
---------------
 
-Example for conversion step
+.. raw:: html
+
+    <div style='clear:both'></div>
 
 
 Template creation
@@ -17,10 +17,58 @@ Template creation
 
 
 
-Registration to standard
-------------------------
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Here we show how to create a template from multiple anatomical scans and register all of them t...">
+
+.. only:: html
+
+    .. figure:: /auto_examples/01_template/images/thumb/sphx_glr_plot_register_thumb.png
+
+        :ref:`sphx_glr_auto_examples_01_template_plot_register.py`
+
+.. raw:: html
+
+    </div>
 
 
+.. toctree::
+   :hidden:
+
+   /auto_examples/01_template/plot_register
+.. raw:: html
+
+    <div style='clear:both'></div>
+
+fMRI spatial preprocessing
+--------------------------
+Including slice timing, motion correction, bias correction and registration.
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Standard functional preprocessing and registration of functional image to anatomical.">
+
+.. only:: html
+
+    .. figure:: /auto_examples/02_preprocessing/images/thumb/sphx_glr_plot_functional_registration_thumb.png
+
+        :ref:`sphx_glr_auto_examples_02_preprocessing_plot_functional_registration.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /auto_examples/02_preprocessing/plot_functional_registration
+.. raw:: html
+
+    <div style='clear:both'></div>
 
 Functional connectivity
 -----------------------
@@ -35,29 +83,9 @@ ROI-to-ROI matrices, ROI-to-voxel maps and ICA.
 
 .. only:: html
 
-    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_confounds_thumb.png
+    .. figure:: /auto_examples/03_connectivity/images/thumb/sphx_glr_plot_confounds_thumb.png
 
-        :ref:`sphx_glr_auto_examples_plot_confounds.py`
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   /auto_examples/plot_confounds
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Here we show how to create a template from multiple anatomical scans. Initially, registration i...">
-
-.. only:: html
-
-    .. figure:: /auto_examples/images/thumb/sphx_glr_plot_register_thumb.png
-
-        :ref:`sphx_glr_auto_examples_plot_register.py`
+        :ref:`sphx_glr_auto_examples_03_connectivity_plot_confounds.py`
 
 .. raw:: html
 
@@ -67,7 +95,7 @@ ROI-to-ROI matrices, ROI-to-voxel maps and ICA.
 .. toctree::
    :hidden:
 
-   /auto_examples/plot_register
+   /auto_examples/03_connectivity/plot_confounds
 .. raw:: html
 
     <div style='clear:both'></div>

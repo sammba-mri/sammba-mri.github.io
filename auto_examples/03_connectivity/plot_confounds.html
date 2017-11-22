@@ -26,22 +26,22 @@
 
   
   
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   
 
   
-    <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
   
 
   
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../index.html"/>
-        <link rel="up" title="Gallery of Examples" href="index.html"/>
-        <link rel="next" title="Template creation" href="plot_register.html"/>
-        <link rel="prev" title="Gallery of Examples" href="index.html"/> 
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../../index.html"/>
+        <link rel="up" title="Gallery of Examples" href="../index.html"/>
+        <link rel="next" title="sammba-MRI API Reference" href="../../reference.html"/>
+        <link rel="prev" title="fMRI registration" href="../02_preprocessing/plot_functional_registration.html"/> 
 
   
-  <script src="../_static/js/modernizr.min.js"></script>
+  <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
@@ -57,7 +57,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> sammba-MRI
+            <a href="../../index.html" class="icon icon-home"> sammba-MRI
           
 
           
@@ -70,7 +70,7 @@
 
           
 <div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
@@ -88,23 +88,22 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide: table of contents</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Gallery of Examples</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="index.html#dicom-to-nifti">DICOM to Nifti</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#template-creation">Template creation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="index.html#registration-to-standard">Registration to standard</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html#functional-connectivity">Functional connectivity</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Giving credit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide.html">User guide: table of contents</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Gallery of Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#template-creation">Template creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#fmri-spatial-preprocessing">fMRI spatial preprocessing</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#functional-connectivity">Functional connectivity</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Confounds exploration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#statistical-compcor">Statistical CompCor</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#do-my-counfounds-model-noise-properly-voxel-to-voxel-connectivity-tells">Do my counfounds model noise properly? Voxel-to-voxel connectivity tells!</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="plot_register.html">Template creation</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../reference.html">sammba-MRI API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference.html">sammba-MRI API Reference</a></li>
 </ul>
 
             
@@ -119,7 +118,7 @@
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">sammba-MRI</a>
+          <a href="../../index.html">sammba-MRI</a>
         
       </nav>
 
@@ -147,9 +146,9 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="index.html">Gallery of Examples</a> &raquo;</li>
+          <li><a href="../index.html">Gallery of Examples</a> &raquo;</li>
         
       <li>Confounds exploration</li>
     
@@ -169,7 +168,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="confounds-exploration">
-<span id="sphx-glr-auto-examples-plot-confounds-py"></span><h1>Confounds exploration<a class="headerlink" href="#confounds-exploration" title="Permalink to this headline">¶</a></h1>
+<span id="sphx-glr-auto-examples-03-connectivity-plot-confounds-py"></span><h1>Confounds exploration<a class="headerlink" href="#confounds-exploration" title="Permalink to this headline">¶</a></h1>
 <p>Here we show how to regress out confound signals, in particular statistical
 CompCor.</p>
 <blockquote>
@@ -215,15 +214,7 @@ using NiftiMasker.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">fit</span><span class="p">]</span> <span class="n">Loading</span> <span class="n">data</span> <span class="kn">from</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">salma</span><span class="o">/</span><span class="n">nilearn_data</span><span class="o">/</span><span class="n">zurich_retest</span><span class="o">/</span><span class="n">baseline</span><span class="o">/</span><span class="mi">1367</span><span class="o">/</span><span class="n">rsfMRI</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
 <span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">fit</span><span class="p">]</span> <span class="n">Computing</span> <span class="n">the</span> <span class="n">mask</span>
-<span class="n">________________________________________________________________________________</span>
-<span class="p">[</span><span class="n">Memory</span><span class="p">]</span> <span class="n">Calling</span> <span class="n">nilearn</span><span class="o">.</span><span class="n">masking</span><span class="o">.</span><span class="n">compute_background_mask</span><span class="o">...</span>
-<span class="n">compute_background_mask</span><span class="p">(</span><span class="s1">&#39;/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">__________________________________________compute_background_mask</span> <span class="o">-</span> <span class="mf">0.7</span><span class="n">s</span><span class="p">,</span> <span class="mf">0.0</span><span class="nb">min</span>
 <span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">fit</span><span class="p">]</span> <span class="n">Resampling</span> <span class="n">mask</span>
-<span class="n">________________________________________________________________________________</span>
-<span class="p">[</span><span class="n">Memory</span><span class="p">]</span> <span class="n">Calling</span> <span class="n">nilearn</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">resampling</span><span class="o">.</span><span class="n">resample_img</span><span class="o">...</span>
-<span class="n">resample_img</span><span class="p">(</span><span class="o">&lt;</span><span class="n">nibabel</span><span class="o">.</span><span class="n">nifti1</span><span class="o">.</span><span class="n">Nifti1Image</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x2af01a7c6750</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">target_shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_affine</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">_____________________________________________________resample_img</span> <span class="o">-</span> <span class="mf">0.0</span><span class="n">s</span><span class="p">,</span> <span class="mf">0.0</span><span class="nb">min</span>
 </pre></div>
 </div>
 <p>Next, compute the voxel-to-voxel correlations. We Use only 1% of voxels,
@@ -264,15 +255,15 @@ to save computation time.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img alt="../_images/sphx_glr_plot_confounds_001.png" class="align-center" src="../_images/sphx_glr_plot_confounds_001.png" />
+<img alt="../../_images/sphx_glr_plot_confounds_001.png" class="align-center" src="../../_images/sphx_glr_plot_confounds_001.png" />
 <p>The correlations distribution is wider after statistical CompCor, so these
 confounds are not well suited to our case.</p>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  2.887 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  1.549 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" href="../_downloads/plot_confounds.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_confounds.py</span></code></a></div>
+<a class="reference download internal" href="../../_downloads/plot_confounds.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_confounds.py</span></code></a></div>
 <div class="sphx-glr-download docutils container">
-<a class="reference download internal" href="../_downloads/plot_confounds.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_confounds.ipynb</span></code></a></div>
+<a class="reference download internal" href="../../_downloads/plot_confounds.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_confounds.ipynb</span></code></a></div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
 </div>
@@ -288,10 +279,10 @@ confounds are not well suited to our case.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plot_register.html" class="btn btn-neutral float-right" title="Template creation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../../reference.html" class="btn btn-neutral float-right" title="sammba-MRI API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="Gallery of Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../02_preprocessing/plot_functional_registration.html" class="btn btn-neutral" title="fMRI registration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -320,7 +311,7 @@ confounds are not well suited to our case.</p>
 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
+            URL_ROOT:'../../',
             VERSION:'',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
@@ -328,17 +319,17 @@ confounds are not well suited to our case.</p>
             SOURCELINK_SUFFIX: '.txt'
         };
     </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/copybutton.js"></script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
   
   
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
   
 
   

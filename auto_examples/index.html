@@ -36,7 +36,7 @@
   
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../index.html"/>
-        <link rel="next" title="Confounds exploration" href="plot_confounds.html"/>
+        <link rel="next" title="Registration to common space" href="01_template/plot_register.html"/>
         <link rel="prev" title="1. Introduction: SmAll-maMMals BrAin MRI" href="../introduction.html"/> 
 
   
@@ -87,14 +87,19 @@
             
             
               <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Giving credit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide: table of contents</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Gallery of Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#dicom-to-nifti">DICOM to Nifti</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#template-creation">Template creation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#registration-to-standard">Registration to standard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#template-creation">Template creation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01_template/plot_register.html">Registration to common space</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fmri-spatial-preprocessing">fMRI spatial preprocessing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02_preprocessing/plot_functional_registration.html">fMRI registration</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#functional-connectivity">Functional connectivity</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="plot_confounds.html">Confounds exploration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="plot_register.html">Template creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_connectivity/plot_confounds.html">Confounds exploration</a></li>
 </ul>
 </li>
 </ul>
@@ -163,28 +168,31 @@
             
   <div class="section" id="gallery-of-examples">
 <span id="examples-index"></span><h1>Gallery of Examples<a class="headerlink" href="#gallery-of-examples" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="dicom-to-nifti">
-<span id="general-examples"></span><h2>DICOM to Nifti<a class="headerlink" href="#dicom-to-nifti" title="Permalink to this headline">¶</a></h2>
-<p>Example for conversion step</p>
-</div>
-<div class="section" id="template-creation">
+<div style='clear:both'></div><div class="section" id="template-creation">
 <h2>Template creation<a class="headerlink" href="#template-creation" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="registration-to-standard">
-<h2>Registration to standard<a class="headerlink" href="#registration-to-standard" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="functional-connectivity">
-<h2>Functional connectivity<a class="headerlink" href="#functional-connectivity" title="Permalink to this headline">¶</a></h2>
-<p>ROI-to-ROI matrices, ROI-to-voxel maps and ICA.</p>
-<div class="sphx-glr-thumbcontainer" tooltip="Here we show how to regress out confound signals, in particular statistical CompCor."><div class="figure" id="id1">
-<img alt="../_images/sphx_glr_plot_confounds_thumb.png" src="../_images/sphx_glr_plot_confounds_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_confounds.html#sphx-glr-auto-examples-plot-confounds-py"><span class="std std-ref">Confounds exploration</span></a></span></p>
+<div class="sphx-glr-thumbcontainer" tooltip="Here we show how to create a template from multiple anatomical scans and register all of them t..."><div class="figure" id="id1">
+<img alt="../_images/sphx_glr_plot_register_thumb.png" src="../_images/sphx_glr_plot_register_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="01_template/plot_register.html#sphx-glr-auto-examples-01-template-plot-register-py"><span class="std std-ref">Registration to common space</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
-<div class="sphx-glr-thumbcontainer" tooltip="Here we show how to create a template from multiple anatomical scans. Initially, registration i..."><div class="figure" id="id2">
-<img alt="../_images/sphx_glr_plot_register_thumb.png" src="../_images/sphx_glr_plot_register_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="plot_register.html#sphx-glr-auto-examples-plot-register-py"><span class="std std-ref">Template creation</span></a></span></p>
+<div style='clear:both'></div></div>
+<div class="section" id="fmri-spatial-preprocessing">
+<h2>fMRI spatial preprocessing<a class="headerlink" href="#fmri-spatial-preprocessing" title="Permalink to this headline">¶</a></h2>
+<p>Including slice timing, motion correction, bias correction and registration.</p>
+<div class="sphx-glr-thumbcontainer" tooltip="Standard functional preprocessing and registration of functional image to anatomical."><div class="figure" id="id2">
+<img alt="../_images/sphx_glr_plot_functional_registration_thumb.png" src="../_images/sphx_glr_plot_functional_registration_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="02_preprocessing/plot_functional_registration.html#sphx-glr-auto-examples-02-preprocessing-plot-functional-registration-py"><span class="std std-ref">fMRI registration</span></a></span></p>
+</div>
+</div><div class="toctree-wrapper compound">
+</div>
+<div style='clear:both'></div></div>
+<div class="section" id="functional-connectivity">
+<h2>Functional connectivity<a class="headerlink" href="#functional-connectivity" title="Permalink to this headline">¶</a></h2>
+<p>ROI-to-ROI matrices, ROI-to-voxel maps and ICA.</p>
+<div class="sphx-glr-thumbcontainer" tooltip="Here we show how to regress out confound signals, in particular statistical CompCor."><div class="figure" id="id3">
+<img alt="../_images/sphx_glr_plot_confounds_thumb.png" src="../_images/sphx_glr_plot_confounds_thumb.png" />
+<p class="caption"><span class="caption-text"><a class="reference internal" href="03_connectivity/plot_confounds.html#sphx-glr-auto-examples-03-connectivity-plot-confounds-py"><span class="std std-ref">Confounds exploration</span></a></span></p>
 </div>
 </div><div class="toctree-wrapper compound">
 </div>
@@ -208,7 +216,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="plot_confounds.html" class="btn btn-neutral float-right" title="Confounds exploration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="01_template/plot_register.html" class="btn btn-neutral float-right" title="Registration to common space" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../introduction.html" class="btn btn-neutral" title="1. Introduction: SmAll-maMMals BrAin MRI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

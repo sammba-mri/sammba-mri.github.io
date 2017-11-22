@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sammba.data_fetchers.fetch_zurich_test_retest &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
+  <title>sammba.registration.anats_to_common &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../index.html"/>
         <link rel="up" title="sammba-MRI API Reference" href="../reference.html"/>
-        <link rel="next" title="sammba.data_fetchers.fetch_zurich_anesthesiant" href="sammba.data_fetchers.fetch_zurich_anesthesiant.html"/>
-        <link rel="prev" title="sammba-MRI API Reference" href="../reference.html"/> 
+        <link rel="next" title="sammba.registration.create_pipeline_graph" href="sammba.registration.create_pipeline_graph.html"/>
+        <link rel="prev" title="sammba.data_fetchers.fetch_zurich_anesthesiant" href="sammba.data_fetchers.fetch_zurich_anesthesiant.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -92,12 +92,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide: table of contents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Gallery of Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../reference.html">sammba-MRI API Reference</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../reference.html#module-sammba.data_fetchers"><code class="docutils literal"><span class="pre">sammba.data_fetchers</span></code>: Datasets and atlas</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">sammba.data_fetchers.fetch_zurich_test_retest</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sammba.data_fetchers.fetch_zurich_anesthesiant.html">sammba.data_fetchers.fetch_zurich_anesthesiant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.data_fetchers"><code class="docutils literal"><span class="pre">sammba.data_fetchers</span></code>: Datasets and atlas</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../reference.html#module-sammba.registration"><code class="docutils literal"><span class="pre">sammba.registration</span></code>: Registration utilities</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">sammba.registration.anats_to_common</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.registration.create_pipeline_graph.html">sammba.registration.create_pipeline_graph</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.registration"><code class="docutils literal"><span class="pre">sammba.registration</span></code>: Registration utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference.html#external-tools-wrapped-in-python">External tools wrapped in python</a></li>
 </ul>
 </li>
@@ -147,7 +147,7 @@
         
           <li><a href="../reference.html">sammba-MRI API Reference</a> &raquo;</li>
         
-      <li>sammba.data_fetchers.fetch_zurich_test_retest</li>
+      <li>sammba.registration.anats_to_common</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -170,36 +170,55 @@
 function signature, and not how to use it. Please refer to the
 <a class="reference internal" href="../user_guide.html#user-guide"><span class="std std-ref">user guide</span></a> for the big picture.</p>
 </div>
-<div class="section" id="sammba-data-fetchers-fetch-zurich-test-retest">
-<h1>sammba.data_fetchers.fetch_zurich_test_retest<a class="headerlink" href="#sammba-data-fetchers-fetch-zurich-test-retest" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sammba-registration-anats-to-common">
+<h1>sammba.registration.anats_to_common<a class="headerlink" href="#sammba-registration-anats-to-common" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="sammba.data_fetchers.fetch_zurich_test_retest">
-<code class="descclassname">sammba.data_fetchers.</code><code class="descname">fetch_zurich_test_retest</code><span class="sig-paren">(</span><em>subjects=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], sessions=[1], data_dir=None, url=None, resume=True, verbose=1, correct_headers=False</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.data_fetchers.fetch_zurich_test_retest" title="Permalink to this definition">¶</a></dt>
-<dd><p>Download and loads the ETH-Zurich test-retest dataset.</p>
+<dt id="sammba.registration.anats_to_common">
+<code class="descclassname">sammba.registration.</code><code class="descname">anats_to_common</code><span class="sig-paren">(</span><em>t1_filenames, write_dir, brain_volume=400, registration_kind=’affine’, nonlinear_levels=[1, 2, 3], nonlinear_minimal_patch=75, convergence=0.005, caching=False, verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.anats_to_common" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create common template from native T1 weighted images and achieve
+their registration to it.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>subjects</strong> : sequence of int or None, optional</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>t1_filenames</strong> : list of str</p>
 <blockquote>
-<div><p>ids of subjects to load, default to loading all subjects.</p>
+<div><p>Paths to the T1 weighted images.</p>
 </div></blockquote>
-<p><strong>sessions</strong> : iterable of int, optional</p>
+<p><strong>write_dir</strong> : str</p>
 <blockquote>
-<div><p>The sessions to load. Load only the first session by default.</p>
+<div><p>Path to an existant directory to save output files to.</p>
 </div></blockquote>
-<p><strong>data_dir</strong> : string, optional</p>
+<p><strong>brain_volume</strong> : float, optional</p>
 <blockquote>
-<div><p>Path of the data directory. Used to force data storage in a specified
-location. Default: None</p>
+<div><p>Volumes of the brain as passed to Rats_MM brain extraction tool.
+Default to 400 for the mouse brain.</p>
 </div></blockquote>
-<p><strong>resume</strong> : bool, optional (default True)</p>
+<p><strong>registration_kind</strong> : one of {‘rigid’, ‘affine’, ‘nonlinear’}, optional</p>
 <blockquote>
-<div><p>If true, try resuming download if possible.</p>
+<div><p>The allowed transform kind.</p>
 </div></blockquote>
-<p><strong>verbose</strong> : int, optional (default 0)</p>
+<p><strong>nonlinear_levels</strong> : list of int, optional</p>
 <blockquote>
-<div><p>Defines the level of verbosity of the output.</p>
+<div><p>Maximal levels for each nonlinear warping iteration. Passed iteratively
+to sammba.externals.nipype.interfaces.afni.Qwarp</p>
+</div></blockquote>
+<p><strong>nonlinear_minimal_patch</strong> : int, optional</p>
+<blockquote>
+<div><p>Minimal patch for the final nonlinear warp, passed to
+sammba.externals.nipype.interfaces.afni.Qwarp</p>
+</div></blockquote>
+<p><strong>caching</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, caching is used for all the registration steps.</p>
+</div></blockquote>
+<p><strong>convergence</strong> : float, optional</p>
+<blockquote>
+<div><p>Convergence limit, passed to</p>
+</div></blockquote>
+<p><strong>verbose</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, all steps are verbose.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -207,31 +226,21 @@ location. Default: None</p>
 <blockquote class="last">
 <div><p>Dictionary-like object, the interest attributes are :</p>
 <ul class="simple">
-<li>‘func’: string list. Paths to functional images.</li>
-<li>‘anat’: string list. Paths to anatomic images.</li>
-<li>‘session’: numpy array. List of ids corresponding to images sessions.</li>
+<li><dl class="first docutils">
+<dt>‘registered’ <span class="classifier-delimiter">:</span> <span class="classifier">list of str.</span></dt>
+<dd>Paths to registered images. Note that
+they have undergone a bias correction step before.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>‘transforms’ <span class="classifier-delimiter">:</span> <span class="classifier">list of str.</span></dt>
+<dd>Paths to the transforms from the raw
+images to the registered images.</dd>
+</dl>
+</li>
 </ul>
 </div></blockquote>
 </td>
-</tr>
-</tbody>
-</table>
-<p class="rubric">Notes</p>
-<p>This dataset is composed of 2 sessions of 15 male mice.
-For each mice, 2 resting-state scans of continuous EPI
-functional volumes were collected, both with their anatomical scan.
-Session 2  was collected 15-20 days after Session 1.</p>
-<p class="rubric">References</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Download:</th><td class="field-body"><a class="reference external" href="https://central.xnat.org">https://central.xnat.org</a></td>
-</tr>
-<tr class="field-even field"><th class="field-name">Reference:</th><td class="field-body"><a class="reference external" href="http://dx.doi.org/10.1016/j.neuroimage.2015.07.090">Mapping the Mouse Brain with Rs-fMRI: An Optimized Pipeline for
-Functional Network Identification</a>
-NeuroImage 123 (2015): 11-21.
-V. Zerbi, J. Grandjean, M. Rudin, and N. Wenderoth.</td>
 </tr>
 </tbody>
 </table>
@@ -249,10 +258,10 @@ V. Zerbi, J. Grandjean, M. Rudin, and N. Wenderoth.</td>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="sammba.data_fetchers.fetch_zurich_anesthesiant.html" class="btn btn-neutral float-right" title="sammba.data_fetchers.fetch_zurich_anesthesiant" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sammba.registration.create_pipeline_graph.html" class="btn btn-neutral float-right" title="sammba.registration.create_pipeline_graph" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../reference.html" class="btn btn-neutral" title="sammba-MRI API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sammba.data_fetchers.fetch_zurich_anesthesiant.html" class="btn btn-neutral" title="sammba.data_fetchers.fetch_zurich_anesthesiant" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
