@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sammba.io_conversions.dcm_to_nii &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+  
+
+  
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../index.html"/>
+        <link rel="up" title="sammba-MRI API Reference" href="../reference.html"/>
+        <link rel="next" title="sammba.io_conversions.recursive_dcm_to_nii" href="sammba.io_conversions.recursive_dcm_to_nii.html"/>
+        <link rel="prev" title="sammba-MRI API Reference" href="../reference.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> sammba-MRI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Giving credit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide: table of contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Gallery of Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">sammba-MRI API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../reference.html#module-sammba.io_conversions"><code class="docutils literal"><span class="pre">sammba.io_conversions</span></code>: From scanner to NIFTI</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">sammba.io_conversions.dcm_to_nii</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.io_conversions.recursive_dcm_to_nii.html">sammba.io_conversions.recursive_dcm_to_nii</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.data_fetchers"><code class="docutils literal"><span class="pre">sammba.data_fetchers</span></code>: Datasets and atlas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.registration"><code class="docutils literal"><span class="pre">sammba.registration</span></code>: Registration utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#external-tools-wrapped-in-python">External tools wrapped in python</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sammba-MRI</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../reference.html">sammba-MRI API Reference</a> &raquo;</li>
+        
+      <li>sammba.io_conversions.dcm_to_nii</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This page is a reference documentation. It only explains the
+function signature, and not how to use it. Please refer to the
+<a class="reference internal" href="../user_guide.html#user-guide"><span class="std std-ref">user guide</span></a> for the big picture.</p>
+</div>
+<div class="section" id="sammba-io-conversions-dcm-to-nii">
+<h1>sammba.io_conversions.dcm_to_nii<a class="headerlink" href="#sammba-io-conversions-dcm-to-nii" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="sammba.io_conversions.dcm_to_nii">
+<code class="descclassname">sammba.io_conversions.</code><code class="descname">dcm_to_nii</code><span class="sig-paren">(</span><em>dcmdump_path</em>, <em>dicom_filename</em>, <em>save_directory</em>, <em>siap_fix=True</em>, <em>id_in_filename=True</em>, <em>date_in_filename=True</em>, <em>time_in_filename=True</em>, <em>protocol_in_filename=True</em>, <em>paravision_folder_in_filename=True</em>, <em>siap_in_filename=True</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.io_conversions.dcm_to_nii" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts Bruker Paravision enhanced multiframe DICOM files into
+NIfTI-1 format.</p>
+<p>Assumes int16; this will be changed in the future.
+NIFTI files are named based on several tag values found in the DICOM. Also
+saved with the same name as the .nii.gz is a .txt file of extracted
+meta-data that could be useful to the processing of certain protocols
+such as perfusion, T1/T2 mapping and diffusion.</p>
+<p>Thanks to common.py of dicom2nifiti by Arne Brys, icometrix, which saved
+me when it comes to specifying the affine for nibabel.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>dcmdump_path</strong> : str</p>
+<blockquote>
+<div><p>Path to the compiled dcmdump (see Note).</p>
+</div></blockquote>
+<p><strong>dicom_filename</strong> : str</p>
+<blockquote>
+<div><p>Path to the DICOM file (typically named EnIm1.dcm).</p>
+</div></blockquote>
+<p><strong>save_directory</strong> : str</p>
+<blockquote>
+<div><p>Path to the directory to save the extracteed NIFTI image.</p>
+</div></blockquote>
+<p><strong>siap_fix</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, swaps the superior-inferior and anterior-posterior axes to be
+how I think they should be. In rodents, Paravision sets dorsal-ventral
+as AP and rostral-caudal as SI. I think they should be the other way
+round
+<a class="reference external" href="https://en.wikipedia.org/wiki/Anatomical_terms_of_location#Main_terms">https://en.wikipedia.org/wiki/Anatomical_terms_of_location#Main_terms</a></p>
+</div></blockquote>
+<p><strong>id_in_filename</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, animal ID is included in the filename of the generated NIFTI.</p>
+</div></blockquote>
+<p><strong>date_in_filename</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, acquisition date is included in the filename of the generated
+NIFTI.</p>
+</div></blockquote>
+<p><strong>time_in_filename</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, acquisition time included in the filename of the generated
+NIFTI.</p>
+</div></blockquote>
+<p><strong>protocol_in_filename</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, the protocl acronym is included in the filename of the
+generated NIFTI.</p>
+</div></blockquote>
+<p><strong>paravision_folder_in_filename</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, Paravision folder number is included in the filename
+of the generated NIFTI.</p>
+</div></blockquote>
+<p><strong>siap_in_filename</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, ‘fixedSIAP’ or ‘origSIAP’ is included in the filename of the
+generated NIFTI, to tell whether or not axes were swapped.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>nii_filename</strong> : str</p>
+<blockquote class="last">
+<div><p>Path to the created NIFTI image.</p>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">Notes</p>
+<p>This is effectively a python wrapper to dcmdump, processing and passing
+its output to nibabel and a text file.
+Depends on access to a compiled version of dcmdump (part of OFFIS dcmtk;
+<a class="reference external" href="http://dcmtk.org/dcmtk.php.en">http://dcmtk.org/dcmtk.php.en</a> and
+<a class="reference external" href="http://support.dcmtk.org/docs/dcmdump.html">http://support.dcmtk.org/docs/dcmdump.html</a>)
+which does the initial parsing: extraction of the header/metadata as text
+and the image data as a raw vector.</p>
+<p>Useful documents include DICOM spec C.7.6.2.1.1 and 10.7.1.3
+common.py of dicom2nifiti by Arne Brys, icometrix saved me when it comes to
+specifying the affine for nibabel! see <a class="reference external" href="http://dicom2nifti.readthedocs.io">http://dicom2nifti.readthedocs.io</a>.
+he effectively did the hard part, interpreting nibabel’s DICOM tutorial for
+me.</p>
+<p>Only tested on PV6 .dcm files and a limited number of sequences. Little or
+no error-checking. There are a lot of circumstances where this converter
+will fail or be sub-optimal.</p>
+</dd></dl>
+
+<div style='clear:both'></div></div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sammba.io_conversions.recursive_dcm_to_nii.html" class="btn btn-neutral float-right" title="sammba.io_conversions.recursive_dcm_to_nii" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../reference.html" class="btn btn-neutral" title="sammba-MRI API Reference" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The sammba-MRI developers.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

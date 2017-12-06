@@ -1,0 +1,332 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>ICA on mouse &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  
+
+  
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../../index.html"/>
+        <link rel="up" title="Gallery of Examples" href="../index.html"/>
+        <link rel="next" title="sammba-MRI API Reference" href="../../reference.html"/>
+        <link rel="prev" title="Confounds exploration" href="plot_confounds.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> sammba-MRI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Giving credit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide.html">User guide: table of contents</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Gallery of Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#template-creation">Template creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#fmri-spatial-preprocessing">fMRI spatial preprocessing</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#functional-connectivity">Functional connectivity</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="plot_confounds.html">Confounds exploration</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ICA on mouse</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#retrieve-the-fmri-data">Retrieve the fMRI data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#load-the-template">Load the template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#define-the-writing-directory">Define the writing directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#register-to-the-template">Register to the template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-ica">Run ICA</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#visualize-the-components">Visualize the components</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference.html">sammba-MRI API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sammba-MRI</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Gallery of Examples</a> &raquo;</li>
+        
+      <li>ICA on mouse</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ica-on-mouse">
+<span id="sphx-glr-auto-examples-03-connectivity-plot-ica-py"></span><h1>ICA on mouse<a class="headerlink" href="#ica-on-mouse" title="Permalink to this headline">¶</a></h1>
+<p>Independent components analysis on 5 mice.</p>
+<div class="section" id="retrieve-the-fmri-data">
+<h2>Retrieve the fMRI data<a class="headerlink" href="#retrieve-the-fmri-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sammba</span> <span class="kn">import</span> <span class="n">data_fetchers</span>
+
+<span class="n">retest</span> <span class="o">=</span> <span class="n">data_fetchers</span><span class="o">.</span><span class="n">fetch_zurich_test_retest</span><span class="p">(</span><span class="n">subjects</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+                                                <span class="n">correct_headers</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We encapsulate data for each mouse through an object called <cite>FMRISession</cite></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sammba.registration</span> <span class="kn">import</span> <a href="../../generated/sammba.registration.FMRISession.html#sammba.registration.FMRISession" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.FMRISession"><span class="n">FMRISession</span></a>
+
+<span class="n">sessions</span> <span class="o">=</span> <span class="p">[</span><a href="../../generated/sammba.registration.FMRISession.html#sammba.registration.FMRISession" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.FMRISession"><span class="n">FMRISession</span></a><span class="p">(</span><span class="n">anat</span><span class="o">=</span><span class="n">anat_filename</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">func_filename</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">anat_filename</span><span class="p">,</span> <span class="n">func_filename</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">retest</span><span class="o">.</span><span class="n">anat</span><span class="p">,</span> <span class="n">retest</span><span class="o">.</span><span class="n">func</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="load-the-template">
+<h2>Load the template<a class="headerlink" href="#load-the-template" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dorr</span> <span class="o">=</span> <span class="n">data_fetchers</span><span class="o">.</span><span class="n">fetch_atlas_dorr_2008</span><span class="p">(</span><span class="n">downsample</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">)</span>
+<span class="n">template_filename</span> <span class="o">=</span> <span class="n">dorr</span><span class="o">.</span><span class="n">t2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="define-the-writing-directory">
+<h2>Define the writing directory<a class="headerlink" href="#define-the-writing-directory" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">write_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;zurich_ica&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">write_dir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">write_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="register-to-the-template">
+<h2>Register to the template<a class="headerlink" href="#register-to-the-template" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sammba.registration</span> <span class="kn">import</span> <a href="../../generated/sammba.registration.fmri_sessions_to_template.html#sammba.registration.fmri_sessions_to_template" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.fmri_sessions_to_template"><span class="n">fmri_sessions_to_template</span></a>
+
+<a href="../../generated/sammba.registration.fmri_sessions_to_template.html#sammba.registration.fmri_sessions_to_template" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.fmri_sessions_to_template"><span class="n">fmri_sessions_to_template</span></a><span class="p">(</span><span class="n">sessions</span><span class="p">,</span> <span class="n">head_template_filename</span><span class="o">=</span><span class="n">dorr</span><span class="o">.</span><span class="n">t2</span><span class="p">,</span>
+                          <span class="n">t_r</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">write_dir</span><span class="o">=</span><span class="n">write_dir</span><span class="p">,</span>
+                          <span class="n">brain_volume</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+                          <span class="n">prior_rigid_body_registration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">caching</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">registered_funcs</span> <span class="o">=</span> <span class="p">[</span><span class="n">sess</span><span class="o">.</span><span class="n">registered_func_</span> <span class="k">for</span> <span class="n">sess</span> <span class="ow">in</span> <span class="n">sessions</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-ica">
+<h2>Run ICA<a class="headerlink" href="#run-ica" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn.decomposition</span> <span class="kn">import</span> <a href="http://nilearn.github.io/modules/generated/nilearn.decomposition.CanICA.html#nilearn.decomposition.CanICA" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.decomposition.CanICA"><span class="n">CanICA</span></a>
+
+<span class="n">canica</span> <span class="o">=</span> <a href="http://nilearn.github.io/modules/generated/nilearn.decomposition.CanICA.html#nilearn.decomposition.CanICA" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.decomposition.CanICA"><span class="n">CanICA</span></a><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">smoothing_fwhm</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">canica</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">registered_funcs</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Retrieve the independent components in brain space.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">components_img</span> <span class="o">=</span> <span class="n">canica</span><span class="o">.</span><span class="n">masker_</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">canica</span><span class="o">.</span><span class="n">components_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="visualize-the-components">
+<h2>Visualize the components<a class="headerlink" href="#visualize-the-components" title="Permalink to this headline">¶</a></h2>
+<p>We can plot the outline of all components on one figure.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
+
+<a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_prob_atlas.html#nilearn.plotting.plot_prob_atlas" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.plotting.plot_prob_atlas"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_prob_atlas</span></a><span class="p">(</span><span class="n">components_img</span><span class="p">,</span>
+                         <span class="n">anat_img</span><span class="o">=</span><span class="n">dorr</span><span class="o">.</span><span class="n">t2</span><span class="p">,</span>
+                         <span class="n">title</span><span class="o">=</span><span class="s1">&#39;All ICA components&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../../_images/sphx_glr_plot_ica_001.png" class="align-center" src="../../_images/sphx_glr_plot_ica_001.png" />
+<p><strong>Total running time of the script:</strong> ( 55 minutes  22.359 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_ica.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_ica.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_ica.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_ica.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../reference.html" class="btn btn-neutral float-right" title="sammba-MRI API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plot_confounds.html" class="btn btn-neutral" title="Confounds exploration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The sammba-MRI developers.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

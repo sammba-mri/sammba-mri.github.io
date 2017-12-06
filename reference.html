@@ -36,8 +36,8 @@
   
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="index.html"/>
-        <link rel="next" title="sammba.data_fetchers.fetch_zurich_test_retest" href="generated/sammba.data_fetchers.fetch_zurich_test_retest.html"/>
-        <link rel="prev" title="Confounds exploration" href="auto_examples/03_connectivity/plot_confounds.html"/> 
+        <link rel="next" title="sammba.io_conversions.dcm_to_nii" href="generated/sammba.io_conversions.dcm_to_nii.html"/>
+        <link rel="prev" title="ICA on mouse" href="auto_examples/03_connectivity/plot_ica.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -91,6 +91,11 @@
 <li class="toctree-l1"><a class="reference internal" href="user_guide.html">User guide: table of contents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Gallery of Examples</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">sammba-MRI API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-sammba.io_conversions"><code class="docutils literal"><span class="pre">sammba.io_conversions</span></code>: From scanner to NIFTI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sammba.io_conversions.dcm_to_nii.html">sammba.io_conversions.dcm_to_nii</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sammba.io_conversions.recursive_dcm_to_nii.html">sammba.io_conversions.recursive_dcm_to_nii</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#module-sammba.data_fetchers"><code class="docutils literal"><span class="pre">sammba.data_fetchers</span></code>: Datasets and atlas</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/sammba.data_fetchers.fetch_zurich_test_retest.html">sammba.data_fetchers.fetch_zurich_test_retest</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/sammba.data_fetchers.fetch_zurich_anesthesiant.html">sammba.data_fetchers.fetch_zurich_anesthesiant</a></li>
@@ -98,7 +103,11 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-sammba.registration"><code class="docutils literal"><span class="pre">sammba.registration</span></code>: Registration utilities</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/sammba.registration.anats_to_common.html">sammba.registration.anats_to_common</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sammba.registration.anats_to_template.html">sammba.registration.anats_to_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sammba.registration.fmri_sessions_to_template.html">sammba.registration.fmri_sessions_to_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sammba.registration.coregister_fmri_session.html">sammba.registration.coregister_fmri_session</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/sammba.registration.create_pipeline_graph.html">sammba.registration.create_pipeline_graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sammba.registration.FMRISession.html">sammba.registration.FMRISession</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#external-tools-wrapped-in-python">External tools wrapped in python</a><ul>
@@ -173,13 +182,32 @@
 <div class="contents local topic" id="list-of-modules">
 <p class="topic-title first"><strong>List of modules</strong></p>
 <ul class="simple">
-<li><a class="reference internal" href="#module-sammba.data_fetchers" id="id1"><a class="reference internal" href="#module-sammba.data_fetchers" title="sammba.data_fetchers"><code class="xref py py-mod docutils literal"><span class="pre">sammba.data_fetchers</span></code></a>: Datasets and atlas</a></li>
-<li><a class="reference internal" href="#module-sammba.registration" id="id2"><a class="reference internal" href="#module-sammba.registration" title="sammba.registration"><code class="xref py py-mod docutils literal"><span class="pre">sammba.registration</span></code></a>: Registration utilities</a></li>
-<li><a class="reference internal" href="#external-tools-wrapped-in-python" id="id3">External tools wrapped in python</a></li>
+<li><a class="reference internal" href="#module-sammba.io_conversions" id="id1"><a class="reference internal" href="#module-sammba.io_conversions" title="sammba.io_conversions"><code class="xref py py-mod docutils literal"><span class="pre">sammba.io_conversions</span></code></a>: From scanner to NIFTI</a></li>
+<li><a class="reference internal" href="#module-sammba.data_fetchers" id="id2"><a class="reference internal" href="#module-sammba.data_fetchers" title="sammba.data_fetchers"><code class="xref py py-mod docutils literal"><span class="pre">sammba.data_fetchers</span></code></a>: Datasets and atlas</a></li>
+<li><a class="reference internal" href="#module-sammba.registration" id="id3"><a class="reference internal" href="#module-sammba.registration" title="sammba.registration"><code class="xref py py-mod docutils literal"><span class="pre">sammba.registration</span></code></a>: Registration utilities</a></li>
+<li><a class="reference internal" href="#external-tools-wrapped-in-python" id="id4">External tools wrapped in python</a></li>
 </ul>
 </div>
+<div class="section" id="module-sammba.io_conversions">
+<span id="sammba-io-conversions-from-scanner-to-nifti"></span><span id="io-conversions-ref"></span><h2><a class="toc-backref" href="#id1"><a class="reference internal" href="#module-sammba.io_conversions" title="sammba.io_conversions"><code class="xref py py-mod docutils literal"><span class="pre">sammba.io_conversions</span></code></a>: From scanner to NIFTI</a><a class="headerlink" href="#module-sammba.io_conversions" title="Permalink to this headline">¶</a></h2>
+<p><strong>Functions</strong>:</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.io_conversions.dcm_to_nii.html#sammba.io_conversions.dcm_to_nii" title="sammba.io_conversions.dcm_to_nii"><code class="xref py py-obj docutils literal"><span class="pre">dcm_to_nii</span></code></a>(dcmdump_path,&nbsp;dicom_filename,&nbsp;…)</td>
+<td>Converts Bruker Paravision enhanced multiframe DICOM files into NIfTI-1 format.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sammba.io_conversions.recursive_dcm_to_nii.html#sammba.io_conversions.recursive_dcm_to_nii" title="sammba.io_conversions.recursive_dcm_to_nii"><code class="xref py py-obj docutils literal"><span class="pre">recursive_dcm_to_nii</span></code></a>(dcmdump_path,&nbsp;…)</td>
+<td>Traverses recursively subdirectories of a given session directory and converts all DICOM files to NIFTI files.</td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="section" id="module-sammba.data_fetchers">
-<span id="sammba-data-fetchers-datasets-and-atlas"></span><span id="data-fetchers-ref"></span><h2><a class="toc-backref" href="#id1"><a class="reference internal" href="#module-sammba.data_fetchers" title="sammba.data_fetchers"><code class="xref py py-mod docutils literal"><span class="pre">sammba.data_fetchers</span></code></a>: Datasets and atlas</a><a class="headerlink" href="#module-sammba.data_fetchers" title="Permalink to this headline">¶</a></h2>
+<span id="sammba-data-fetchers-datasets-and-atlas"></span><span id="data-fetchers-ref"></span><h2><a class="toc-backref" href="#id2"><a class="reference internal" href="#module-sammba.data_fetchers" title="sammba.data_fetchers"><code class="xref py py-mod docutils literal"><span class="pre">sammba.data_fetchers</span></code></a>: Datasets and atlas</a><a class="headerlink" href="#module-sammba.data_fetchers" title="Permalink to this headline">¶</a></h2>
 <p>Helper functions to download NeuroImaging mouse datasets and atlases</p>
 <p><strong>Functions</strong>:</p>
 <table border="1" class="longtable docutils">
@@ -198,7 +226,7 @@
 </table>
 </div>
 <div class="section" id="module-sammba.registration">
-<span id="sammba-registration-registration-utilities"></span><span id="registration-ref"></span><h2><a class="toc-backref" href="#id2"><a class="reference internal" href="#module-sammba.registration" title="sammba.registration"><code class="xref py py-mod docutils literal"><span class="pre">sammba.registration</span></code></a>: Registration utilities</a><a class="headerlink" href="#module-sammba.registration" title="Permalink to this headline">¶</a></h2>
+<span id="sammba-registration-registration-utilities"></span><span id="registration-ref"></span><h2><a class="toc-backref" href="#id3"><a class="reference internal" href="#module-sammba.registration" title="sammba.registration"><code class="xref py py-mod docutils literal"><span class="pre">sammba.registration</span></code></a>: Registration utilities</a><a class="headerlink" href="#module-sammba.registration" title="Permalink to this headline">¶</a></h2>
 <p><strong>Functions</strong>:</p>
 <table border="1" class="longtable docutils">
 <colgroup>
@@ -206,17 +234,38 @@
 <col width="90%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.registration.anats_to_common.html#sammba.registration.anats_to_common" title="sammba.registration.anats_to_common"><code class="xref py py-obj docutils literal"><span class="pre">anats_to_common</span></code></a>(t1_filenames,&nbsp;write_dir[,&nbsp;…])</td>
-<td>Create common template from native T1 weighted images and achieve their registration to it.</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.registration.anats_to_common.html#sammba.registration.anats_to_common" title="sammba.registration.anats_to_common"><code class="xref py py-obj docutils literal"><span class="pre">anats_to_common</span></code></a>(anat_filenames,&nbsp;write_dir,&nbsp;…)</td>
+<td>Create common template from native anatomical images and achieve their registration to it.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sammba.registration.create_pipeline_graph.html#sammba.registration.create_pipeline_graph" title="sammba.registration.create_pipeline_graph"><code class="xref py py-obj docutils literal"><span class="pre">create_pipeline_graph</span></code></a>(pipeline_name,&nbsp;graph_file)</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sammba.registration.anats_to_template.html#sammba.registration.anats_to_template" title="sammba.registration.anats_to_template"><code class="xref py py-obj docutils literal"><span class="pre">anats_to_template</span></code></a>(anat_filenames,&nbsp;…[,&nbsp;…])</td>
+<td>Registers raw anatomical images to a given template.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.registration.fmri_sessions_to_template.html#sammba.registration.fmri_sessions_to_template" title="sammba.registration.fmri_sessions_to_template"><code class="xref py py-obj docutils literal"><span class="pre">fmri_sessions_to_template</span></code></a>(sessions,&nbsp;t_r,&nbsp;…)</td>
+<td>Registration of subject’s functional and anatomical images to a given template.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sammba.registration.coregister_fmri_session.html#sammba.registration.coregister_fmri_session" title="sammba.registration.coregister_fmri_session"><code class="xref py py-obj docutils literal"><span class="pre">coregister_fmri_session</span></code></a>(session_data,&nbsp;t_r,&nbsp;…)</td>
+<td>Coregistration of the subject’s functional and anatomical images.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.registration.create_pipeline_graph.html#sammba.registration.create_pipeline_graph" title="sammba.registration.create_pipeline_graph"><code class="xref py py-obj docutils literal"><span class="pre">create_pipeline_graph</span></code></a>(pipeline_name,&nbsp;graph_file)</td>
 <td>Creates pipeline graph for a given piepline.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes</strong>:</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.registration.FMRISession.html#sammba.registration.FMRISession" title="sammba.registration.FMRISession"><code class="xref py py-obj docutils literal"><span class="pre">FMRISession</span></code></a>([func,&nbsp;anat,&nbsp;animal_id])</td>
+<td>Encapsulation for fMRI data, relative to preprocessing.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="external-tools-wrapped-in-python">
-<span id="interfaces-ref"></span><h2><a class="toc-backref" href="#id3">External tools wrapped in python</a><a class="headerlink" href="#external-tools-wrapped-in-python" title="Permalink to this headline">¶</a></h2>
+<span id="interfaces-ref"></span><h2><a class="toc-backref" href="#id4">External tools wrapped in python</a><a class="headerlink" href="#external-tools-wrapped-in-python" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="interfaces/generated/sammba.interfaces.preproc_tools.html">interfaces.preproc_tools</a><ul>
@@ -238,10 +287,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="generated/sammba.data_fetchers.fetch_zurich_test_retest.html" class="btn btn-neutral float-right" title="sammba.data_fetchers.fetch_zurich_test_retest" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="generated/sammba.io_conversions.dcm_to_nii.html" class="btn btn-neutral float-right" title="sammba.io_conversions.dcm_to_nii" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="auto_examples/03_connectivity/plot_confounds.html" class="btn btn-neutral" title="Confounds exploration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="auto_examples/03_connectivity/plot_ica.html" class="btn btn-neutral" title="ICA on mouse" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

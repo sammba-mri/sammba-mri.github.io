@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>sammba.registration.create_pipeline_graph &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
+  <title>sammba.registration.coregister_fmri_session &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
   
 
   
@@ -37,8 +37,8 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../index.html"/>
         <link rel="up" title="sammba-MRI API Reference" href="../reference.html"/>
-        <link rel="next" title="sammba.registration.FMRISession" href="sammba.registration.FMRISession.html"/>
-        <link rel="prev" title="sammba.registration.coregister_fmri_session" href="sammba.registration.coregister_fmri_session.html"/> 
+        <link rel="next" title="sammba.registration.create_pipeline_graph" href="sammba.registration.create_pipeline_graph.html"/>
+        <link rel="prev" title="sammba.registration.fmri_sessions_to_template" href="sammba.registration.fmri_sessions_to_template.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -98,8 +98,8 @@
 <li class="toctree-l3"><a class="reference internal" href="sammba.registration.anats_to_common.html">sammba.registration.anats_to_common</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sammba.registration.anats_to_template.html">sammba.registration.anats_to_template</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sammba.registration.fmri_sessions_to_template.html">sammba.registration.fmri_sessions_to_template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sammba.registration.coregister_fmri_session.html">sammba.registration.coregister_fmri_session</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">sammba.registration.create_pipeline_graph</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">sammba.registration.coregister_fmri_session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.registration.create_pipeline_graph.html">sammba.registration.create_pipeline_graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sammba.registration.FMRISession.html">sammba.registration.FMRISession</a></li>
 </ul>
 </li>
@@ -152,7 +152,7 @@
         
           <li><a href="../reference.html">sammba-MRI API Reference</a> &raquo;</li>
         
-      <li>sammba.registration.create_pipeline_graph</li>
+      <li>sammba.registration.coregister_fmri_session</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,29 +175,91 @@
 function signature, and not how to use it. Please refer to the
 <a class="reference internal" href="../user_guide.html#user-guide"><span class="std std-ref">user guide</span></a> for the big picture.</p>
 </div>
-<div class="section" id="sammba-registration-create-pipeline-graph">
-<h1>sammba.registration.create_pipeline_graph<a class="headerlink" href="#sammba-registration-create-pipeline-graph" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="sammba-registration-coregister-fmri-session">
+<h1>sammba.registration.coregister_fmri_session<a class="headerlink" href="#sammba-registration-coregister-fmri-session" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
-<dt id="sammba.registration.create_pipeline_graph">
-<code class="descclassname">sammba.registration.</code><code class="descname">create_pipeline_graph</code><span class="sig-paren">(</span><em>pipeline_name</em>, <em>graph_file</em>, <em>graph_kind=’hierarchical’</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.create_pipeline_graph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Creates pipeline graph for a given piepline.</p>
+<dt id="sammba.registration.coregister_fmri_session">
+<code class="descclassname">sammba.registration.</code><code class="descname">coregister_fmri_session</code><span class="sig-paren">(</span><em>session_data</em>, <em>t_r</em>, <em>write_dir</em>, <em>brain_volume</em>, <em>slice_timing=True</em>, <em>prior_rigid_body_registration=False</em>, <em>caching=False</em>, <em>voxel_size_x=0.1</em>, <em>voxel_size_y=0.1</em>, <em>verbose=True</em>, <em>**environ_kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.coregister_fmri_session" title="Permalink to this definition">¶</a></dt>
+<dd><p>Coregistration of the subject’s functional and anatomical images.
+The functional volume is aligned to the anatomical, first with a rigid body
+registration and then on a per-slice basis (only a fine correction, this is
+mostly for correction of EPI distortion).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>pipeline_name</strong> : one of {‘anat_to_common_rigid’, ‘anat_to_common_affine’,</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>session_data</strong> : sammba.registration.SessionData</p>
 <blockquote>
-<div><p>‘anat_to_common_nonlinear’}
-Pipeline name.</p>
+<div><p>Single animal data, giving paths to its functional and anatomical
+image, as well as it identifier.</p>
 </div></blockquote>
-<p><strong>graph_file</strong> : str.</p>
+<p><strong>t_r</strong> : float</p>
 <blockquote>
-<div><p>Path to save the graph image to.</p>
+<div><p>Repetition time for the EPI, in seconds.</p>
 </div></blockquote>
-<p><strong>graph_kind</strong> : one of {‘orig’, ‘hierarchical’, ‘flat’, ‘exec’, ‘colored’}, optional.</p>
+<p><strong>write_dir</strong> : str</p>
+<blockquote>
+<div><p>Directory to save the output and temporary images.</p>
+</div></blockquote>
+<p><strong>brain_volume</strong> : float</p>
+<blockquote>
+<div><p>Volumes of the brain as passed to Rats_MM brain extraction tool.
+Typically 400 for mouse and 1600 for rat.</p>
+</div></blockquote>
+<p><strong>prior_rigid_body_registration</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, a rigid-body registration of the anat to the func is performed
+prior to the warp. Useful if the images headers have missing/wrong
+information.</p>
+</div></blockquote>
+<p><strong>voxel_size_x</strong> : float, optional</p>
+<blockquote>
+<div><p>Resampling resolution for the x-axis, in mm.</p>
+</div></blockquote>
+<p><strong>voxel_size_y</strong> : float, optional</p>
+<blockquote>
+<div><p>Resampling resolution for the y-axis, in mm.</p>
+</div></blockquote>
+<p><strong>caching</strong> : bool, optional</p>
+<blockquote>
+<div><p>Wether or not to use caching.</p>
+</div></blockquote>
+<p><strong>verbose</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, all steps are verbose. Note that caching implies some
+verbosity in any case.</p>
+</div></blockquote>
+<p><strong>environ_kwargs</strong> : extra arguments keywords</p>
+<blockquote>
+<div><p>Extra arguments keywords, passed to interfaces environ variable.</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the same sequence with each animal_data updated: the following attributes</p>
+<p>are added</p>
 <blockquote class="last">
-<div><p>The kind of the graph, passed to
-sammba.externals.nipype.pipeline.workflows.Workflow().write_graph</p>
+<div><ul class="simple">
+<li><dl class="first docutils">
+<dt><cite>output_dir_</cite> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Path to the output directory.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>coreg_func_</cite> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Path to paths to the coregistered functional image.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>coreg_anat_</cite> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Path to paths to the coregistered functional image.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><cite>coreg_transform_</cite> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Path to the transform from anat to func.</dd>
+</dl>
+</li>
+</ul>
 </div></blockquote>
 </td>
 </tr>
@@ -217,10 +279,10 @@ sammba.externals.nipype.pipeline.workflows.Workflow().write_graph</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="sammba.registration.FMRISession.html" class="btn btn-neutral float-right" title="sammba.registration.FMRISession" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sammba.registration.create_pipeline_graph.html" class="btn btn-neutral float-right" title="sammba.registration.create_pipeline_graph" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="sammba.registration.coregister_fmri_session.html" class="btn btn-neutral" title="sammba.registration.coregister_fmri_session" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="sammba.registration.fmri_sessions_to_template.html" class="btn btn-neutral" title="sammba.registration.fmri_sessions_to_template" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

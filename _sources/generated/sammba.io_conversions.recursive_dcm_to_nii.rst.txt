@@ -1,0 +1,19 @@
+.. note::
+
+   This page is a reference documentation. It only explains the
+   function signature, and not how to use it. Please refer to the
+   :ref:`user guide <user_guide>` for the big picture.
+
+
+sammba.io_conversions.recursive_dcm_to_nii
+==========================================
+
+.. currentmodule:: sammba.io_conversions
+
+.. autofunction:: recursive_dcm_to_nii
+
+.. include:: sammba.io_conversions.recursive_dcm_to_nii.examples
+
+.. raw:: html
+
+    <div style='clear:both'></div>

@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Registration to template &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+  
+
+  
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../../index.html"/>
+        <link rel="up" title="Gallery of Examples" href="../index.html"/>
+        <link rel="next" title="Confounds exploration" href="../03_connectivity/plot_confounds.html"/>
+        <link rel="prev" title="Functional and anatomical coregistration" href="plot_fmri_coregistration.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> sammba-MRI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Giving credit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../user_guide.html">User guide: table of contents</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Gallery of Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#template-creation">Template creation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#fmri-spatial-preprocessing">fMRI spatial preprocessing</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="plot_fmri_coregistration.html">Functional and anatomical coregistration</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Registration to template</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#retrieve-the-fmri-data">Retrieve the fMRI data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#choose-the-template">Choose the template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#define-the-writing-directory">Define the writing directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#perform-the-registration">Perform the registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#visalize-results">Visalize results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#functional-connectivity">Functional connectivity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../reference.html">sammba-MRI API Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">sammba-MRI</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Gallery of Examples</a> &raquo;</li>
+        
+      <li>Registration to template</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="registration-to-template">
+<span id="sphx-glr-auto-examples-02-preprocessing-plot-template-registration-py"></span><h1>Registration to template<a class="headerlink" href="#registration-to-template" title="Permalink to this headline">¶</a></h1>
+<p>Registration of anatomical and functional scans to a given template.</p>
+<div class="section" id="retrieve-the-fmri-data">
+<h2>Retrieve the fMRI data<a class="headerlink" href="#retrieve-the-fmri-data" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sammba</span> <span class="kn">import</span> <span class="n">data_fetchers</span>
+
+<span class="n">retest</span> <span class="o">=</span> <span class="n">data_fetchers</span><span class="o">.</span><span class="n">fetch_zurich_test_retest</span><span class="p">(</span><span class="n">subjects</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                                                <span class="n">correct_headers</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>retest contains paths to images and data description</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">anat_filename</span> <span class="o">=</span> <span class="n">retest</span><span class="o">.</span><span class="n">anat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">func_filename</span> <span class="o">=</span> <span class="n">retest</span><span class="o">.</span><span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">func_filename</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">salma</span><span class="o">/</span><span class="n">nilearn_data</span><span class="o">/</span><span class="n">zurich_retest</span><span class="o">/</span><span class="n">baseline</span><span class="o">/</span><span class="mi">1366</span><span class="o">/</span><span class="n">rsfMRI_corrected</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+<p>We encapsulate them through an object called <cite>FMRISession</cite></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sammba.registration</span> <span class="kn">import</span> <a href="../../generated/sammba.registration.FMRISession.html#sammba.registration.FMRISession" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.FMRISession"><span class="n">FMRISession</span></a>
+
+<span class="n">animal_session</span> <span class="o">=</span> <a href="../../generated/sammba.registration.FMRISession.html#sammba.registration.FMRISession" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.FMRISession"><span class="n">FMRISession</span></a><span class="p">(</span><span class="n">anat</span><span class="o">=</span><span class="n">anat_filename</span><span class="p">,</span> <span class="n">func</span><span class="o">=</span><span class="n">func_filename</span><span class="p">,</span>
+                             <span class="n">animal_id</span><span class="o">=</span><span class="s1">&#39;1366&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="choose-the-template">
+<h2>Choose the template<a class="headerlink" href="#choose-the-template" title="Permalink to this headline">¶</a></h2>
+<p>We choose the downsampled version of DORR average, to avoid memory issues</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dorr</span> <span class="o">=</span> <span class="n">data_fetchers</span><span class="o">.</span><span class="n">fetch_atlas_dorr_2008</span><span class="p">(</span><span class="n">downsample</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>dorr contains paths to DORR atlas and average T2 image</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">template_filename</span> <span class="o">=</span> <span class="n">dorr</span><span class="o">.</span><span class="n">t2</span>
+<span class="k">print</span><span class="p">(</span><span class="n">template_filename</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">salma</span><span class="o">/</span><span class="n">nilearn_data</span><span class="o">/</span><span class="n">dorr_2008</span><span class="o">/</span><span class="n">Dorr_2008_average_100um</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="define-the-writing-directory">
+<h2>Define the writing directory<a class="headerlink" href="#define-the-writing-directory" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">write_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(),</span> <span class="s1">&#39;zurich_template&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">write_dir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">write_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="perform-the-registration">
+<h2>Perform the registration<a class="headerlink" href="#perform-the-registration" title="Permalink to this headline">¶</a></h2>
+<p>We purposely choose a low maxlev, to speed-up computations</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sammba.registration</span> <span class="kn">import</span> <a href="../../generated/sammba.registration.fmri_sessions_to_template.html#sammba.registration.fmri_sessions_to_template" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.fmri_sessions_to_template"><span class="n">fmri_sessions_to_template</span></a>
+
+<a href="../../generated/sammba.registration.fmri_sessions_to_template.html#sammba.registration.fmri_sessions_to_template" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.fmri_sessions_to_template"><span class="n">fmri_sessions_to_template</span></a><span class="p">(</span><span class="n">sessions</span><span class="o">=</span><span class="p">[</span><span class="n">animal_session</span><span class="p">],</span>
+                          <span class="n">head_template_filename</span><span class="o">=</span><span class="n">template_filename</span><span class="p">,</span>
+                          <span class="n">t_r</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">write_dir</span><span class="o">=</span><span class="n">write_dir</span><span class="p">,</span>
+                          <span class="n">brain_volume</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+                          <span class="n">slice_timing</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                          <span class="n">prior_rigid_body_registration</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                          <span class="n">maxlev</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+                          <span class="n">caching</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The paths to the registered images are added to <cite>animal_session</cite></p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;Registrered anatomical image is &#39;</span> <span class="o">+</span> <span class="n">animal_session</span><span class="o">.</span><span class="n">registered_anat_</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Registrered functional image is &#39;</span> <span class="o">+</span> <span class="n">animal_session</span><span class="o">.</span><span class="n">registered_func_</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sphx-glr-script-out">Out:</p>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Registrered</span> <span class="n">anatomical</span> <span class="n">image</span> <span class="ow">is</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">salma</span><span class="o">/</span><span class="n">CODE</span><span class="o">/</span><span class="n">sammba</span><span class="o">-</span><span class="n">mri</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="mi">02</span><span class="n">_preprocessing</span><span class="o">/</span><span class="n">zurich_template</span><span class="o">/</span><span class="mi">1366</span><span class="o">/</span><span class="n">nipype_mem</span><span class="o">/</span><span class="n">sammba</span><span class="o">-</span><span class="n">externals</span><span class="o">-</span><span class="n">nipype</span><span class="o">-</span><span class="n">interfaces</span><span class="o">-</span><span class="n">afni</span><span class="o">-</span><span class="n">utils</span><span class="o">-</span><span class="n">Unifize</span><span class="o">/</span><span class="mi">5</span><span class="n">df7d61258ec72ba36ec2fdd130a9a1b</span><span class="o">/</span><span class="mi">3</span><span class="n">DRARE_corrected_generated_shift_rotated_warped</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+<span class="n">Registrered</span> <span class="n">functional</span> <span class="n">image</span> <span class="ow">is</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">salma</span><span class="o">/</span><span class="n">CODE</span><span class="o">/</span><span class="n">sammba</span><span class="o">-</span><span class="n">mri</span><span class="o">/</span><span class="n">examples</span><span class="o">/</span><span class="mi">02</span><span class="n">_preprocessing</span><span class="o">/</span><span class="n">zurich_template</span><span class="o">/</span><span class="n">nipype_mem</span><span class="o">/</span><span class="n">sammba</span><span class="o">-</span><span class="n">externals</span><span class="o">-</span><span class="n">nipype</span><span class="o">-</span><span class="n">interfaces</span><span class="o">-</span><span class="n">fsl</span><span class="o">-</span><span class="n">utils</span><span class="o">-</span><span class="n">Merge</span><span class="o">/</span><span class="mi">065</span><span class="n">b2f3ca038ddfdd93a89911a2c5e74</span><span class="o">/</span><span class="n">rsfMRI_corrected_tshiftAvSl0_qw_merged_normalized</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="visalize-results">
+<h2>Visalize results<a class="headerlink" href="#visalize-results" title="Permalink to this headline">¶</a></h2>
+<p>We plot the edges of the template on top of the registered anatomical image</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span><span class="p">,</span> <span class="n">image</span>
+
+<span class="n">display</span> <span class="o">=</span> <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_anat.html#nilearn.plotting.plot_anat" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.plotting.plot_anat"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_anat</span></a><span class="p">(</span><span class="n">animal_session</span><span class="o">.</span><span class="n">registered_anat_</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mf">1.95</span><span class="p">,</span>
+                             <span class="n">title</span><span class="o">=</span><span class="s1">&#39;template edges on top of registered anat&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="o">.</span><span class="n">add_edges</span><span class="p">(</span><span class="n">template_filename</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../../_images/sphx_glr_plot_template_registration_001.png" class="align-center" src="../../_images/sphx_glr_plot_template_registration_001.png" />
+<p>and on top of the average registered functional</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">image</span>
+
+<span class="n">mean_registered_func_filename</span> <span class="o">=</span> <a href="http://nilearn.github.io/modules/generated/nilearn.image.mean_img.html#nilearn.image.mean_img" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.image.mean_img"><span class="n">image</span><span class="o">.</span><span class="n">mean_img</span></a><span class="p">(</span><span class="n">animal_session</span><span class="o">.</span><span class="n">registered_func_</span><span class="p">)</span>
+<span class="n">display</span> <span class="o">=</span> <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_epi.html#nilearn.plotting.plot_epi" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.plotting.plot_epi"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_epi</span></a><span class="p">(</span><span class="n">mean_registered_func_filename</span><span class="p">,</span>
+                            <span class="n">title</span><span class="o">=</span><span class="s1">&#39;template edges on top of registered func&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="o">.</span><span class="n">add_edges</span><span class="p">(</span><span class="n">template_filename</span><span class="p">)</span>
+<a href="http://nilearn.github.io/modules/generated/nilearn.plotting.show.html#nilearn.plotting.show" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.plotting.show"><span class="n">plotting</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
+</pre></div>
+</div>
+<img alt="../../_images/sphx_glr_plot_template_registration_002.png" class="align-center" src="../../_images/sphx_glr_plot_template_registration_002.png" />
+<p><strong>Total running time of the script:</strong> ( 9 minutes  22.959 seconds)</p>
+<div class="sphx-glr-footer docutils container">
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_template_registration.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_template_registration.py</span></code></a></div>
+<div class="sphx-glr-download docutils container">
+<a class="reference download internal" href="../../_downloads/plot_template_registration.ipynb" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_template_registration.ipynb</span></code></a></div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="http://sphinx-gallery.readthedocs.io">Generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../03_connectivity/plot_confounds.html" class="btn btn-neutral float-right" title="Confounds exploration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="plot_fmri_coregistration.html" class="btn btn-neutral" title="Functional and anatomical coregistration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The sammba-MRI developers.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

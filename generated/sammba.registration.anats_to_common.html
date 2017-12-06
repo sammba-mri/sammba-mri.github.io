@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../index.html"/>
         <link rel="up" title="sammba-MRI API Reference" href="../reference.html"/>
-        <link rel="next" title="sammba.registration.create_pipeline_graph" href="sammba.registration.create_pipeline_graph.html"/>
+        <link rel="next" title="sammba.registration.anats_to_template" href="sammba.registration.anats_to_template.html"/>
         <link rel="prev" title="sammba.data_fetchers.fetch_zurich_anesthesiant" href="sammba.data_fetchers.fetch_zurich_anesthesiant.html"/> 
 
   
@@ -92,10 +92,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide: table of contents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Gallery of Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../reference.html">sammba-MRI API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.io_conversions"><code class="docutils literal"><span class="pre">sammba.io_conversions</span></code>: From scanner to NIFTI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.data_fetchers"><code class="docutils literal"><span class="pre">sammba.data_fetchers</span></code>: Datasets and atlas</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../reference.html#module-sammba.registration"><code class="docutils literal"><span class="pre">sammba.registration</span></code>: Registration utilities</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">sammba.registration.anats_to_common</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.registration.anats_to_template.html">sammba.registration.anats_to_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.registration.fmri_sessions_to_template.html">sammba.registration.fmri_sessions_to_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.registration.coregister_fmri_session.html">sammba.registration.coregister_fmri_session</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sammba.registration.create_pipeline_graph.html">sammba.registration.create_pipeline_graph</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.registration.FMRISession.html">sammba.registration.FMRISession</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../reference.html#external-tools-wrapped-in-python">External tools wrapped in python</a></li>
@@ -174,25 +179,25 @@ function signature, and not how to use it. Please refer to the
 <h1>sammba.registration.anats_to_common<a class="headerlink" href="#sammba-registration-anats-to-common" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sammba.registration.anats_to_common">
-<code class="descclassname">sammba.registration.</code><code class="descname">anats_to_common</code><span class="sig-paren">(</span><em>t1_filenames, write_dir, brain_volume=400, registration_kind=’affine’, nonlinear_levels=[1, 2, 3], nonlinear_minimal_patch=75, convergence=0.005, caching=False, verbose=0</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.anats_to_common" title="Permalink to this definition">¶</a></dt>
-<dd><p>Create common template from native T1 weighted images and achieve
+<code class="descclassname">sammba.registration.</code><code class="descname">anats_to_common</code><span class="sig-paren">(</span><em>anat_filenames, write_dir, brain_volume, registration_kind=’affine’, nonlinear_levels=[1, 2, 3], nonlinear_minimal_patch=75, convergence=0.005, caching=False, verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.anats_to_common" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create common template from native anatomical images and achieve
 their registration to it.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>t1_filenames</strong> : list of str</p>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>anat_filenames</strong> : list of str</p>
 <blockquote>
-<div><p>Paths to the T1 weighted images.</p>
+<div><p>Paths to the anatomical images.</p>
 </div></blockquote>
 <p><strong>write_dir</strong> : str</p>
 <blockquote>
 <div><p>Path to an existant directory to save output files to.</p>
 </div></blockquote>
-<p><strong>brain_volume</strong> : float, optional</p>
+<p><strong>brain_volume</strong> : float</p>
 <blockquote>
 <div><p>Volumes of the brain as passed to Rats_MM brain extraction tool.
-Default to 400 for the mouse brain.</p>
+Typically 400 for mouse and 1600 for rat.</p>
 </div></blockquote>
 <p><strong>registration_kind</strong> : one of {‘rigid’, ‘affine’, ‘nonlinear’}, optional</p>
 <blockquote>
@@ -214,11 +219,13 @@ sammba.externals.nipype.interfaces.afni.Qwarp</p>
 </div></blockquote>
 <p><strong>convergence</strong> : float, optional</p>
 <blockquote>
-<div><p>Convergence limit, passed to</p>
+<div><p>Convergence limit, passed to
+sammba.externals.nipype.interfaces.afni.Allineate</p>
 </div></blockquote>
 <p><strong>verbose</strong> : bool, optional</p>
 <blockquote>
-<div><p>If True, all steps are verbose.</p>
+<div><p>If True, all steps are verbose. Note that caching implies some
+verbosity in any case.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -227,13 +234,13 @@ sammba.externals.nipype.interfaces.afni.Qwarp</p>
 <div><p>Dictionary-like object, the interest attributes are :</p>
 <ul class="simple">
 <li><dl class="first docutils">
-<dt>‘registered’ <span class="classifier-delimiter">:</span> <span class="classifier">list of str.</span></dt>
+<dt><cite>registered</cite> <span class="classifier-delimiter">:</span> <span class="classifier">list of str.</span></dt>
 <dd>Paths to registered images. Note that
 they have undergone a bias correction step before.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt>‘transforms’ <span class="classifier-delimiter">:</span> <span class="classifier">list of str.</span></dt>
+<dt><cite>transforms</cite> <span class="classifier-delimiter">:</span> <span class="classifier">list of str.</span></dt>
 <dd>Paths to the transforms from the raw
 images to the registered images.</dd>
 </dl>
@@ -258,7 +265,7 @@ images to the registered images.</dd>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="sammba.registration.create_pipeline_graph.html" class="btn btn-neutral float-right" title="sammba.registration.create_pipeline_graph" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sammba.registration.anats_to_template.html" class="btn btn-neutral float-right" title="sammba.registration.anats_to_template" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="sammba.data_fetchers.fetch_zurich_anesthesiant.html" class="btn btn-neutral" title="sammba.data_fetchers.fetch_zurich_anesthesiant" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

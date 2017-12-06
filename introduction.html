@@ -182,9 +182,16 @@
 </div>
 <div class="section" id="dependencies">
 <h2><a class="toc-backref" href="#id2">1.2. Dependencies</a><a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
-<p>The required dependencies to use the software are the python packages:</p>
+<p>The required dependencies to use the package are</p>
+<p>the softwares:</p>
 <ul class="simple">
-<li>Python 2.7</li>
+<li>AFNI</li>
+<li>FSL &gt;= 5.0</li>
+<li><a class="reference external" href="http://www.iibi.uiowa.edu/content/rats-overview/">RATS</a> for brain
+extraction</li>
+</ul>
+<p>as well as the python packages:</p>
+<ul class="simple">
 <li>setuptools</li>
 <li>Numpy &gt;= 1.6.2</li>
 <li>SciPy &gt;= 0.11</li>
@@ -202,23 +209,19 @@
 <li>funcsigs</li>
 <li>click</li>
 </ul>
-<p>as well as the interfaces:</p>
-<ul class="simple">
-<li>AFNI</li>
-<li>FSL &gt;= 5.0</li>
-<li>ANTS</li>
-</ul>
 <p>If you want to run the tests, you need nose &gt;= 1.2.1 and doctest-ignore-unicode</p>
+<p>If you want to convert DICOM files to NIFTI files, you will need the
+<a class="reference external" href="http://support.dcmtk.org/docs/index.html">DICOM ToolKit (DCMTK)</a> package</p>
 </div>
 <div class="section" id="installation">
 <h2><a class="toc-backref" href="#id3">1.3. Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <p>First install Anaconda and nilearn as explained in <a class="reference external" href="http://nilearn.github.io/introduction.html#installing-nilearn/">nilearn installation page</a>.</p>
 <p>Next install the remaining python dependencies using conda:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">pandas</span> <span class="n">configparser</span> <span class="n">future</span> <span class="n">traits</span> <span class="n">simplejson</span> <span class="n">networkx</span> <span class="n">packaging</span> <span class="n">funcsigs</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">pandas</span> <span class="n">configparser</span> <span class="n">future</span> <span class="n">traits</span> <span class="n">simplejson</span> <span class="n">networkx</span> <span class="n">funcsigs</span>
 </pre></div>
 </div>
 <p>Some dependencies are only available through pip:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">packaging</span> <span class="n">prov</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">packaging</span> <span class="n">prov</span> <span class="n">patsy</span>
 </pre></div>
 </div>
 <p>Finally, you need <a class="reference external" href="http://www.graphviz.org/">graphviz</a>:</p>
@@ -257,12 +260,6 @@ export FSLDIR PATH
 <p><strong>Configuring AFNI</strong>: To be able to run AFNI make sure to add the following lines of code to your .bashrc file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span># AFNI
 export PATH=/usr/lib/afni/bin:$PATH
-</pre></div>
-</div>
-<p><strong>Configuring ANTs</strong>: Add the following line to your .bashrc file so that your system knows where to find the ANTs binaries:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span># ANTs
-export PATH=/usr/local/antsbin/bin:$PATH
-export ANTSPATH=/usr/local/antsbin/bin/
 </pre></div>
 </div>
 </div>

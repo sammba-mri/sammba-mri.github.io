@@ -37,7 +37,7 @@
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../../index.html"/>
         <link rel="up" title="Gallery of Examples" href="../index.html"/>
-        <link rel="next" title="fMRI registration" href="../02_preprocessing/plot_functional_registration.html"/>
+        <link rel="next" title="Functional and anatomical coregistration" href="../02_preprocessing/plot_fmri_coregistration.html"/>
         <link rel="prev" title="Gallery of Examples" href="../index.html"/> 
 
   
@@ -211,7 +211,7 @@ variable head tissue.</p>
 <h2>Affine registration<a class="headerlink" href="#affine-registration" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sammba.registration</span> <span class="kn">import</span> <a href="../../generated/sammba.registration.anats_to_common.html#sammba.registration.anats_to_common" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.anats_to_common"><span class="n">anats_to_common</span></a>
 
-<span class="n">affine_register</span> <span class="o">=</span> <a href="../../generated/sammba.registration.anats_to_common.html#sammba.registration.anats_to_common" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.anats_to_common"><span class="n">anats_to_common</span></a><span class="p">(</span><span class="n">retest</span><span class="o">.</span><span class="n">anat</span><span class="p">,</span> <span class="n">write_dir</span><span class="p">,</span> <span class="n">caching</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">affine_register</span> <span class="o">=</span> <a href="../../generated/sammba.registration.anats_to_common.html#sammba.registration.anats_to_common" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.anats_to_common"><span class="n">anats_to_common</span></a><span class="p">(</span><span class="n">retest</span><span class="o">.</span><span class="n">anat</span><span class="p">,</span> <span class="n">write_dir</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="n">caching</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>We set caching to True, so that this step computations are not restarted.
@@ -246,7 +246,7 @@ The paths to the registered images can be accessed easilly</p>
 <a href="../../generated/sammba.registration.create_pipeline_graph.html#sammba.registration.create_pipeline_graph" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.create_pipeline_graph"><span class="n">create_pipeline_graph</span></a><span class="p">(</span><span class="s1">&#39;anats_to_common_affine&#39;</span><span class="p">,</span> <span class="n">graph_file</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 7 minutes  29.720 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 6 minutes  29.227 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_register.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_register.py</span></code></a></div>
@@ -267,7 +267,7 @@ The paths to the registered images can be accessed easilly</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../02_preprocessing/plot_functional_registration.html" class="btn btn-neutral float-right" title="fMRI registration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../02_preprocessing/plot_fmri_coregistration.html" class="btn btn-neutral float-right" title="Functional and anatomical coregistration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../index.html" class="btn btn-neutral" title="Gallery of Examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
