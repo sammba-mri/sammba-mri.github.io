@@ -155,7 +155,7 @@ We can plot the outline of all components on one figure.
 
 
 
-**Total running time of the script:** ( 55 minutes  22.359 seconds)
+**Total running time of the script:** ( 57 minutes  26.191 seconds)
 
 
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Giving credit &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
+  <title>Contributors and Acknowledgements &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
   
 
   
@@ -87,11 +87,10 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Giving credit</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributors and Acknowledgements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#external-projects-used-and-papers-to-cite">External projects used and papers to cite</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#people">People</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#citing-sammba-mri">Citing sammba-MRI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#citing-nilearn-and-nipype">Citing nilearn and nipype</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#rats-reference-papers">RATS reference papers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funding">Funding</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="user_guide.html">User guide: table of contents</a></li>
@@ -141,7 +140,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Giving credit</li>
+      <li>Contributors and Acknowledgements</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -158,32 +157,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="giving-credit">
-<h1>Giving credit<a class="headerlink" href="#giving-credit" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="contributors-and-acknowledgements">
+<h1>Contributors and Acknowledgements<a class="headerlink" href="#contributors-and-acknowledgements" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="external-projects-used-and-papers-to-cite">
+<h2>External projects used and papers to cite<a class="headerlink" href="#external-projects-used-and-papers-to-cite" title="Permalink to this headline">¶</a></h2>
+<p>sammba-mri is essentially a wrapper for a number of other tools, adapting them
+for use with small mammal brain MRI. There is not yet a publication about
+sammba-MRI itself. If you use it, please cite the tool name <code class="docutils literal"><span class="pre">SaMmBa-MRI</span></code> and
+the website address.</p>
+<p>DICOM import uses the dcmdump tool of <a class="reference external" href="http://dicom.offis.de/dcmtk.php.en">OFFIS dcmtk</a>. Export to NIfTI uses <a class="reference external" href="http://nipy.org/nibabel/">nibabel</a>. Understanding the affine was greatly aided by
+reading common.py from <a class="reference external" href="http://dicom2nifti.readthedocs.io/en/latest/">dicom2nifti</a>.</p>
+<p>Spatial normalization almost exclusively uses
+<a class="reference external" href="https://afni.nimh.nih.gov/">AFNI</a>, the exception being RATS, which is the
+usual option for the usually-used brain extraction step. If you do use RATS,
+<a class="reference external" href="http://www.iibi.uiowa.edu/content/rats-rapid-automatic-tissue-segmentation-rodent-brain-mri">cite the RATS reference papers.</a>
+File management and interfacing with these tools is handled by nipype (<a class="reference external" href="http://nipype.readthedocs.io/en/latest/">website</a> and <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pubmed/21897815">paper</a>).</p>
+<p>Nilearn is the package integrated for analysis of fMRI data, and was also used
+generate all the plots shown in the examples section. Please read <a class="reference external" href="http://nilearn.github.io/authors.html#citing-nilearn">how to  cite
+nilearn</a>.</p>
+</div>
 <div class="section" id="people">
 <h2>People<a class="headerlink" href="#people" title="Permalink to this headline">¶</a></h2>
-<p>This work is made available by the MINDt team.
-The DICOM to NIFTI conversion as weel as all the spatial preprocessing
-pipelines have been done by Nachiket Nadkarni, initially in shell. Salma
-Bougacha contributed to recoding them in python.</p>
+<p>sammba-mri was developed by members of the <a class="reference external" href="http://jacob.cea.fr/drf/ifrancoisjacob/Pages/Departements/MIRCen/themes/alzheimer-vieillissement-cerebral-modelisation.aspx">Multimodal Imaging of
+Neurodegenerative Diseases and therapies</a>
+(MINDt) team at the Molecular Imaging Research Center (MIRCen) of the French
+Alternative Energies and Atomic Energy Commission (CEA).</p>
+<p>Internal initial working versions of the spatial normalization pipeline and
+automated measurement/processing for anatomical morphology, FAIR perfusion and
+resting state fMRI was developed by Nachiket Nadkarni using a mixture of shell
+scripts, python and R.</p>
+<p>Salma Bougacha translated shell scripts into python leveraging nipype, plus set
+up the github repository and this website.</p>
+<p>Anne-Sophie Hérard saved us a massive outsourcing fee and came up with the
+name and acronym.</p>
 </div>
-<div class="section" id="citing-sammba-mri">
-<span id="citing"></span><h2>Citing sammba-MRI<a class="headerlink" href="#citing-sammba-mri" title="Permalink to this headline">¶</a></h2>
-<p>There is no publication yet about sammba-MRI. If you use it, please cite
-the tool name <code class="docutils literal"><span class="pre">SaMmBa-MRI</span></code> and the website address.</p>
-</div>
-<div class="section" id="citing-nilearn-and-nipype">
-<h2>Citing nilearn and nipype<a class="headerlink" href="#citing-nilearn-and-nipype" title="Permalink to this headline">¶</a></h2>
-<p>Sammba-MRI heavily depends on nilearn and nipype. Please read
-<a class="reference external" href="http://nilearn.github.io/authors.html#citing-nilearn">how to cite nilearn</a>
-and
-<a class="reference external" href="https://www.ncbi.nlm.nih.gov/pubmed/21897815">nipype reference paper</a></p>
-</div>
-<div class="section" id="rats-reference-papers">
-<h2>RATS reference papers<a class="headerlink" href="#rats-reference-papers" title="Permalink to this headline">¶</a></h2>
-<p>sammba-MRI relies on RATS software for brain extraction. If you preprocess your
-data with sammba-MRI, you are obliged to
-<a class="reference external" href="http://www.iibi.uiowa.edu/content/rats-rapid-automatic-tissue-segmentation-rodent-brain-mri">cite RATS reference papers.</a></p>
+<div class="section" id="funding">
+<h2>Funding<a class="headerlink" href="#funding" title="Permalink to this headline">¶</a></h2>
+<p>This work was funded by the French Public Investment Bank’s “ROMANE” program,
+Association France Alzheimer and Fondation Plan Alzheimer.</p>
 </div>
 </div>
 

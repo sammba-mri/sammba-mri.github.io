@@ -163,7 +163,7 @@ The paths to the registered images are added to `animal_session`
  Out::
 
     Registrered anatomical image is /home/salma/CODE/sammba-mri/examples/02_preprocessing/zurich_template/1366/nipype_mem/sammba-externals-nipype-interfaces-afni-utils-Unifize/5df7d61258ec72ba36ec2fdd130a9a1b/3DRARE_corrected_generated_shift_rotated_warped.nii.gz
-    Registrered functional image is /home/salma/CODE/sammba-mri/examples/02_preprocessing/zurich_template/nipype_mem/sammba-externals-nipype-interfaces-fsl-utils-Merge/065b2f3ca038ddfdd93a89911a2c5e74/rsfMRI_corrected_tshiftAvSl0_qw_merged_normalized.nii.gz
+    Registrered functional image is /home/salma/CODE/sammba-mri/examples/02_preprocessing/zurich_template/nipype_mem/sammba-externals-nipype-interfaces-fsl-utils-Merge/30b869d225a247c5cc29be779a0a95fb/rsfMRI_corrected_tshiftAvSl0_qw_merged_normalized.nii.gz
 
 
 Visalize results
@@ -211,7 +211,7 @@ and on top of the average registered functional
 
 
 
-**Total running time of the script:** ( 9 minutes  22.959 seconds)
+**Total running time of the script:** ( 9 minutes  7.311 seconds)
 
 
 

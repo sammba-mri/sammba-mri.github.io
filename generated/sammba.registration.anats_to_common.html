@@ -88,7 +88,7 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../authors.html">Giving credit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Contributors and Acknowledgements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide: table of contents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Gallery of Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../reference.html">sammba-MRI API Reference</a><ul class="current">
@@ -179,7 +179,7 @@ function signature, and not how to use it. Please refer to the
 <h1>sammba.registration.anats_to_common<a class="headerlink" href="#sammba-registration-anats-to-common" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sammba.registration.anats_to_common">
-<code class="descclassname">sammba.registration.</code><code class="descname">anats_to_common</code><span class="sig-paren">(</span><em>anat_filenames, write_dir, brain_volume, registration_kind=’affine’, nonlinear_levels=[1, 2, 3], nonlinear_minimal_patch=75, convergence=0.005, caching=False, verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.anats_to_common" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">sammba.registration.</code><code class="descname">anats_to_common</code><span class="sig-paren">(</span><em>anat_filenames, write_dir, brain_volume, registration_kind=’affine’, bias_correction_radius=18.3, bottom_percentile=70.0, top_percentile=80.0, nonlinear_levels=[1, 2, 3], nonlinear_minimal_patch=75, convergence=0.005, caching=False, verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.anats_to_common" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create common template from native anatomical images and achieve
 their registration to it.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -194,14 +194,32 @@ their registration to it.</p>
 <blockquote>
 <div><p>Path to an existant directory to save output files to.</p>
 </div></blockquote>
-<p><strong>brain_volume</strong> : float</p>
+<p><strong>brain_volume</strong> : int</p>
 <blockquote>
 <div><p>Volumes of the brain as passed to Rats_MM brain extraction tool.
-Typically 400 for mouse and 1600 for rat.</p>
+Typically 400 for mouse and 1800 for rat.</p>
 </div></blockquote>
 <p><strong>registration_kind</strong> : one of {‘rigid’, ‘affine’, ‘nonlinear’}, optional</p>
 <blockquote>
 <div><p>The allowed transform kind.</p>
+</div></blockquote>
+<p><strong>bias_correction_radius</strong> : float, optional</p>
+<blockquote>
+<div><p>Radius of the ball used to create a local white matter intensity volume
+for bias correction, in voxels. Passed to
+sammba.externals.nipype.interfaces.Unifize</p>
+</div></blockquote>
+<p><strong>bottom_percentile</strong> : float, optional</p>
+<blockquote>
+<div><p>Lower fraction of the histogram of intensities to be used
+for local white matter map creation. Passed to
+sammba.externals.nipype.interfaces.Unifize</p>
+</div></blockquote>
+<p><strong>top_percentile</strong> : float, optional</p>
+<blockquote>
+<div><p>Upper fraction of the histogram of intensities to be used
+for local white matter map creation. Passed to
+sammba.externals.nipype.interfaces.Unifize</p>
 </div></blockquote>
 <p><strong>nonlinear_levels</strong> : list of int, optional</p>
 <blockquote>
