@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="search" title="Search" href="../../search.html"/>
-    <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../../index.html"/>
-        <link rel="up" title="Gallery of Examples" href="../index.html"/>
-        <link rel="next" title="Functional and anatomical coregistration" href="../02_preprocessing/plot_fmri_coregistration.html"/>
-        <link rel="prev" title="Gallery of Examples" href="../index.html"/> 
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Functional and anatomical coregistration" href="../02_preprocessing/plot_fmri_coregistration.html" />
+    <link rel="prev" title="Gallery of Examples" href="../index.html" /> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -118,7 +109,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">sammba-MRI</a>
@@ -126,9 +117,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -221,7 +213,7 @@ The paths to the registered images can be accessed easilly</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="sa">u</span><span class="s1">&#39;/home/salma/CODE/sammba-mri/examples/01_template/zurich_common/3DRARE_corrected_0_generated_resample_shr_affine_catenated.nii.gz&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;/home/salma/CODE/sammba-mri/examples/01_template/zurich_common/3DRARE_corrected_1_generated_resample_shr_affine_catenated.nii.gz&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;/home/salma/CODE/sammba-mri/examples/01_template/zurich_common/3DRARE_corrected_2_generated_resample_shr_affine_catenated.nii.gz&#39;</span><span class="p">]</span>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="sa">u</span><span class="s1">&#39;/home/salma/CODE/sammba-mri/examples/01_template/zurich_common/3DRARE_corrected_0_Unifized_for_brain_extraction_resample_shr_affine_catenated.nii.gz&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;/home/salma/CODE/sammba-mri/examples/01_template/zurich_common/3DRARE_corrected_1_Unifized_for_brain_extraction_resample_shr_affine_catenated.nii.gz&#39;</span><span class="p">,</span> <span class="sa">u</span><span class="s1">&#39;/home/salma/CODE/sammba-mri/examples/01_template/zurich_common/3DRARE_corrected_2_Unifized_for_brain_extraction_resample_shr_affine_catenated.nii.gz&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -231,7 +223,7 @@ The paths to the registered images can be accessed easilly</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span><span class="p">,</span> <span class="n">image</span>
 
 <span class="n">average_img</span> <span class="o">=</span> <a href="http://nilearn.github.io/modules/generated/nilearn.image.mean_img.html#nilearn.image.mean_img" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.image.mean_img"><span class="n">image</span><span class="o">.</span><span class="n">mean_img</span></a><span class="p">(</span><span class="n">registered_anats</span><span class="p">)</span>
-<span class="n">display</span> <span class="o">=</span> <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_anat.html#nilearn.plotting.plot_anat" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.plotting.plot_anat"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_anat</span></a><span class="p">(</span><span class="n">average_img</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mf">1.8</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;affine register&#39;</span><span class="p">)</span>
+<span class="n">display</span> <span class="o">=</span> <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_anat.html#nilearn.plotting.plot_anat" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.plotting.plot_anat"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_anat</span></a><span class="p">(</span><span class="n">average_img</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;affine register&#39;</span><span class="p">)</span>
 <span class="n">display</span><span class="o">.</span><span class="n">add_edges</span><span class="p">(</span><span class="n">registered_anats</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.show.html#nilearn.plotting.show" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.plotting.show"><span class="n">plotting</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
@@ -246,7 +238,7 @@ The paths to the registered images can be accessed easilly</p>
 <a href="../../generated/sammba.registration.create_pipeline_graph.html#sammba.registration.create_pipeline_graph" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.create_pipeline_graph"><span class="n">create_pipeline_graph</span></a><span class="p">(</span><span class="s1">&#39;anats_to_common_affine&#39;</span><span class="p">,</span> <span class="n">graph_file</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 6 minutes  48.318 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 15 minutes  33.569 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_register.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_register.py</span></code></a></div>
@@ -259,9 +251,7 @@ The paths to the registered images can be accessed easilly</p>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -301,6 +291,7 @@ The paths to the registered images can be accessed easilly</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../../',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -311,23 +302,17 @@ The paths to the registered images can be accessed easilly</p>
       <script type="text/javascript" src="../../_static/underscore.js"></script>
       <script type="text/javascript" src="../../_static/doctools.js"></script>
       <script type="text/javascript" src="../../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

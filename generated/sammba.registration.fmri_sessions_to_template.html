@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../index.html"/>
-        <link rel="up" title="sammba-MRI API Reference" href="../reference.html"/>
-        <link rel="next" title="sammba.registration.coregister_fmri_session" href="sammba.registration.coregister_fmri_session.html"/>
-        <link rel="prev" title="sammba.registration.anats_to_template" href="sammba.registration.anats_to_template.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sammba.registration.coregister_fmri_session" href="sammba.registration.coregister_fmri_session.html" />
+    <link rel="prev" title="sammba.registration.anats_to_template" href="sammba.registration.anats_to_template.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -117,7 +108,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">sammba-MRI</a>
@@ -125,9 +116,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -179,7 +171,7 @@ function signature, and not how to use it. Please refer to the
 <h1>sammba.registration.fmri_sessions_to_template<a class="headerlink" href="#sammba-registration-fmri-sessions-to-template" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sammba.registration.fmri_sessions_to_template">
-<code class="descclassname">sammba.registration.</code><code class="descname">fmri_sessions_to_template</code><span class="sig-paren">(</span><em>sessions</em>, <em>t_r</em>, <em>head_template_filename</em>, <em>write_dir</em>, <em>brain_volume</em>, <em>brain_template_filename=None</em>, <em>dilated_head_mask_filename=None</em>, <em>prior_rigid_body_registration=False</em>, <em>slice_timing=True</em>, <em>maxlev=2</em>, <em>caching=False</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.fmri_sessions_to_template" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">sammba.registration.</code><code class="descname">fmri_sessions_to_template</code><span class="sig-paren">(</span><em>sessions</em>, <em>t_r</em>, <em>head_template_filename</em>, <em>write_dir</em>, <em>brain_volume</em>, <em>use_rats_tool=True</em>, <em>brain_template_filename=None</em>, <em>dilated_head_mask_filename=None</em>, <em>prior_rigid_body_registration=False</em>, <em>slice_timing=True</em>, <em>registration_kind='nonlinear'</em>, <em>maxlev=2</em>, <em>func_voxel_size=None</em>, <em>caching=False</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.fmri_sessions_to_template" title="Permalink to this definition">¶</a></dt>
 <dd><p>Registration of subject’s functional and anatomical images to
 a given template.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -200,8 +192,13 @@ a given template.</p>
 </div></blockquote>
 <p><strong>brain_volume</strong> : int</p>
 <blockquote>
-<div><p>Volumes of the brain as passed to Rats_MM brain extraction tool.
+<div><p>Volume of the brain used for brain extraction.
 Typically 400 for mouse and 1800 for rat.</p>
+</div></blockquote>
+<p><strong>use_rats_tool</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, brain mask is computed using RATS Mathematical Morphology.
+Otherwise, a histogram-based brain segmentation is used.</p>
 </div></blockquote>
 <p><strong>write_dir</strong> : str</p>
 <blockquote>
@@ -217,10 +214,18 @@ sammba.registration.anats_to_template</p>
 <div><p>Path to a dilated head mask, passed to
 sammba.registration.anats_to_template</p>
 </div></blockquote>
+<p><strong>registration_kind</strong> : one of {‘rigid’, ‘affine’, ‘nonlinear’}, optional</p>
+<blockquote>
+<div><p>The allowed transform kind from anat to template.</p>
+</div></blockquote>
 <p><strong>maxlev</strong> : int or None, optional</p>
 <blockquote>
 <div><p>Maximal level for the warp when registering anat to template. Passed to
 sammba.registration.anats_to_template</p>
+</div></blockquote>
+<p><strong>func_voxel_size</strong> : 3-tuple of floats, optional</p>
+<blockquote>
+<div><p>Voxel size of the registered functional, in mm.</p>
 </div></blockquote>
 <p><strong>caching</strong> : bool, optional</p>
 <blockquote>
@@ -282,15 +287,17 @@ verbosity in any case.</p>
 <p class="first admonition-title">See also</p>
 <p class="last"><a class="reference internal" href="sammba.registration.coregister_fmri_session.html#sammba.registration.coregister_fmri_session" title="sammba.registration.coregister_fmri_session"><code class="xref py py-obj docutils literal"><span class="pre">sammba.registration.coregister_fmri_session</span></code></a>, <a class="reference internal" href="sammba.registration.anats_to_template.html#sammba.registration.anats_to_template" title="sammba.registration.anats_to_template"><code class="xref py py-obj docutils literal"><span class="pre">sammba.registration.anats_to_template</span></code></a></p>
 </div>
+<p class="rubric">Notes</p>
+<p>If <cite>use_rats_tool</cite> is turned on, RATS tool is used for brain extraction
+and has to be cited. For more information, see
+<a class="reference external" href="http://www.iibi.uiowa.edu/content/rats-overview/">RATS</a></p>
 </dd></dl>
 
 <div style='clear:both'></div></div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -330,6 +337,7 @@ verbosity in any case.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -340,23 +348,17 @@ verbosity in any case.</p>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

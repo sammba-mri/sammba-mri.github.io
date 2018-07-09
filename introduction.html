@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="search" title="Search" href="search.html"/>
-    <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="index.html"/>
-        <link rel="up" title="User guide: table of contents" href="user_guide.html"/>
-        <link rel="next" title="Gallery of Examples" href="auto_examples/index.html"/>
-        <link rel="prev" title="User guide: table of contents" href="user_guide.html"/> 
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Gallery of Examples" href="auto_examples/index.html" />
+    <link rel="prev" title="User guide: table of contents" href="user_guide.html" /> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -112,7 +103,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">sammba-MRI</a>
@@ -120,9 +111,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -186,7 +178,7 @@
 <p>the softwares:</p>
 <ul class="simple">
 <li>AFNI</li>
-<li>FSL &gt;= 5.0</li>
+<li>ANTS</li>
 <li><a class="reference external" href="http://www.iibi.uiowa.edu/content/rats-overview/">RATS</a> for brain
 extraction</li>
 </ul>
@@ -240,36 +232,22 @@ extraction</li>
 </div>
 <div class="section" id="interfaces-configuration">
 <h2><a class="toc-backref" href="#id4">1.4. Interfaces configuration</a><a class="headerlink" href="#interfaces-configuration" title="Permalink to this headline">¶</a></h2>
-<p><strong>Configuring FSL</strong>: On an Ubuntu system, FSL is usually installed at :: /usr/share/fsl. You need to add this location to your .bashrc file. Edit this file by running the shell command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">gedit</span> <span class="o">~/.</span><span class="n">bashrc</span>
-</pre></div>
-</div>
-<p>and add the following lines:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span># FSL
-FSLDIR=/usr/share/fsl
-. ${FSLDIR}/5.0/etc/fslconf/fsl.sh
-PATH=${FSLDIR}/5.0/bin:${PATH}
-export FSLDIR PATH
-</pre></div>
-</div>
-<p>To test if FSL is correctly installed, open a new terminal and type in the shell command:</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">fsl</span>
-</pre></div>
-</div>
-<p>You should see the FSL GUI with the version number in the header.</p>
 <p><strong>Configuring AFNI</strong>: To be able to run AFNI make sure to add the following lines of code to your .bashrc file:</p>
 <div class="highlight-default"><div class="highlight"><pre><span></span># AFNI
 export PATH=/usr/lib/afni/bin:$PATH
 </pre></div>
 </div>
+<p><strong>Configuring AFNI</strong>: To be able to run ANTS make sure to add the following lines of code to your .bashrc file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>#ANTs
+export PATH=/usr/local/antsbin/bin:$PATH
+</pre></div>
+</div>
 </div>
 </div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -309,6 +287,7 @@ export PATH=/usr/lib/afni/bin:$PATH
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -319,23 +298,17 @@ export PATH=/usr/lib/afni/bin:$PATH
       <script type="text/javascript" src="_static/underscore.js"></script>
       <script type="text/javascript" src="_static/doctools.js"></script>
       <script type="text/javascript" src="_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

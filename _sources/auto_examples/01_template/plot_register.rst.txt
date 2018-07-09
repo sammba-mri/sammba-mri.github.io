@@ -107,7 +107,7 @@ The paths to the registered images can be accessed easilly
 
  Out::
 
-    [u'/home/salma/CODE/sammba-mri/examples/01_template/zurich_common/3DRARE_corrected_0_generated_resample_shr_affine_catenated.nii.gz', u'/home/salma/CODE/sammba-mri/examples/01_template/zurich_common/3DRARE_corrected_1_generated_resample_shr_affine_catenated.nii.gz', u'/home/salma/CODE/sammba-mri/examples/01_template/zurich_common/3DRARE_corrected_2_generated_resample_shr_affine_catenated.nii.gz']
+    [u'/home/salma/CODE/sammba-mri/examples/01_template/zurich_common/3DRARE_corrected_0_Unifized_for_brain_extraction_resample_shr_affine_catenated.nii.gz', u'/home/salma/CODE/sammba-mri/examples/01_template/zurich_common/3DRARE_corrected_1_Unifized_for_brain_extraction_resample_shr_affine_catenated.nii.gz', u'/home/salma/CODE/sammba-mri/examples/01_template/zurich_common/3DRARE_corrected_2_Unifized_for_brain_extraction_resample_shr_affine_catenated.nii.gz']
 
 
 Visalize results
@@ -121,7 +121,7 @@ We plot the edges of one individual anat on top of the average image
     from nilearn import plotting, image
 
     average_img = image.mean_img(registered_anats)
-    display = plotting.plot_anat(average_img, dim=-1.8, title='affine register')
+    display = plotting.plot_anat(average_img, dim=-1.6, title='affine register')
     display.add_edges(registered_anats[0])
     plotting.show()
 
@@ -151,7 +151,7 @@ Visualize pipeline steps
 
 
 
-**Total running time of the script:** ( 6 minutes  48.318 seconds)
+**Total running time of the script:** ( 15 minutes  33.569 seconds)
 
 
 

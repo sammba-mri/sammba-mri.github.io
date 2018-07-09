@@ -66,26 +66,6 @@ Including slice timing, motion correction, bias correction and registration.
    :hidden:
 
    /auto_examples/02_preprocessing/plot_fmri_coregistration
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="">
-
-.. only:: html
-
-    .. figure:: /auto_examples/02_preprocessing/images/thumb/sphx_glr_plot_template_registration_thumb.png
-
-        :ref:`sphx_glr_auto_examples_02_preprocessing_plot_template_registration.py`
-
-.. raw:: html
-
-    </div>
-
-
-.. toctree::
-   :hidden:
-
-   /auto_examples/02_preprocessing/plot_template_registration
 .. raw:: html
 
     <div style='clear:both'></div>

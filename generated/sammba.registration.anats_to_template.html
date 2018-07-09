@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../index.html"/>
-        <link rel="up" title="sammba-MRI API Reference" href="../reference.html"/>
-        <link rel="next" title="sammba.registration.fmri_sessions_to_template" href="sammba.registration.fmri_sessions_to_template.html"/>
-        <link rel="prev" title="sammba.registration.anats_to_common" href="sammba.registration.anats_to_common.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sammba.registration.fmri_sessions_to_template" href="sammba.registration.fmri_sessions_to_template.html" />
+    <link rel="prev" title="sammba.registration.anats_to_common" href="sammba.registration.anats_to_common.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -117,7 +108,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">sammba-MRI</a>
@@ -125,9 +116,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -179,7 +171,7 @@ function signature, and not how to use it. Please refer to the
 <h1>sammba.registration.anats_to_template<a class="headerlink" href="#sammba-registration-anats-to-template" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sammba.registration.anats_to_template">
-<code class="descclassname">sammba.registration.</code><code class="descname">anats_to_template</code><span class="sig-paren">(</span><em>anat_filenames</em>, <em>head_template_filename</em>, <em>write_dir</em>, <em>brain_volume</em>, <em>brain_template_filename=None</em>, <em>dilated_head_mask_filename=None</em>, <em>convergence=0.005</em>, <em>maxlev=None</em>, <em>caching=False</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.anats_to_template" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">sammba.registration.</code><code class="descname">anats_to_template</code><span class="sig-paren">(</span><em>anat_filenames</em>, <em>head_template_filename</em>, <em>write_dir</em>, <em>brain_volume</em>, <em>use_rats_tool=True</em>, <em>registration_kind='nonlinear'</em>, <em>brain_template_filename=None</em>, <em>dilated_head_mask_filename=None</em>, <em>convergence=0.005</em>, <em>maxlev=None</em>, <em>caching=False</em>, <em>verbose=1</em>, <em>unifize_kwargs=None</em>, <em>brain_masking_unifize_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.anats_to_template" title="Permalink to this definition">¶</a></dt>
 <dd><p>Registers raw anatomical images to a given template.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -199,8 +191,17 @@ function signature, and not how to use it. Please refer to the
 </div></blockquote>
 <p><strong>brain_volume</strong> : int</p>
 <blockquote>
-<div><p>Volumes of the brain as passed to Rats_MM brain extraction tool.
-Typically 400 for mouse and 1600 for rat.</p>
+<div><p>Volume of the brain used for brain extraction.
+Typically 400 for mouse and 1800 for rat.</p>
+</div></blockquote>
+<p><strong>use_rats_tool</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, brain mask is computed using RATS Mathematical Morphology.
+Otherwise, a histogram-based brain segmentation is used.</p>
+</div></blockquote>
+<p><strong>registration_kind</strong> : one of {‘rigid’, ‘affine’, ‘nonlinear’}, optional</p>
+<blockquote>
+<div><p>The allowed transform kind.</p>
 </div></blockquote>
 <p><strong>brain_template_filename</strong> : str, optional</p>
 <blockquote>
@@ -229,15 +230,25 @@ sammba.externals.nipype.interfaces.afni.Allineate</p>
 sammba.externals.nipype.interfaces.afni.Qwarp.
 Lower implies faster but possibly lower precision.</p>
 </div></blockquote>
-<p><strong>verbose</strong> : bool, optional</p>
+<p><strong>verbose</strong> : int, optional</p>
 <blockquote>
-<div><p>If True, all steps are verbose. Note that caching implies some
+<div><p>Verbosity level. Note that caching implies some
 verbosity in any case.</p>
+</div></blockquote>
+<p><strong>unifize_kwargs</strong> : dict, optional</p>
+<blockquote>
+<div><p>Is passed to sammba.externals.nipype.interfaces.afni.Unifize, to
+control bias correction of the template.</p>
+</div></blockquote>
+<p><strong>brain_masking_unifize_kwargs</strong> : dict, optional</p>
+<blockquote>
+<div><p>Is passed to sammba.externals.nipype.interfaces.afni.Unifize, to tune
+the seperate bias correction step done prior to brain extraction.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data</strong> : sklearn.datasets.base.Bunch</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Dictionary-like object, the interest attributes are :</p>
 <ul class="simple">
 <li><dl class="first docutils">
@@ -260,6 +271,10 @@ images to the final registered images.</dd>
 </li>
 </ul>
 </div></blockquote>
+<p>Notes</p>
+<p>If <cite>use_rats_tool</cite> is turned on, RATS tool is used for brain extraction</p>
+<p>and has to be cited. For more information, see</p>
+<p class="last"><a class="reference external" href="http://www.iibi.uiowa.edu/content/rats-overview/">RATS</a></p>
 </td>
 </tr>
 </tbody>
@@ -270,9 +285,7 @@ images to the final registered images.</dd>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -312,6 +325,7 @@ images to the final registered images.</dd>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -322,23 +336,17 @@ images to the final registered images.</dd>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

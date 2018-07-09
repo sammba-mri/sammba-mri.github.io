@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../index.html"/>
-        <link rel="up" title="sammba-MRI API Reference" href="../reference.html"/>
-        <link rel="next" title="sammba.registration.anats_to_template" href="sammba.registration.anats_to_template.html"/>
-        <link rel="prev" title="sammba.data_fetchers.fetch_zurich_anesthesiant" href="sammba.data_fetchers.fetch_zurich_anesthesiant.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sammba.registration.anats_to_template" href="sammba.registration.anats_to_template.html" />
+    <link rel="prev" title="sammba.data_fetchers.fetch_zurich_anesthesiant" href="sammba.data_fetchers.fetch_zurich_anesthesiant.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -117,7 +108,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">sammba-MRI</a>
@@ -125,9 +116,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -179,7 +171,7 @@ function signature, and not how to use it. Please refer to the
 <h1>sammba.registration.anats_to_common<a class="headerlink" href="#sammba-registration-anats-to-common" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sammba.registration.anats_to_common">
-<code class="descclassname">sammba.registration.</code><code class="descname">anats_to_common</code><span class="sig-paren">(</span><em>anat_filenames, write_dir, brain_volume, registration_kind=’affine’, bias_correction_radius=18.3, bottom_percentile=70.0, top_percentile=80.0, nonlinear_levels=[1, 2, 3], nonlinear_minimal_patch=75, convergence=0.005, caching=False, verbose=False</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.anats_to_common" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">sammba.registration.</code><code class="descname">anats_to_common</code><span class="sig-paren">(</span><em>anat_filenames, write_dir, brain_volume, registration_kind='affine', use_rats_tool=True, nonlinear_levels=[1, 2, 3], nonlinear_minimal_patches=[75], nonlinear_weight_file=None, convergence=0.005, blur_radius_coarse=1.1, caching=False, verbose=1, unifize_kwargs=None, brain_masking_unifize_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.anats_to_common" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create common template from native anatomical images and achieve
 their registration to it.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -196,54 +188,62 @@ their registration to it.</p>
 </div></blockquote>
 <p><strong>brain_volume</strong> : int</p>
 <blockquote>
-<div><p>Volumes of the brain as passed to Rats_MM brain extraction tool.
+<div><p>Volume of the brain used for brain extraction.
 Typically 400 for mouse and 1800 for rat.</p>
 </div></blockquote>
 <p><strong>registration_kind</strong> : one of {‘rigid’, ‘affine’, ‘nonlinear’}, optional</p>
 <blockquote>
 <div><p>The allowed transform kind.</p>
 </div></blockquote>
-<p><strong>bias_correction_radius</strong> : float, optional</p>
+<p><strong>use_rats_tool</strong> : bool, optional</p>
 <blockquote>
-<div><p>Radius of the ball used to create a local white matter intensity volume
-for bias correction, in voxels. Passed to
-sammba.externals.nipype.interfaces.Unifize</p>
-</div></blockquote>
-<p><strong>bottom_percentile</strong> : float, optional</p>
-<blockquote>
-<div><p>Lower fraction of the histogram of intensities to be used
-for local white matter map creation. Passed to
-sammba.externals.nipype.interfaces.Unifize</p>
-</div></blockquote>
-<p><strong>top_percentile</strong> : float, optional</p>
-<blockquote>
-<div><p>Upper fraction of the histogram of intensities to be used
-for local white matter map creation. Passed to
-sammba.externals.nipype.interfaces.Unifize</p>
+<div><p>If True, brain mask is computed using RATS Mathematical Morphology.
+Otherwise, a histogram-based brain segmentation is used.</p>
 </div></blockquote>
 <p><strong>nonlinear_levels</strong> : list of int, optional</p>
 <blockquote>
 <div><p>Maximal levels for each nonlinear warping iteration. Passed iteratively
 to sammba.externals.nipype.interfaces.afni.Qwarp</p>
 </div></blockquote>
-<p><strong>nonlinear_minimal_patch</strong> : int, optional</p>
+<p><strong>nonlinear_minimal_patches</strong> : list of int, optional</p>
 <blockquote>
-<div><p>Minimal patch for the final nonlinear warp, passed to
+<div><p>Minimal patches for the final nonlinear warps, passed to
 sammba.externals.nipype.interfaces.afni.Qwarp</p>
 </div></blockquote>
-<p><strong>caching</strong> : bool, optional</p>
+<p><strong>nonlinear_weight_file</strong> : str, optional</p>
 <blockquote>
-<div><p>If True, caching is used for all the registration steps.</p>
+<div><p>Path to a mask used to weight non-linear registration. Ideally should 
+include not just the whole brain but also extend in all directions to 
+include some amount of surrounding head tissue.</p>
 </div></blockquote>
 <p><strong>convergence</strong> : float, optional</p>
 <blockquote>
 <div><p>Convergence limit, passed to
 sammba.externals.nipype.interfaces.afni.Allineate</p>
 </div></blockquote>
-<p><strong>verbose</strong> : bool, optional</p>
+<p><strong>blur_radius_coarse</strong> : float, optional</p>
 <blockquote>
-<div><p>If True, all steps are verbose. Note that caching implies some
+<div><p>Radius passed to sammba.externals.nipype.interfaces.afni.Allineate for
+the “-twoblur” option</p>
+</div></blockquote>
+<p><strong>caching</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, caching is used for all the registration steps.</p>
+</div></blockquote>
+<p><strong>verbose</strong> : int, optional</p>
+<blockquote>
+<div><p>Verbosity level. Note that caching implies some
 verbosity in any case.</p>
+</div></blockquote>
+<p><strong>unifize_kwargs</strong> : dict, optional</p>
+<blockquote>
+<div><p>Is passed to sammba.externals.nipype.interfaces.afni.Unifize, to
+control bias correction of the template.</p>
+</div></blockquote>
+<p><strong>brain_masking_unifize_kwargs</strong> : dict, optional</p>
+<blockquote>
+<div><p>Is passed to sammba.externals.nipype.interfaces.afni.Unifize, to tune
+the seperate bias correction step done prior to brain masking.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -269,15 +269,39 @@ images to the registered images.</dd>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>nonlinear_weight_file:</p>
+<p>Without this weight mask, for non-linear registration a mask is generated by 
+binarizing the mean of images that have been brain and affine-registered, 
+then evenly dilating it to include some surrounding head tissue. The 
+non-linear registration is then weighted to work only within this mask. This 
+substantially improves performance by 1) reducing the number of voxels to 
+analyse, and 2) avoiding other parts of the head where structures are highly 
+variable and signal often poor. However, this automatically-generated mask 
+is frequently sub-optimal, usually due to missing paraflocculi and 
+inappropriate dilation.</p>
+<p>Of course, it is impossible to know ahead of time where to weight the image 
+before the brains/heads have been registered to each other. So in practice a 
+first running of this script is done up until and including the affine stage 
+(the default). The user should then manually use 3dmask_tool or some other 
+software tool to create an intersect/frac/union mask of the 
+_Unifized_for_brain_extraction_masked_resample_shr_affine_catenated files. 
+These can then be dilated as needed to include some surrounding head tissue 
+(which helps to better distinguish the brain-non-brain boundary). Missing 
+regions can be added manually. This does not have to be done precisely, only 
+roughly, and it is better to include too much tissue than too little. The 
+procedure should then be rerun as non-linear, but using this weight mask.</p>
+<p>use_rats_tool:
+If <cite>use_rats_tool</cite> is turned on, RATS tool is used for brain extraction
+and has to be cited. For more information, see
+<a class="reference external" href="http://www.iibi.uiowa.edu/content/rats-overview/">RATS</a></p>
 </dd></dl>
 
 <div style='clear:both'></div></div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -317,6 +341,7 @@ images to the registered images.</dd>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -327,23 +352,17 @@ images to the registered images.</dd>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>

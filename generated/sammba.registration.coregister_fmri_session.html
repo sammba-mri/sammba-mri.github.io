@@ -24,28 +24,19 @@
 
   
 
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-    <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
-  
-
-  
-        <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="Multimodal Imaging of Neurodegenerative Diseases and Therapies" href="../index.html"/>
-        <link rel="up" title="sammba-MRI API Reference" href="../reference.html"/>
-        <link rel="next" title="sammba.registration.create_pipeline_graph" href="sammba.registration.create_pipeline_graph.html"/>
-        <link rel="prev" title="sammba.registration.fmri_sessions_to_template" href="sammba.registration.fmri_sessions_to_template.html"/> 
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sammba.registration.create_pipeline_graph" href="sammba.registration.create_pipeline_graph.html" />
+    <link rel="prev" title="sammba.registration.fmri_sessions_to_template" href="sammba.registration.fmri_sessions_to_template.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
    
   <div class="wy-grid-for-nav">
@@ -117,7 +108,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+      <nav class="wy-nav-top" aria-label="top navigation">
         
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../index.html">sammba-MRI</a>
@@ -125,9 +116,10 @@
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
 
@@ -179,7 +171,7 @@ function signature, and not how to use it. Please refer to the
 <h1>sammba.registration.coregister_fmri_session<a class="headerlink" href="#sammba-registration-coregister-fmri-session" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sammba.registration.coregister_fmri_session">
-<code class="descclassname">sammba.registration.</code><code class="descname">coregister_fmri_session</code><span class="sig-paren">(</span><em>session_data</em>, <em>t_r</em>, <em>write_dir</em>, <em>brain_volume</em>, <em>slice_timing=True</em>, <em>prior_rigid_body_registration=False</em>, <em>caching=False</em>, <em>voxel_size_x=0.1</em>, <em>voxel_size_y=0.1</em>, <em>verbose=True</em>, <em>**environ_kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.coregister_fmri_session" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">sammba.registration.</code><code class="descname">coregister_fmri_session</code><span class="sig-paren">(</span><em>session_data</em>, <em>t_r</em>, <em>write_dir</em>, <em>brain_volume</em>, <em>use_rats_tool=True</em>, <em>slice_timing=True</em>, <em>prior_rigid_body_registration=False</em>, <em>caching=False</em>, <em>voxel_size_x=0.1</em>, <em>voxel_size_y=0.1</em>, <em>verbose=True</em>, <em>**environ_kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.coregister_fmri_session" title="Permalink to this definition">¶</a></dt>
 <dd><p>Coregistration of the subject’s functional and anatomical images.
 The functional volume is aligned to the anatomical, first with a rigid body
 registration and then on a per-slice basis (only a fine correction, this is
@@ -203,8 +195,13 @@ image, as well as it identifier.</p>
 </div></blockquote>
 <p><strong>brain_volume</strong> : int</p>
 <blockquote>
-<div><p>Volumes of the brain as passed to Rats_MM brain extraction tool.
+<div><p>Volume of the brain used for brain extraction.
 Typically 400 for mouse and 1800 for rat.</p>
+</div></blockquote>
+<p><strong>use_rats_tool</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, brain mask is computed using RATS Mathematical Morphology.
+Otherwise, a histogram-based brain segmentation is used.</p>
 </div></blockquote>
 <p><strong>prior_rigid_body_registration</strong> : bool, optional</p>
 <blockquote>
@@ -265,15 +262,17 @@ verbosity in any case.</p>
 </tr>
 </tbody>
 </table>
+<p class="rubric">Notes</p>
+<p>If <cite>use_rats_tool</cite> is turned on, RATS tool is used for brain extraction
+and has to be cited. For more information, see
+<a class="reference external" href="http://www.iibi.uiowa.edu/content/rats-overview/">RATS</a></p>
 </dd></dl>
 
 <div style='clear:both'></div></div>
 
 
            </div>
-           <div class="articleComments">
-            
-           </div>
+           
           </div>
           <footer>
   
@@ -313,6 +312,7 @@ verbosity in any case.</p>
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
             VERSION:'',
+            LANGUAGE:'None',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true,
@@ -323,23 +323,17 @@ verbosity in any case.</p>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-   
+  </script> 
 
 </body>
 </html>
