@@ -6,15 +6,17 @@
 Confounds exploration
 =====================
 
-Here we show how to regress out confound signals, in particular statistical
-CompCor.
+Here we show how to regress out confound signals, in particular using 
+statistical CompCor.
 
    * Y. Behzadi et al. `A Component Based Noise Correction Method (CompCor) for BOLD and Perfusion Based fMRI
      <https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2214855/>`_,
      NeuroImage Vol 37 (2007), p. 90-101
 
 
-Retrieve the data
+Statistical CompCor
+----------------------------------------------
+Retrieve the data from one subject
 
 
 
@@ -31,8 +33,6 @@ Retrieve the data
 
 
 
-Statistical CompCor
-----------------------------------------------
 We perform a PCA to extract the 98% most variant components.
 This is done by the function **nilearn.image.high_variance_confounds**,
 
@@ -43,7 +43,7 @@ This is done by the function **nilearn.image.high_variance_confounds**,
     from nilearn import image
 
     hv_array = image.high_variance_confounds(fmri_filename)
-    print('Computed {0} confounds array.'.format(hv_array.shape))
+    print('Computed {0} confounds array.'.format(hv_array.shape[1]))
 
 
 
@@ -53,17 +53,15 @@ This is done by the function **nilearn.image.high_variance_confounds**,
 
  Out::
 
-    Computed (360, 5) confounds array.
+    Computed 5 confounds array.
 
 
 Do my counfounds model noise properly? Voxel-to-voxel connectivity tells!
 -------------------------------------------------------------------------
-
 Check the relevance of chosen confounds: The distribution of voxel-to-voxel
 correlations should be tight and approximately centered to zero.
 
-Compute voxel-wise time series with and without confounds removal,
-using NiftiMasker.
+Compute voxel-wise time series without confounds removal, using NiftiMasker.
 
 
 
@@ -84,10 +82,35 @@ using NiftiMasker.
 
     [NiftiMasker.fit] Loading data from /home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz
     [NiftiMasker.fit] Computing the mask
+    ________________________________________________________________________________
+    [Memory] Calling nilearn.masking.compute_background_mask...
+    compute_background_mask('/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz', verbose=0)
+    __________________________________________compute_background_mask - 1.1s, 0.0min
     [NiftiMasker.fit] Resampling mask
+    ________________________________________________________________________________
+    [Memory] Calling nilearn.image.resampling.resample_img...
+    resample_img(<nibabel.nifti1.Nifti1Image object at 0x2b0b832a77d0>, target_shape=None, target_affine=None, copy=False, interpolation='nearest')
+    _____________________________________________________resample_img - 0.0s, 0.0min
+    ________________________________________________________________________________
+    [Memory] Calling nilearn.input_data.nifti_masker.filter_and_mask...
+    filter_and_mask('/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz', <nibabel.nifti1.Nifti1Image object at 0x2b0b832a77d0>, { 'detrend': True,
+      'dtype': None,
+      'high_pass': None,
+      'low_pass': None,
+      'sample_mask': None,
+      'sessions': None,
+      'smoothing_fwhm': None,
+      'standardize': False,
+      't_r': None,
+      'target_affine': None,
+      'target_shape': None}, verbose=1, dtype=None, confounds=None, memory_level=1, memory=Memory(cachedir='nilearn_cache/joblib'), copy=True)
+    [NiftiMasker.transform_single_imgs] Loading data from Nifti1Image('/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz')
+    [NiftiMasker.transform_single_imgs] Extracting region signals
+    [NiftiMasker.transform_single_imgs] Cleaning extracted signals
+    __________________________________________________filter_and_mask - 2.1s, 0.0min
 
 
-Next, compute the voxel-to-voxel correlations. We Use only 1% of voxels,
+Next, compute the voxel-to-voxel correlations. We use only 1% of voxels,
 to save computation time.
 
 
@@ -126,6 +149,25 @@ Same thing, with counfounds removed: compute voxelwise time-series
     [NiftiMasker.fit] Loading data from /home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz
     [NiftiMasker.fit] Computing the mask
     [NiftiMasker.fit] Resampling mask
+    ________________________________________________________________________________
+    [Memory] Calling nilearn.input_data.nifti_masker.filter_and_mask...
+    filter_and_mask('/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz', <nibabel.nifti1.Nifti1Image object at 0x2b0b83152350>, { 'detrend': True,
+      'dtype': None,
+      'high_pass': None,
+      'low_pass': None,
+      'sample_mask': None,
+      'sessions': None,
+      'smoothing_fwhm': None,
+      'standardize': False,
+      't_r': None,
+      'target_affine': None,
+      'target_shape': None}, verbose=1, dtype=None, confounds=[ array([[ 0.055905, ...,  0.120548],
+           ..., 
+           [ 0.035185, ...,  0.01258 ]], dtype=float32)], memory_level=1, memory=Memory(cachedir='nilearn_cache/joblib'), copy=True)
+    [NiftiMasker.transform_single_imgs] Loading data from Nifti1Image('/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz')
+    [NiftiMasker.transform_single_imgs] Extracting region signals
+    [NiftiMasker.transform_single_imgs] Cleaning extracted signals
+    __________________________________________________filter_and_mask - 2.9s, 0.0min
 
 
 Plot now the histograms of both raw and cleaned correlations.
@@ -163,7 +205,7 @@ The correlations distribution is wider after statistical CompCor, so these
 confounds are not well suited to our case.
 
 
-**Total running time of the script:** ( 0 minutes  1.998 seconds)
+**Total running time of the script:** ( 0 minutes  8.536 seconds)
 
 
 

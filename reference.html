@@ -79,7 +79,6 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="authors.html">Contributors and Acknowledgements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="user_guide.html">User guide: table of contents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Gallery of Examples</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">sammba-MRI API Reference</a><ul>
@@ -91,6 +90,9 @@
 <li class="toctree-l2"><a class="reference internal" href="#module-sammba.data_fetchers"><code class="docutils literal"><span class="pre">sammba.data_fetchers</span></code>: Datasets and atlas</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="generated/sammba.data_fetchers.fetch_zurich_test_retest.html">sammba.data_fetchers.fetch_zurich_test_retest</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/sammba.data_fetchers.fetch_zurich_anesthesiant.html">sammba.data_fetchers.fetch_zurich_anesthesiant</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sammba.data_fetchers.fetch_atlas_dorr_2008.html">sammba.data_fetchers.fetch_atlas_dorr_2008</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sammba.data_fetchers.fetch_atlas_waxholm_rat_2014.html">sammba.data_fetchers.fetch_atlas_waxholm_rat_2014</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sammba.data_fetchers.fetch_masks_dorr_2008.html">sammba.data_fetchers.fetch_masks_dorr_2008</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-sammba.registration"><code class="docutils literal"><span class="pre">sammba.registration</span></code>: Registration utilities</a><ul>
@@ -100,6 +102,14 @@
 <li class="toctree-l3"><a class="reference internal" href="generated/sammba.registration.coregister_fmri_session.html">sammba.registration.coregister_fmri_session</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/sammba.registration.create_pipeline_graph.html">sammba.registration.create_pipeline_graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="generated/sammba.registration.FMRISession.html">sammba.registration.FMRISession</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sammba.registration.TemplateRegistrator.html">sammba.registration.TemplateRegistrator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sammba.registration.Coregistrator.html">sammba.registration.Coregistrator</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-sammba.segmentation"><code class="docutils literal"><span class="pre">sammba.segmentation</span></code>: Segmentation utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/sammba.segmentation.brain_extraction_report.html">sammba.segmentation.brain_extraction_report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sammba.segmentation.MathMorphoMask.html">sammba.segmentation.MathMorphoMask</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/sammba.segmentation.HistogramMask.html">sammba.segmentation.HistogramMask</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#external-tools-wrapped-in-python">External tools wrapped in python</a><ul>
@@ -108,6 +118,7 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Contributors and Acknowledgements</a></li>
 </ul>
 
             
@@ -178,7 +189,8 @@
 <li><a class="reference internal" href="#module-sammba.io_conversions" id="id1"><a class="reference internal" href="#module-sammba.io_conversions" title="sammba.io_conversions"><code class="xref py py-mod docutils literal"><span class="pre">sammba.io_conversions</span></code></a>: From scanner to NIFTI</a></li>
 <li><a class="reference internal" href="#module-sammba.data_fetchers" id="id2"><a class="reference internal" href="#module-sammba.data_fetchers" title="sammba.data_fetchers"><code class="xref py py-mod docutils literal"><span class="pre">sammba.data_fetchers</span></code></a>: Datasets and atlas</a></li>
 <li><a class="reference internal" href="#module-sammba.registration" id="id3"><a class="reference internal" href="#module-sammba.registration" title="sammba.registration"><code class="xref py py-mod docutils literal"><span class="pre">sammba.registration</span></code></a>: Registration utilities</a></li>
-<li><a class="reference internal" href="#external-tools-wrapped-in-python" id="id4">External tools wrapped in python</a></li>
+<li><a class="reference internal" href="#module-sammba.segmentation" id="id4"><a class="reference internal" href="#module-sammba.segmentation" title="sammba.segmentation"><code class="xref py py-mod docutils literal"><span class="pre">sammba.segmentation</span></code></a>: Segmentation utilities</a></li>
+<li><a class="reference internal" href="#external-tools-wrapped-in-python" id="id5">External tools wrapped in python</a></li>
 </ul>
 </div>
 <div class="section" id="module-sammba.io_conversions">
@@ -215,6 +227,15 @@
 <tr class="row-even"><td><a class="reference internal" href="generated/sammba.data_fetchers.fetch_zurich_anesthesiant.html#sammba.data_fetchers.fetch_zurich_anesthesiant" title="sammba.data_fetchers.fetch_zurich_anesthesiant"><code class="xref py py-obj docutils literal"><span class="pre">fetch_zurich_anesthesiant</span></code></a>([subjects,&nbsp;url,&nbsp;…])</td>
 <td>Download and loads the ETH-Zurich anesthesiant dataset.</td>
 </tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.data_fetchers.fetch_atlas_dorr_2008.html#sammba.data_fetchers.fetch_atlas_dorr_2008" title="sammba.data_fetchers.fetch_atlas_dorr_2008"><code class="xref py py-obj docutils literal"><span class="pre">fetch_atlas_dorr_2008</span></code></a>([image_format,&nbsp;…])</td>
+<td>Download and load Dorr et al.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sammba.data_fetchers.fetch_atlas_waxholm_rat_2014.html#sammba.data_fetchers.fetch_atlas_waxholm_rat_2014" title="sammba.data_fetchers.fetch_atlas_waxholm_rat_2014"><code class="xref py py-obj docutils literal"><span class="pre">fetch_atlas_waxholm_rat_2014</span></code></a>([data_dir,&nbsp;…])</td>
+<td>Download and load Pape et al.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.data_fetchers.fetch_masks_dorr_2008.html#sammba.data_fetchers.fetch_masks_dorr_2008" title="sammba.data_fetchers.fetch_masks_dorr_2008"><code class="xref py py-obj docutils literal"><span class="pre">fetch_masks_dorr_2008</span></code></a>([image_format,&nbsp;…])</td>
+<td>Downloads DORR 2008 atlas first, then uses its labels to produce tissue masks.</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -230,14 +251,14 @@
 <tr class="row-odd"><td><a class="reference internal" href="generated/sammba.registration.anats_to_common.html#sammba.registration.anats_to_common" title="sammba.registration.anats_to_common"><code class="xref py py-obj docutils literal"><span class="pre">anats_to_common</span></code></a>(anat_filenames,&nbsp;write_dir,&nbsp;…)</td>
 <td>Create common template from native anatomical images and achieve their registration to it.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sammba.registration.anats_to_template.html#sammba.registration.anats_to_template" title="sammba.registration.anats_to_template"><code class="xref py py-obj docutils literal"><span class="pre">anats_to_template</span></code></a>(anat_filenames,&nbsp;…[,&nbsp;…])</td>
-<td>Registers raw anatomical images to a given template.</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sammba.registration.anats_to_template.html#sammba.registration.anats_to_template" title="sammba.registration.anats_to_template"><code class="xref py py-obj docutils literal"><span class="pre">anats_to_template</span></code></a>(*args,&nbsp;**kwargs)</td>
+<td>DEPRECATED: Function ‘anats_to_template’ has been replaced by function ‘anat_to_template’ and will be removed in future release.</td>
 </tr>
-<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.registration.fmri_sessions_to_template.html#sammba.registration.fmri_sessions_to_template" title="sammba.registration.fmri_sessions_to_template"><code class="xref py py-obj docutils literal"><span class="pre">fmri_sessions_to_template</span></code></a>(sessions,&nbsp;t_r,&nbsp;…)</td>
-<td>Registration of subject’s functional and anatomical images to a given template.</td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.registration.fmri_sessions_to_template.html#sammba.registration.fmri_sessions_to_template" title="sammba.registration.fmri_sessions_to_template"><code class="xref py py-obj docutils literal"><span class="pre">fmri_sessions_to_template</span></code></a>(*args,&nbsp;**kwargs)</td>
+<td>DEPRECATED: Function ‘fmri_sessions_to_template’ is deprecated and will be removed in future release.</td>
 </tr>
-<tr class="row-even"><td><a class="reference internal" href="generated/sammba.registration.coregister_fmri_session.html#sammba.registration.coregister_fmri_session" title="sammba.registration.coregister_fmri_session"><code class="xref py py-obj docutils literal"><span class="pre">coregister_fmri_session</span></code></a>(session_data,&nbsp;t_r,&nbsp;…)</td>
-<td>Coregistration of the subject’s functional and anatomical images.</td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sammba.registration.coregister_fmri_session.html#sammba.registration.coregister_fmri_session" title="sammba.registration.coregister_fmri_session"><code class="xref py py-obj docutils literal"><span class="pre">coregister_fmri_session</span></code></a>(*args,&nbsp;**kwargs)</td>
+<td>DEPRECATED: Function ‘coregister_fmri_session’ is deprecated and will be removed in future release.</td>
 </tr>
 <tr class="row-odd"><td><a class="reference internal" href="generated/sammba.registration.create_pipeline_graph.html#sammba.registration.create_pipeline_graph" title="sammba.registration.create_pipeline_graph"><code class="xref py py-obj docutils literal"><span class="pre">create_pipeline_graph</span></code></a>(pipeline_name,&nbsp;graph_file)</td>
 <td>Creates pipeline graph for a given piepline.</td>
@@ -254,11 +275,55 @@
 <tr class="row-odd"><td><a class="reference internal" href="generated/sammba.registration.FMRISession.html#sammba.registration.FMRISession" title="sammba.registration.FMRISession"><code class="xref py py-obj docutils literal"><span class="pre">FMRISession</span></code></a>([func,&nbsp;anat,&nbsp;animal_id])</td>
 <td>Encapsulation for fMRI data, relative to preprocessing.</td>
 </tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sammba.registration.TemplateRegistrator.html#sammba.registration.TemplateRegistrator" title="sammba.registration.TemplateRegistrator"><code class="xref py py-obj docutils literal"><span class="pre">TemplateRegistrator</span></code></a>(template,&nbsp;brain_volume)</td>
+<td>Class for registering anatomical and possibly other modality images from one animal to a given head template.</td>
+</tr>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.registration.Coregistrator.html#sammba.registration.Coregistrator" title="sammba.registration.Coregistrator"><code class="xref py py-obj docutils literal"><span class="pre">Coregistrator</span></code></a>([brain_volume,&nbsp;output_dir,&nbsp;…])</td>
+<td>Class for registering anatomical image to perfusion/functional images from one animal in native space.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="module-sammba.segmentation">
+<span id="sammba-segmentation-segmentation-utilities"></span><span id="segmentation-ref"></span><h2><a class="toc-backref" href="#id4"><a class="reference internal" href="#module-sammba.segmentation" title="sammba.segmentation"><code class="xref py py-mod docutils literal"><span class="pre">sammba.segmentation</span></code></a>: Segmentation utilities</a><a class="headerlink" href="#module-sammba.segmentation" title="Permalink to this headline">¶</a></h2>
+<p><strong>Functions</strong>:</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.segmentation.brain_extraction_report.html#sammba.segmentation.brain_extraction_report" title="sammba.segmentation.brain_extraction_report"><code class="xref py py-obj docutils literal"><span class="pre">brain_extraction_report</span></code></a>(head_file,&nbsp;brain_volume)</td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classes</strong>:</p>
+<table border="1" class="longtable docutils">
+<colgroup>
+<col width="10%" />
+<col width="90%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.segmentation.MathMorphoMask.html#sammba.segmentation.MathMorphoMask" title="sammba.segmentation.MathMorphoMask"><code class="xref py py-obj docutils literal"><span class="pre">MathMorphoMask</span></code></a>([command,&nbsp;terminal_output])</td>
+<td>Mathemetical morphology stage for RATS, as described in: RATS: Rapid Automatic Tissue Segmentation in rodent brain MRI.</td>
+</tr>
+<tr class="row-even"><td><a class="reference internal" href="generated/sammba.segmentation.HistogramMask.html#sammba.segmentation.HistogramMask" title="sammba.segmentation.HistogramMask"><code class="xref py py-obj docutils literal"><span class="pre">HistogramMask</span></code></a>([terminal_output])</td>
+<td>Interface for nilearn.masking.compute_epi_mask, based on T.</td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="external-tools-wrapped-in-python">
-<span id="interfaces-ref"></span><h2><a class="toc-backref" href="#id4">External tools wrapped in python</a><a class="headerlink" href="#external-tools-wrapped-in-python" title="Permalink to this headline">¶</a></h2>
+<span id="interfaces-ref"></span><h2><a class="toc-backref" href="#id5">External tools wrapped in python</a><a class="headerlink" href="#external-tools-wrapped-in-python" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="interfaces/generated/sammba.interfaces.preproc_tools.html">interfaces.preproc_tools</a><ul>

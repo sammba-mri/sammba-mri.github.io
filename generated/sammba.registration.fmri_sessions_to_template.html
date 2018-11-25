@@ -79,7 +79,6 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../authors.html">Contributors and Acknowledgements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide: table of contents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Gallery of Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../reference.html">sammba-MRI API Reference</a><ul class="current">
@@ -92,11 +91,15 @@
 <li class="toctree-l3"><a class="reference internal" href="sammba.registration.coregister_fmri_session.html">sammba.registration.coregister_fmri_session</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sammba.registration.create_pipeline_graph.html">sammba.registration.create_pipeline_graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sammba.registration.FMRISession.html">sammba.registration.FMRISession</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.registration.TemplateRegistrator.html">sammba.registration.TemplateRegistrator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.registration.Coregistrator.html">sammba.registration.Coregistrator</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.segmentation"><code class="docutils literal"><span class="pre">sammba.segmentation</span></code>: Segmentation utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference.html#external-tools-wrapped-in-python">External tools wrapped in python</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Contributors and Acknowledgements</a></li>
 </ul>
 
             
@@ -171,77 +174,73 @@ function signature, and not how to use it. Please refer to the
 <h1>sammba.registration.fmri_sessions_to_template<a class="headerlink" href="#sammba-registration-fmri-sessions-to-template" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sammba.registration.fmri_sessions_to_template">
-<code class="descclassname">sammba.registration.</code><code class="descname">fmri_sessions_to_template</code><span class="sig-paren">(</span><em>sessions</em>, <em>t_r</em>, <em>head_template_filename</em>, <em>write_dir</em>, <em>brain_volume</em>, <em>use_rats_tool=True</em>, <em>brain_template_filename=None</em>, <em>dilated_head_mask_filename=None</em>, <em>prior_rigid_body_registration=False</em>, <em>slice_timing=True</em>, <em>registration_kind='nonlinear'</em>, <em>maxlev=2</em>, <em>func_voxel_size=None</em>, <em>caching=False</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.fmri_sessions_to_template" title="Permalink to this definition">¶</a></dt>
-<dd><p>Registration of subject’s functional and anatomical images to
-a given template.</p>
+<code class="descclassname">sammba.registration.</code><code class="descname">fmri_sessions_to_template</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.fmri_sessions_to_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED: Function ‘fmri_sessions_to_template’ is deprecated and will be removed in future release. Use class ‘TemplateRegistrator’ instead.</p>
+<dl class="docutils">
+<dt>Registration of subject’s functional and anatomical images to</dt>
+<dd>a given template.</dd>
+</dl>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>sessions</strong> : sequence of sammba.registration.FMRISession</p>
 <blockquote>
+<div><blockquote>
 <div><p>fMRI sessions to register.</p>
 </div></blockquote>
-<p><strong>t_r</strong> : float</p>
-<blockquote>
-<div><p>Repetition time for the EPI, in seconds.</p>
-</div></blockquote>
-<p><strong>head_template_filename</strong> : str</p>
-<blockquote>
-<div><p>Template to register the functional to.</p>
-</div></blockquote>
-<p><strong>brain_volume</strong> : int</p>
-<blockquote>
-<div><p>Volume of the brain used for brain extraction.
+<dl class="docutils">
+<dt>t_r <span class="classifier-delimiter">:</span> <span class="classifier">float</span></dt>
+<dd><p class="first last">Repetition time for the EPI, in seconds.</p>
+</dd>
+<dt>head_template_filename <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Template to register the functional to.</p>
+</dd>
+<dt>brain_volume <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd><p class="first last">Volume of the brain in mm3 used for brain extraction.
 Typically 400 for mouse and 1800 for rat.</p>
-</div></blockquote>
-<p><strong>use_rats_tool</strong> : bool, optional</p>
-<blockquote>
-<div><p>If True, brain mask is computed using RATS Mathematical Morphology.
+</dd>
+<dt>use_rats_tool <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">If True, brain mask is computed using RATS Mathematical Morphology.
 Otherwise, a histogram-based brain segmentation is used.</p>
-</div></blockquote>
-<p><strong>write_dir</strong> : str</p>
-<blockquote>
-<div><p>Path to the affine 1D transform from anatomical to template space.</p>
-</div></blockquote>
-<p><strong>brain_template_filename</strong> : str, optional</p>
-<blockquote>
-<div><p>Path to a brain template, passed to
+</dd>
+<dt>write_dir <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd><p class="first last">Path to the affine 1D transform from anatomical to template space.</p>
+</dd>
+<dt>brain_template_filename <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
+<dd><p class="first last">Path to a brain template, passed to
 sammba.registration.anats_to_template</p>
-</div></blockquote>
-<p><strong>dilated_head_mask_filename</strong> : str, optional</p>
-<blockquote>
-<div><p>Path to a dilated head mask, passed to
+</dd>
+<dt>dilated_head_mask_filename <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
+<dd><p class="first last">Path to a dilated head mask, passed to
 sammba.registration.anats_to_template</p>
-</div></blockquote>
-<p><strong>registration_kind</strong> : one of {‘rigid’, ‘affine’, ‘nonlinear’}, optional</p>
-<blockquote>
-<div><p>The allowed transform kind from anat to template.</p>
-</div></blockquote>
-<p><strong>maxlev</strong> : int or None, optional</p>
-<blockquote>
-<div><p>Maximal level for the warp when registering anat to template. Passed to
+</dd>
+<dt>registration_kind <span class="classifier-delimiter">:</span> <span class="classifier">one of {‘rigid’, ‘affine’, ‘nonlinear’}, optional</span></dt>
+<dd><p class="first last">The allowed transform kind from anat to template.</p>
+</dd>
+<dt>maxlev <span class="classifier-delimiter">:</span> <span class="classifier">int or None, optional</span></dt>
+<dd><p class="first last">Maximal level for the warp when registering anat to template. Passed to
 sammba.registration.anats_to_template</p>
-</div></blockquote>
-<p><strong>func_voxel_size</strong> : 3-tuple of floats, optional</p>
-<blockquote>
-<div><p>Voxel size of the registered functional, in mm.</p>
-</div></blockquote>
-<p><strong>caching</strong> : bool, optional</p>
-<blockquote>
-<div><p>Wether or not to use caching.</p>
-</div></blockquote>
-<p><strong>verbose</strong> : bool, optional</p>
-<blockquote>
-<div><p>If True, all steps are verbose. Note that caching implies some
+</dd>
+<dt>func_voxel_size <span class="classifier-delimiter">:</span> <span class="classifier">3-tuple of floats, optional</span></dt>
+<dd><p class="first last">Voxel size of the registered functional, in mm.</p>
+</dd>
+<dt>caching <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">Wether or not to use caching.</p>
+</dd>
+<dt>verbose <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd><p class="first last">If True, all steps are verbose. Note that caching implies some
 verbosity in any case.</p>
+</dd>
+</dl>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the same sequence with each animal_data updated: the following attributes</p>
-<p>are added</p>
 <blockquote class="last">
-<div><ul class="simple">
+<div><dl class="docutils">
+<dt>are added</dt>
+<dd><ul class="first last simple">
 <li><dl class="first docutils">
 <dt><cite>template_</cite> <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
 <dd>Path to the given registration template.</dd>
@@ -278,15 +277,13 @@ verbosity in any case.</p>
 </dl>
 </li>
 </ul>
+</dd>
+</dl>
 </div></blockquote>
 </td>
 </tr>
 </tbody>
 </table>
-<div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last"><a class="reference internal" href="sammba.registration.coregister_fmri_session.html#sammba.registration.coregister_fmri_session" title="sammba.registration.coregister_fmri_session"><code class="xref py py-obj docutils literal"><span class="pre">sammba.registration.coregister_fmri_session</span></code></a>, <a class="reference internal" href="sammba.registration.anats_to_template.html#sammba.registration.anats_to_template" title="sammba.registration.anats_to_template"><code class="xref py py-obj docutils literal"><span class="pre">sammba.registration.anats_to_template</span></code></a></p>
-</div>
 <p class="rubric">Notes</p>
 <p>If <cite>use_rats_tool</cite> is turned on, RATS tool is used for brain extraction
 and has to be cited. For more information, see

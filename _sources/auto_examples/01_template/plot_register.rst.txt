@@ -72,7 +72,7 @@ Define the writing directory
 
 
 
-Affine registration
+Create the template
 -------------------
 
 
@@ -81,7 +81,8 @@ Affine registration
 
     from sammba.registration import anats_to_common
 
-    affine_register = anats_to_common(retest.anat, write_dir, 400, caching=True)
+    affine_register = anats_to_common(retest.anat, write_dir, 400,
+                                      use_rats_tool=False, caching=True)
 
 
 
@@ -89,7 +90,7 @@ Affine registration
 
 
 
-We set caching to True, so that this step computations are not restarted.
+We set caching to True, so that the computations are not restarted.
 The paths to the registered images can be accessed easilly
 
 
@@ -110,6 +111,22 @@ The paths to the registered images can be accessed easilly
     [u'/home/salma/CODE/sammba-mri/examples/01_template/zurich_common/3DRARE_corrected_0_Unifized_for_brain_extraction_resample_shr_affine_catenated.nii.gz', u'/home/salma/CODE/sammba-mri/examples/01_template/zurich_common/3DRARE_corrected_1_Unifized_for_brain_extraction_resample_shr_affine_catenated.nii.gz', u'/home/salma/CODE/sammba-mri/examples/01_template/zurich_common/3DRARE_corrected_2_Unifized_for_brain_extraction_resample_shr_affine_catenated.nii.gz']
 
 
+Assess the template
+-------------------
+
+
+
+.. code-block:: python
+
+    from nilearn import image
+    template_img = image.mean_img(registered_anats)
+
+
+
+
+
+
+
 Visalize results
 ----------------
 We plot the edges of one individual anat on top of the average image
@@ -118,7 +135,7 @@ We plot the edges of one individual anat on top of the average image
 
 .. code-block:: python
 
-    from nilearn import plotting, image
+    from nilearn import plotting
 
     average_img = image.mean_img(registered_anats)
     display = plotting.plot_anat(average_img, dim=-1.6, title='affine register')
@@ -151,7 +168,7 @@ Visualize pipeline steps
 
 
 
-**Total running time of the script:** ( 15 minutes  33.569 seconds)
+**Total running time of the script:** ( 7 minutes  41.773 seconds)
 
 
 

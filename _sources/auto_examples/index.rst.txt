@@ -49,7 +49,7 @@ Including slice timing, motion correction, bias correction and registration.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Standard functional preprocessing and registration of functional image to the anatomical.">
+    <div class="sphx-glr-thumbcontainer" tooltip="Standard functional preprocessing and registration of functional image to the anatomical. ">
 
 .. only:: html
 
@@ -79,7 +79,7 @@ ROI-to-ROI matrices, ROI-to-voxel maps and ICA.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Here we show how to regress out confound signals, in particular statistical CompCor.">
+    <div class="sphx-glr-thumbcontainer" tooltip="Here we show how to regress out confound signals, in particular using  statistical CompCor.">
 
 .. only:: html
 

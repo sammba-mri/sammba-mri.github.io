@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sammba.segmentation.HistogramMask &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="interfaces.preproc_tools" href="../interfaces/generated/sammba.interfaces.preproc_tools.html" />
+    <link rel="prev" title="sammba.segmentation.MathMorphoMask" href="sammba.segmentation.MathMorphoMask.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> sammba-MRI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide: table of contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Gallery of Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">sammba-MRI API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.io_conversions"><code class="docutils literal"><span class="pre">sammba.io_conversions</span></code>: From scanner to NIFTI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.data_fetchers"><code class="docutils literal"><span class="pre">sammba.data_fetchers</span></code>: Datasets and atlas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.registration"><code class="docutils literal"><span class="pre">sammba.registration</span></code>: Registration utilities</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../reference.html#module-sammba.segmentation"><code class="docutils literal"><span class="pre">sammba.segmentation</span></code>: Segmentation utilities</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sammba.segmentation.brain_extraction_report.html">sammba.segmentation.brain_extraction_report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.segmentation.MathMorphoMask.html">sammba.segmentation.MathMorphoMask</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">sammba.segmentation.HistogramMask</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#external-tools-wrapped-in-python">External tools wrapped in python</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Contributors and Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sammba-MRI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../reference.html">sammba-MRI API Reference</a> &raquo;</li>
+        
+      <li>sammba.segmentation.HistogramMask</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This page is a reference documentation. It only explains the class
+signature, and not how to use it. Please refer to the
+<a class="reference internal" href="../user_guide.html#user-guide"><span class="std std-ref">user guide</span></a> for the big picture.</p>
+</div>
+<div class="section" id="sammba-segmentation-histogrammask">
+<h1>sammba.segmentation.HistogramMask<a class="headerlink" href="#sammba-segmentation-histogrammask" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="sammba.segmentation.HistogramMask">
+<em class="property">class </em><code class="descclassname">sammba.segmentation.</code><code class="descname">HistogramMask</code><span class="sig-paren">(</span><em>terminal_output=None</em>, <em>**inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.segmentation.HistogramMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interface for nilearn.masking.compute_epi_mask, based on T. Nichols
+heuristics.</p>
+<p class="rubric">Examples</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sammba.segmentation</span> <span class="k">import</span> <span class="n">HistogramMask</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nichols_masker</span> <span class="o">=</span> <span class="n">HistogramMask</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nichols_masker</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">in_file</span> <span class="o">=</span> <span class="s1">&#39;structural.nii&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nichols_masker</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">volume_threshold</span> <span class="o">=</span> <span class="mi">1650</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">nichols_masker</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>  
+</pre></div>
+</div>
+<dl class="method">
+<dt id="sammba.segmentation.HistogramMask.__init__">
+<code class="descname">__init__</code><span class="sig-paren">(</span><em>terminal_output=None</em>, <em>**inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.segmentation.HistogramMask.__init__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="sammba.segmentation.HistogramMask.aggregate_outputs">
+<code class="descname">aggregate_outputs</code><span class="sig-paren">(</span><em>runtime=None</em>, <em>needed_outputs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.segmentation.HistogramMask.aggregate_outputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collate expected outputs and check for existence</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sammba.segmentation.HistogramMask.help">
+<code class="descname">help</code><span class="sig-paren">(</span><em>returnhelp=False</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.segmentation.HistogramMask.help" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints class help</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sammba.segmentation.HistogramMask.load_inputs_from_json">
+<code class="descname">load_inputs_from_json</code><span class="sig-paren">(</span><em>json_file</em>, <em>overwrite=True</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.segmentation.HistogramMask.load_inputs_from_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>A convenient way to load pre-set inputs from a JSON file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="sammba.segmentation.HistogramMask.run">
+<code class="descname">run</code><span class="sig-paren">(</span><em>**inputs</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.segmentation.HistogramMask.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Execute this interface.</p>
+<p>This interface will not raise an exception if runtime.returncode is
+non-zero.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>inputs</strong> : allows the interface settings to be updated</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>results</strong> :  an InterfaceResult object containing a copy of the instance</p>
+<p class="last">that was executed, provenance information and, if successful, results</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="sammba.segmentation.HistogramMask.save_inputs_to_json">
+<code class="descname">save_inputs_to_json</code><span class="sig-paren">(</span><em>json_file</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.segmentation.HistogramMask.save_inputs_to_json" title="Permalink to this definition">¶</a></dt>
+<dd><p>A convenient way to save current inputs to a JSON file.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="sammba.segmentation.HistogramMask.set_default_terminal_output">
+<em class="property">classmethod </em><code class="descname">set_default_terminal_output</code><span class="sig-paren">(</span><em>output_type</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.segmentation.HistogramMask.set_default_terminal_output" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the default terminal output for CommandLine Interfaces.</p>
+<p>This method is used to set default terminal output for
+CommandLine Interfaces.  However, setting this will not
+update the output type for any existing instances.  For these,
+assign the &lt;instance&gt;.terminal_output.</p>
+</dd></dl>
+
+</dd></dl>
+
+<div style='clear:both'></div></div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../interfaces/generated/sammba.interfaces.preproc_tools.html" class="btn btn-neutral float-right" title="interfaces.preproc_tools" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sammba.segmentation.MathMorphoMask.html" class="btn btn-neutral" title="sammba.segmentation.MathMorphoMask" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The sammba-MRI developers.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -10,7 +10,6 @@ Standard functional preprocessing and registration of functional image to the
 anatomical.
 
 
-
 Retrieve data
 -------------
 
@@ -50,55 +49,91 @@ retest contains paths to images and data description
     /home/salma/nilearn_data/zurich_retest/baseline/1366/rsfMRI_corrected.nii.gz
 
 
-We encapsulate them in an object called `FMRISession`
+We use the `Coregistrator`, which coregisters the anatomical to
+a given modality
 
 
 
 .. code-block:: python
 
-    from sammba.registration import FMRISession
+    from sammba.registration import Coregistrator
 
-    animal_session = FMRISession(anat=anat_filename, func=func_filename,
-                                 animal_id='1366')
-
-
-
+    coregistrator = Coregistrator(output_dir='animal_1366', brain_volume=400,
+                                  use_rats_tool=False, caching=True)
+    print(coregistrator)
 
 
 
 
-Define the write directory
---------------------------
-Note that this directory needs to be empty, to ovoid overwrting conflicts.
+
+.. rst-class:: sphx-glr-script-out
+
+ Out::
+
+    Coregistrator(brain_volume=400, caching=True, clipping_fraction=0.2,
+           output_dir='animal_1366', use_rats_tool=False, verbose=True)
+
+
+`Coregistrator` comes with a parameter `clipping_fraction=.2` which
+sometimes needs to be changed to get a good brain mask. You can check how
+this parameter impacts the brain segmentation
 
 
 
 .. code-block:: python
 
-    import os
+    from sammba.segmentation import brain_extraction_report
 
-    write_dir = os.path.join(os.getcwd(), 'zurich_fmri')
-    if not os.path.exists(write_dir):
-        os.makedirs(write_dir)
-
-
+    print(brain_extraction_report(anat_filename, brain_volume=400,
+                                  clipping_fractions=[.1, .2, .9, None],
+                                  use_rats_tool=False))
 
 
 
 
 
-Functional to anatomical registration
+.. rst-class:: sphx-glr-script-out
+
+ Out::
+
+    /home/salma/nilearn_data/zurich_retest/baseline/1366/3DRARE_corrected_unifized_clfrac0pt10_histo_brain_mask.nii.gz
+    /home/salma/nilearn_data/zurich_retest/baseline/1366/3DRARE_corrected_unifized_histo_brain_mask.nii.gz
+    /home/salma/nilearn_data/zurich_retest/baseline/1366/3DRARE_corrected_unifized_clfrac0pt90_histo_brain_mask.nii.gz
+    /home/salma/nilearn_data/zurich_retest/baseline/1366/3DRARE_corrected_histo_brain_mask.nii.gz
+                    x extent  y extend  z extend    volume
+
+    fraction 0.10       9.69     14.70      6.93    373.50
+    fraction 0.20       9.75     14.60      6.94    384.19
+    fraction 0.90      14.35     18.90      7.86   1862.00
+      no fraction      14.35     18.90      7.86   1862.00
+
+
+Anatomical to functional registration
 -------------------------------------
 
 
 
 .. code-block:: python
 
-    from sammba.registration import coregister_fmri_session
+    coregistrator.fit_anat(anat_filename)
+    coregistrator.fit_modality(func_filename, 'func', t_r=1.,
+                               prior_rigid_body_registration=True)
 
-    coregister_fmri_session(animal_session, 1., write_dir, 400,
-                            slice_timing=True,
-                            prior_rigid_body_registration=True)
+
+
+
+
+
+
+The paths to the registered functional and anatomical images are accessible
+through the `coregistrator` attributes
+
+
+
+.. code-block:: python
+
+    registered_func_filename = coregistrator.undistorted_func_
+    registered_anat_filename = coregistrator.anat_in_func_space_
 
 
 
@@ -115,9 +150,9 @@ Check out the results
 
     from nilearn import plotting, image
 
-    display = plotting.plot_epi(image.mean_img(animal_session.coreg_func_),
+    display = plotting.plot_epi(image.mean_img(registered_func_filename),
                                 title='coreg anat edges on top of mean coreg EPI')
-    display.add_edges(animal_session.coreg_anat_)
+    display.add_edges(registered_anat_filename)
     plotting.show()
 
 
@@ -128,7 +163,7 @@ Check out the results
 
 
 
-**Total running time of the script:** ( 4 minutes  1.254 seconds)
+**Total running time of the script:** ( 0 minutes  57.822 seconds)
 
 
 

@@ -79,7 +79,6 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../authors.html">Contributors and Acknowledgements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide: table of contents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Gallery of Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../reference.html">sammba-MRI API Reference</a><ul class="current">
@@ -92,11 +91,15 @@
 <li class="toctree-l3"><a class="reference internal" href="sammba.registration.coregister_fmri_session.html">sammba.registration.coregister_fmri_session</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sammba.registration.create_pipeline_graph.html">sammba.registration.create_pipeline_graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sammba.registration.FMRISession.html">sammba.registration.FMRISession</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.registration.TemplateRegistrator.html">sammba.registration.TemplateRegistrator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.registration.Coregistrator.html">sammba.registration.Coregistrator</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.segmentation"><code class="docutils literal"><span class="pre">sammba.segmentation</span></code>: Segmentation utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference.html#external-tools-wrapped-in-python">External tools wrapped in python</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Contributors and Acknowledgements</a></li>
 </ul>
 
             
@@ -171,92 +174,60 @@ function signature, and not how to use it. Please refer to the
 <h1>sammba.registration.anats_to_template<a class="headerlink" href="#sammba-registration-anats-to-template" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sammba.registration.anats_to_template">
-<code class="descclassname">sammba.registration.</code><code class="descname">anats_to_template</code><span class="sig-paren">(</span><em>anat_filenames</em>, <em>head_template_filename</em>, <em>write_dir</em>, <em>brain_volume</em>, <em>use_rats_tool=True</em>, <em>registration_kind='nonlinear'</em>, <em>brain_template_filename=None</em>, <em>dilated_head_mask_filename=None</em>, <em>convergence=0.005</em>, <em>maxlev=None</em>, <em>caching=False</em>, <em>verbose=1</em>, <em>unifize_kwargs=None</em>, <em>brain_masking_unifize_kwargs=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.anats_to_template" title="Permalink to this definition">¶</a></dt>
-<dd><p>Registers raw anatomical images to a given template.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>anat_filenames</strong> : list of str</p>
-<blockquote>
-<div><p>Paths to the anatomical images.</p>
-</div></blockquote>
-<p><strong>head_template_filename</strong> : str</p>
-<blockquote>
-<div><p>Path to the head template.</p>
-</div></blockquote>
-<p><strong>write_dir</strong> : str</p>
-<blockquote>
-<div><p>Path to an existant directory to save output files to.</p>
-</div></blockquote>
-<p><strong>brain_volume</strong> : int</p>
-<blockquote>
-<div><p>Volume of the brain used for brain extraction.
-Typically 400 for mouse and 1800 for rat.</p>
-</div></blockquote>
-<p><strong>use_rats_tool</strong> : bool, optional</p>
-<blockquote>
-<div><p>If True, brain mask is computed using RATS Mathematical Morphology.
-Otherwise, a histogram-based brain segmentation is used.</p>
-</div></blockquote>
-<p><strong>registration_kind</strong> : one of {‘rigid’, ‘affine’, ‘nonlinear’}, optional</p>
-<blockquote>
-<div><p>The allowed transform kind.</p>
-</div></blockquote>
-<p><strong>brain_template_filename</strong> : str, optional</p>
-<blockquote>
-<div><p>Path to a brain template. Note that this must coincide with the brain
+<code class="descclassname">sammba.registration.</code><code class="descname">anats_to_template</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.anats_to_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED: Function ‘anats_to_template’ has been replaced by function ‘anat_to_template’ and will be removed in future release.</p>
+<dl class="docutils">
+<dt>Registers raw anatomical images to a given template.</dt>
+<dd><dl class="first docutils">
+<dt>anat_filenames <span class="classifier-delimiter">:</span> <span class="classifier">list of str</span></dt>
+<dd>Paths to the anatomical images.</dd>
+<dt>head_template_filename <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Path to the head template.</dd>
+<dt>write_dir <span class="classifier-delimiter">:</span> <span class="classifier">str</span></dt>
+<dd>Path to an existant directory to save output files to.</dd>
+<dt>brain_volume <span class="classifier-delimiter">:</span> <span class="classifier">int</span></dt>
+<dd>Volume of the brain in mm3 used for brain extraction.
+Typically 400 for mouse and 1800 for rat.</dd>
+<dt>use_rats_tool <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd>If True, brain mask is computed using RATS Mathematical Morphology.
+Otherwise, a histogram-based brain segmentation is used.</dd>
+<dt>registration_kind <span class="classifier-delimiter">:</span> <span class="classifier">one of {‘rigid’, ‘affine’, ‘nonlinear’}, optional</span></dt>
+<dd>The allowed transform kind.</dd>
+<dt>brain_template_filename <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
+<dd>Path to a brain template. Note that this must coincide with the brain
 from the given head template. If None, the brain is extracted from
-the template with RATS.</p>
-</div></blockquote>
-<p><strong>dilated_head_mask_filename</strong> : str, optional</p>
-<blockquote>
-<div><p>Path to a dilated head mask. Note that this must be compliant with the
+the template with RATS.</dd>
+<dt>dilated_head_mask_filename <span class="classifier-delimiter">:</span> <span class="classifier">str, optional</span></dt>
+<dd>Path to a dilated head mask. Note that this must be compliant with the
 the given head template. If None, the mask is set to the non-background
-voxels of the head template after one dilation.</p>
-</div></blockquote>
-<p><strong>caching</strong> : bool, optional</p>
-<blockquote>
-<div><p>If True, caching is used for all the registration steps.</p>
-</div></blockquote>
-<p><strong>convergence</strong> : float, optional</p>
-<blockquote>
-<div><p>Convergence limit, passed to
-sammba.externals.nipype.interfaces.afni.Allineate</p>
-</div></blockquote>
-<p><strong>maxlev</strong> : int or None, optional</p>
-<blockquote>
-<div><p>If not None, maximal level for the nonlinear warping. Passed to
+voxels of the head template after one dilation.</dd>
+<dt>caching <span class="classifier-delimiter">:</span> <span class="classifier">bool, optional</span></dt>
+<dd>If True, caching is used for all the registration steps.</dd>
+<dt>convergence <span class="classifier-delimiter">:</span> <span class="classifier">float, optional</span></dt>
+<dd>Convergence limit, passed to
+sammba.externals.nipype.interfaces.afni.Allineate</dd>
+<dt>maxlev <span class="classifier-delimiter">:</span> <span class="classifier">int or None, optional</span></dt>
+<dd>If not None, maximal level for the nonlinear warping. Passed to
 sammba.externals.nipype.interfaces.afni.Qwarp.
-Lower implies faster but possibly lower precision.</p>
-</div></blockquote>
-<p><strong>verbose</strong> : int, optional</p>
-<blockquote>
-<div><p>Verbosity level. Note that caching implies some
-verbosity in any case.</p>
-</div></blockquote>
-<p><strong>unifize_kwargs</strong> : dict, optional</p>
-<blockquote>
-<div><p>Is passed to sammba.externals.nipype.interfaces.afni.Unifize, to
-control bias correction of the template.</p>
-</div></blockquote>
-<p><strong>brain_masking_unifize_kwargs</strong> : dict, optional</p>
-<blockquote>
-<div><p>Is passed to sammba.externals.nipype.interfaces.afni.Unifize, to tune
-the seperate bias correction step done prior to brain extraction.</p>
-</div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>data</strong> : sklearn.datasets.base.Bunch</p>
-<blockquote>
-<div><p>Dictionary-like object, the interest attributes are :</p>
-<ul class="simple">
-<li><dl class="first docutils">
-<dt><cite>registered</cite> <span class="classifier-delimiter">:</span> <span class="classifier">list of str.</span></dt>
-<dd>Paths to registered images. Note that
-they have undergone a bias correction step before.</dd>
+Lower implies faster but possibly lower precision.</dd>
+<dt>verbose <span class="classifier-delimiter">:</span> <span class="classifier">int, optional</span></dt>
+<dd>Verbosity level. Note that caching implies some
+verbosity in any case.</dd>
+<dt>unifize_kwargs <span class="classifier-delimiter">:</span> <span class="classifier">dict, optional</span></dt>
+<dd>Is passed to sammba.externals.nipype.interfaces.afni.Unifize, to
+control bias correction of the template.</dd>
+<dt>brain_masking_unifize_kwargs <span class="classifier-delimiter">:</span> <span class="classifier">dict, optional</span></dt>
+<dd>Is passed to sammba.externals.nipype.interfaces.afni.Unifize, to tune
+the seperate bias correction step done prior to brain extraction.</dd>
 </dl>
-</li>
+<dl class="docutils">
+<dt>data <span class="classifier-delimiter">:</span> <span class="classifier">sklearn.datasets.base.Bunch</span></dt>
+<dd><p class="first">Dictionary-like object, the interest attributes are :
+- <cite>registered</cite> : list of str.</p>
+<blockquote>
+<div>Paths to registered images. Note that
+they have undergone a bias correction step before.</div></blockquote>
+<ul class="last simple">
 <li><dl class="first docutils">
 <dt><cite>pre_transforms</cite> <span class="classifier-delimiter">:</span> <span class="classifier">list of str.</span></dt>
 <dd>Paths to the affine transforms from the raw
@@ -270,15 +241,13 @@ images to the final registered images.</dd>
 </dl>
 </li>
 </ul>
-</div></blockquote>
-<p>Notes</p>
-<p>If <cite>use_rats_tool</cite> is turned on, RATS tool is used for brain extraction</p>
-<p>and has to be cited. For more information, see</p>
-<p class="last"><a class="reference external" href="http://www.iibi.uiowa.edu/content/rats-overview/">RATS</a></p>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
+<p class="last">If <cite>use_rats_tool</cite> is turned on, RATS tool is used for brain extraction
+and has to be cited. For more information, see
+<a class="reference external" href="http://www.iibi.uiowa.edu/content/rats-overview/">RATS</a></p>
+</dd>
+</dl>
 </dd></dl>
 
 <div style='clear:both'></div></div>

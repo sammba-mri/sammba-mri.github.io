@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. Measuring regional brain volumes &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Gallery of Examples" href="auto_examples/index.html" />
+    <link rel="prev" title="3. Registering several MRI images and creating a template" href="MRI_reg.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> sammba-MRI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="user_guide.html">User guide: table of contents</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">1. Introduction: Sammba-MRI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dataorg.html">2. Data organization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MRI_reg.html">3. Registering several MRI images and creating a template</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4. Measuring regional brain volumes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-registering-several-mri-images-to-an-existing-template">4.1. Step 1 - Registering several MRI images to an existing template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-align-the-atlas-on-the-raw-mr-images-thanks-to-the-deformation-evaluated-in-step-1">4.2. Step 2 - Align the Atlas on the raw MR images thanks to the deformation evaluated in step 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-measure-of-the-volume-of-each-registered-roi-of-the-atlas">4.3. Step 3 - Measure of the volume of each registered ROI of the atlas</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Gallery of Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reference.html">sammba-MRI API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Contributors and Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">sammba-MRI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="user_guide.html">User guide: table of contents</a> &raquo;</li>
+        
+      <li>4. Measuring regional brain volumes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="measuring-regional-brain-volumes">
+<h1>4. Measuring regional brain volumes<a class="headerlink" href="#measuring-regional-brain-volumes" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<p class="topic-title first"><strong>Contents</strong></p>
+<ul class="simple">
+<li><a class="reference internal" href="#step-1-registering-several-mri-images-to-an-existing-template" id="id1">Step 1 - Registering several MRI images to an existing template</a></li>
+<li><a class="reference internal" href="#step-2-align-the-atlas-on-the-raw-mr-images-thanks-to-the-deformation-evaluated-in-step-1" id="id2">Step 2 - Align the Atlas on the raw MR images thanks to the deformation evaluated in step 1</a></li>
+<li><a class="reference internal" href="#step-3-measure-of-the-volume-of-each-registered-roi-of-the-atlas" id="id3">Step 3 - Measure of the volume of each registered ROI of the atlas</a></li>
+</ul>
+</div>
+<p>Sammba-MRI allows to measure regional brain volumes in regions outlined in an atlas. This can be useful to measure cerebral atrophy for example.</p>
+<div class="section" id="step-1-registering-several-mri-images-to-an-existing-template">
+<h2><a class="toc-backref" href="#id1">4.1. Step 1 - Registering several MRI images to an existing template</a><a class="headerlink" href="#step-1-registering-several-mri-images-to-an-existing-template" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Sammba-MRI allows to register several MR images to an existing template.</p>
+<blockquote>
+<div>The function to use is &gt; anats_to_template(images_to_register, Template_name, Saved_Registered_dir, 400, caching=False)</div></blockquote>
+</div></blockquote>
+</div>
+<div class="section" id="step-2-align-the-atlas-on-the-raw-mr-images-thanks-to-the-deformation-evaluated-in-step-1">
+<h2><a class="toc-backref" href="#id2">4.2. Step 2 - Align the Atlas on the raw MR images thanks to the deformation evaluated in step 1</a><a class="headerlink" href="#step-2-align-the-atlas-on-the-raw-mr-images-thanks-to-the-deformation-evaluated-in-step-1" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><dl class="docutils">
+<dt>So far we did not develop any Sammba procedure to perform this task</dt>
+<dd>We recommend to use the &gt; 3dNwarpApply funtion from AFNI</dd>
+</dl>
+</div></blockquote>
+<p>3dNwarpApply -nwarp Saved_Registered_dir/Aal1_WARP.nii.gz Saved_Registered_dir/Aal1_masked_shr.aff12.1D -iwarp -source Atlas_Directory/Atlas.nii.gz -master Images-to-Register/Aal1.nii.gz -ainterp NN -prefix Measures/Aal1_atlas.nii.gz</p>
+</div>
+<div class="section" id="step-3-measure-of-the-volume-of-each-registered-roi-of-the-atlas">
+<h2><a class="toc-backref" href="#id3">4.3. Step 3 - Measure of the volume of each registered ROI of the atlas</a><a class="headerlink" href="#step-3-measure-of-the-volume-of-each-registered-roi-of-the-atlas" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>So far we did not develop any Sammba procedure to perform this task
+We recommend to use the &gt; 3dhistog from AFNI
+3dhistog -int Measures/Aal1_atlas.nii.gz &gt; Measures/Aal1-Measured-volumes.txt</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="auto_examples/index.html" class="btn btn-neutral float-right" title="Gallery of Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="MRI_reg.html" class="btn btn-neutral" title="3. Registering several MRI images and creating a template" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The sammba-MRI developers.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

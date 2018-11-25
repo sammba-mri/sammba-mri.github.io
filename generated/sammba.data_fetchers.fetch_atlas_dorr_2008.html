@@ -1,0 +1,299 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>sammba.data_fetchers.fetch_atlas_dorr_2008 &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="sammba.data_fetchers.fetch_atlas_waxholm_rat_2014" href="sammba.data_fetchers.fetch_atlas_waxholm_rat_2014.html" />
+    <link rel="prev" title="sammba.data_fetchers.fetch_zurich_anesthesiant" href="sammba.data_fetchers.fetch_zurich_anesthesiant.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> sammba-MRI
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide: table of contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Gallery of Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">sammba-MRI API Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.io_conversions"><code class="docutils literal"><span class="pre">sammba.io_conversions</span></code>: From scanner to NIFTI</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../reference.html#module-sammba.data_fetchers"><code class="docutils literal"><span class="pre">sammba.data_fetchers</span></code>: Datasets and atlas</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="sammba.data_fetchers.fetch_zurich_test_retest.html">sammba.data_fetchers.fetch_zurich_test_retest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.data_fetchers.fetch_zurich_anesthesiant.html">sammba.data_fetchers.fetch_zurich_anesthesiant</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">sammba.data_fetchers.fetch_atlas_dorr_2008</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.data_fetchers.fetch_atlas_waxholm_rat_2014.html">sammba.data_fetchers.fetch_atlas_waxholm_rat_2014</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.data_fetchers.fetch_masks_dorr_2008.html">sammba.data_fetchers.fetch_masks_dorr_2008</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.registration"><code class="docutils literal"><span class="pre">sammba.registration</span></code>: Registration utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.segmentation"><code class="docutils literal"><span class="pre">sammba.segmentation</span></code>: Segmentation utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#external-tools-wrapped-in-python">External tools wrapped in python</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Contributors and Acknowledgements</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">sammba-MRI</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../reference.html">sammba-MRI API Reference</a> &raquo;</li>
+        
+      <li>sammba.data_fetchers.fetch_atlas_dorr_2008</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This page is a reference documentation. It only explains the
+function signature, and not how to use it. Please refer to the
+<a class="reference internal" href="../user_guide.html#user-guide"><span class="std std-ref">user guide</span></a> for the big picture.</p>
+</div>
+<div class="section" id="sammba-data-fetchers-fetch-atlas-dorr-2008">
+<h1>sammba.data_fetchers.fetch_atlas_dorr_2008<a class="headerlink" href="#sammba-data-fetchers-fetch-atlas-dorr-2008" title="Permalink to this headline">¶</a></h1>
+<dl class="function">
+<dt id="sammba.data_fetchers.fetch_atlas_dorr_2008">
+<code class="descclassname">sammba.data_fetchers.</code><code class="descname">fetch_atlas_dorr_2008</code><span class="sig-paren">(</span><em>image_format='nifti'</em>, <em>downsample='30'</em>, <em>data_dir=None</em>, <em>url=None</em>, <em>resume=True</em>, <em>verbose=1</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.data_fetchers.fetch_atlas_dorr_2008" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download and load Dorr et al. atlas and average (dated 2008)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>image_format</strong> : one of {‘nifti’, ‘minc’}, optional</p>
+<blockquote>
+<div><p>Format to download</p>
+</div></blockquote>
+<p><strong>downsample</strong> : one of {‘30’, ‘100’}, optional</p>
+<blockquote>
+<div><p>Downsampling resolution in microns.</p>
+</div></blockquote>
+<p><strong>data_dir</strong> : str, optional</p>
+<blockquote>
+<div><p>Path of the data directory. Use to forec data storage in a non-
+standard location. Default: None (meaning: default)</p>
+</div></blockquote>
+<p><strong>url: string, optional</strong></p>
+<blockquote>
+<div><p>Download URL of the dataset. Overwrite the default URL.</p>
+</div></blockquote>
+<p><strong>resume</strong> : bool</p>
+<blockquote>
+<div><p>whether to resumed download of a partly-downloaded file.</p>
+</div></blockquote>
+<p><strong>verbose</strong> : int</p>
+<blockquote>
+<div><p>verbosity level (0 means no message).</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">data: sklearn.datasets.base.Bunch</p>
+<blockquote class="last">
+<div><p>dictionary-like object, contains:</p>
+<ul class="simple">
+<li>‘t2’ : str, path to nifti file containing the T2 weighted average.</li>
+<li>‘maps’ : str, path to nifti file containing regions definition.</li>
+<li>‘names’ : str list containing the names of the regions.</li>
+<li>‘labels’ : int list containing the label value of each region.</li>
+<li>‘description’ : description about the atlas and the template.</li>
+</ul>
+</div></blockquote>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="rubric">References</p>
+<p>A.E. Dorr, J.P. Lerch, S. Spring, N. Kabani and R.M. Henkelman. “High
+resolution three dimensional brain atlas using an average magnetic
+resonance image of 40 adult C57Bl/6j mice”, NeuroImage 42(1):60-69, 2008.</p>
+<p>See <a class="reference external" href="http://www.mouseimaging.ca/research/mouse_atlas.html">http://www.mouseimaging.ca/research/mouse_atlas.html</a> for more
+information on this parcellation.</p>
+<p>Licence: Unknown</p>
+</dd></dl>
+
+<div style='clear:both'></div></div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sammba.data_fetchers.fetch_atlas_waxholm_rat_2014.html" class="btn btn-neutral float-right" title="sammba.data_fetchers.fetch_atlas_waxholm_rat_2014" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sammba.data_fetchers.fetch_zurich_anesthesiant.html" class="btn btn-neutral" title="sammba.data_fetchers.fetch_zurich_anesthesiant" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The sammba-MRI developers.
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/copybutton.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

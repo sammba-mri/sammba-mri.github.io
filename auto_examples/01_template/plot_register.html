@@ -79,14 +79,14 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Contributors and Acknowledgements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user_guide.html">User guide: table of contents</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Gallery of Examples</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html#template-creation">Template creation</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Registration to common space</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#retrieve-the-data">Retrieve the data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#define-the-writing-directory">Define the writing directory</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#affine-registration">Affine registration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-the-template">Create the template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#assess-the-template">Assess the template</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#visalize-results">Visalize results</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#visualize-pipeline-steps">Visualize pipeline steps</a></li>
 </ul>
@@ -98,6 +98,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference.html">sammba-MRI API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Contributors and Acknowledgements</a></li>
 </ul>
 
             
@@ -199,14 +200,15 @@ variable head tissue.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="affine-registration">
-<h2>Affine registration<a class="headerlink" href="#affine-registration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-the-template">
+<h2>Create the template<a class="headerlink" href="#create-the-template" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sammba.registration</span> <span class="kn">import</span> <a href="../../generated/sammba.registration.anats_to_common.html#sammba.registration.anats_to_common" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.anats_to_common"><span class="n">anats_to_common</span></a>
 
-<span class="n">affine_register</span> <span class="o">=</span> <a href="../../generated/sammba.registration.anats_to_common.html#sammba.registration.anats_to_common" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.anats_to_common"><span class="n">anats_to_common</span></a><span class="p">(</span><span class="n">retest</span><span class="o">.</span><span class="n">anat</span><span class="p">,</span> <span class="n">write_dir</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span> <span class="n">caching</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">affine_register</span> <span class="o">=</span> <a href="../../generated/sammba.registration.anats_to_common.html#sammba.registration.anats_to_common" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.anats_to_common"><span class="n">anats_to_common</span></a><span class="p">(</span><span class="n">retest</span><span class="o">.</span><span class="n">anat</span><span class="p">,</span> <span class="n">write_dir</span><span class="p">,</span> <span class="mi">400</span><span class="p">,</span>
+                                  <span class="n">use_rats_tool</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">caching</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>We set caching to True, so that this step computations are not restarted.
+<p>We set caching to True, so that the computations are not restarted.
 The paths to the registered images can be accessed easilly</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">registered_anats</span> <span class="o">=</span> <span class="n">affine_register</span><span class="o">.</span><span class="n">registered</span>
 <span class="k">print</span><span class="p">(</span><span class="n">registered_anats</span><span class="p">)</span>
@@ -217,10 +219,17 @@ The paths to the registered images can be accessed easilly</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="assess-the-template">
+<h2>Assess the template<a class="headerlink" href="#assess-the-template" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">image</span>
+<span class="n">template_img</span> <span class="o">=</span> <a href="http://nilearn.github.io/modules/generated/nilearn.image.mean_img.html#nilearn.image.mean_img" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.image.mean_img"><span class="n">image</span><span class="o">.</span><span class="n">mean_img</span></a><span class="p">(</span><span class="n">registered_anats</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="visalize-results">
 <h2>Visalize results<a class="headerlink" href="#visalize-results" title="Permalink to this headline">¶</a></h2>
 <p>We plot the edges of one individual anat on top of the average image</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span><span class="p">,</span> <span class="n">image</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">plotting</span>
 
 <span class="n">average_img</span> <span class="o">=</span> <a href="http://nilearn.github.io/modules/generated/nilearn.image.mean_img.html#nilearn.image.mean_img" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.image.mean_img"><span class="n">image</span><span class="o">.</span><span class="n">mean_img</span></a><span class="p">(</span><span class="n">registered_anats</span><span class="p">)</span>
 <span class="n">display</span> <span class="o">=</span> <a href="http://nilearn.github.io/modules/generated/nilearn.plotting.plot_anat.html#nilearn.plotting.plot_anat" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.plotting.plot_anat"><span class="n">plotting</span><span class="o">.</span><span class="n">plot_anat</span></a><span class="p">(</span><span class="n">average_img</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mf">1.6</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;affine register&#39;</span><span class="p">)</span>
@@ -238,7 +247,7 @@ The paths to the registered images can be accessed easilly</p>
 <a href="../../generated/sammba.registration.create_pipeline_graph.html#sammba.registration.create_pipeline_graph" class="sphx-glr-code-links" tooltip="Link to documentation for sammba.registration.create_pipeline_graph"><span class="n">create_pipeline_graph</span></a><span class="p">(</span><span class="s1">&#39;anats_to_common_affine&#39;</span><span class="p">,</span> <span class="n">graph_file</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 15 minutes  33.569 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 7 minutes  41.773 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_register.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_register.py</span></code></a></div>

@@ -79,7 +79,6 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../authors.html">Contributors and Acknowledgements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide: table of contents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Gallery of Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../reference.html">sammba-MRI API Reference</a><ul class="current">
@@ -92,11 +91,15 @@
 <li class="toctree-l3 current"><a class="current reference internal" href="#">sammba.registration.coregister_fmri_session</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sammba.registration.create_pipeline_graph.html">sammba.registration.create_pipeline_graph</a></li>
 <li class="toctree-l3"><a class="reference internal" href="sammba.registration.FMRISession.html">sammba.registration.FMRISession</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.registration.TemplateRegistrator.html">sammba.registration.TemplateRegistrator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sammba.registration.Coregistrator.html">sammba.registration.Coregistrator</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.segmentation"><code class="docutils literal"><span class="pre">sammba.segmentation</span></code>: Segmentation utilities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../reference.html#external-tools-wrapped-in-python">External tools wrapped in python</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Contributors and Acknowledgements</a></li>
 </ul>
 
             
@@ -171,8 +174,9 @@ function signature, and not how to use it. Please refer to the
 <h1>sammba.registration.coregister_fmri_session<a class="headerlink" href="#sammba-registration-coregister-fmri-session" title="Permalink to this headline">¶</a></h1>
 <dl class="function">
 <dt id="sammba.registration.coregister_fmri_session">
-<code class="descclassname">sammba.registration.</code><code class="descname">coregister_fmri_session</code><span class="sig-paren">(</span><em>session_data</em>, <em>t_r</em>, <em>write_dir</em>, <em>brain_volume</em>, <em>use_rats_tool=True</em>, <em>slice_timing=True</em>, <em>prior_rigid_body_registration=False</em>, <em>caching=False</em>, <em>voxel_size_x=0.1</em>, <em>voxel_size_y=0.1</em>, <em>verbose=True</em>, <em>**environ_kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.coregister_fmri_session" title="Permalink to this definition">¶</a></dt>
-<dd><p>Coregistration of the subject’s functional and anatomical images.
+<code class="descclassname">sammba.registration.</code><code class="descname">coregister_fmri_session</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.coregister_fmri_session" title="Permalink to this definition">¶</a></dt>
+<dd><p>DEPRECATED: Function ‘coregister_fmri_session’ is deprecated and will be removed in future release. Use class ‘Coregistrator’ instead.</p>
+<p>Coregistration of the subject’s functional and anatomical images.
 The functional volume is aligned to the anatomical, first with a rigid body
 registration and then on a per-slice basis (only a fine correction, this is
 mostly for correction of EPI distortion).</p>
@@ -195,7 +199,7 @@ image, as well as it identifier.</p>
 </div></blockquote>
 <p><strong>brain_volume</strong> : int</p>
 <blockquote>
-<div><p>Volume of the brain used for brain extraction.
+<div><p>Volume of the brain in mm3 used for brain extraction.
 Typically 400 for mouse and 1800 for rat.</p>
 </div></blockquote>
 <p><strong>use_rats_tool</strong> : bool, optional</p>

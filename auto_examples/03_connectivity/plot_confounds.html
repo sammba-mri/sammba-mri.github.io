@@ -79,7 +79,6 @@
             
             
               <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Contributors and Acknowledgements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../user_guide.html">User guide: table of contents</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../index.html">Gallery of Examples</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index.html#template-creation">Template creation</a></li>
@@ -96,6 +95,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../reference.html">sammba-MRI API Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../authors.html">Contributors and Acknowledgements</a></li>
 </ul>
 
             
@@ -162,33 +162,33 @@
             
   <div class="section" id="confounds-exploration">
 <span id="sphx-glr-auto-examples-03-connectivity-plot-confounds-py"></span><h1>Confounds exploration<a class="headerlink" href="#confounds-exploration" title="Permalink to this headline">¶</a></h1>
-<p>Here we show how to regress out confound signals, in particular statistical
-CompCor.</p>
+<p>Here we show how to regress out confound signals, in particular using
+statistical CompCor.</p>
 <blockquote>
 <div><ul class="simple">
 <li>Y. Behzadi et al. <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2214855/">A Component Based Noise Correction Method (CompCor) for BOLD and Perfusion Based fMRI</a>,
 NeuroImage Vol 37 (2007), p. 90-101</li>
 </ul>
 </div></blockquote>
-<p>Retrieve the data</p>
+<div class="section" id="statistical-compcor">
+<h2>Statistical CompCor<a class="headerlink" href="#statistical-compcor" title="Permalink to this headline">¶</a></h2>
+<p>Retrieve the data from one subject</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sammba</span> <span class="kn">import</span> <span class="n">data_fetchers</span>
 
 <span class="n">test_retest</span> <span class="o">=</span> <span class="n">data_fetchers</span><span class="o">.</span><span class="n">fetch_zurich_test_retest</span><span class="p">(</span><span class="n">subjects</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">fmri_filename</span> <span class="o">=</span> <span class="n">test_retest</span><span class="o">.</span><span class="n">func</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="section" id="statistical-compcor">
-<h2>Statistical CompCor<a class="headerlink" href="#statistical-compcor" title="Permalink to this headline">¶</a></h2>
 <p>We perform a PCA to extract the 98% most variant components.
 This is done by the function <strong>nilearn.image.high_variance_confounds</strong>,</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn</span> <span class="kn">import</span> <span class="n">image</span>
 
 <span class="n">hv_array</span> <span class="o">=</span> <a href="http://nilearn.github.io/modules/generated/nilearn.image.high_variance_confounds.html#nilearn.image.high_variance_confounds" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.image.high_variance_confounds"><span class="n">image</span><span class="o">.</span><span class="n">high_variance_confounds</span></a><span class="p">(</span><span class="n">fmri_filename</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Computed {0} confounds array.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hv_array</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Computed {0} confounds array.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hv_array</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Computed</span> <span class="p">(</span><span class="mi">360</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="n">confounds</span> <span class="n">array</span><span class="o">.</span>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Computed</span> <span class="mi">5</span> <span class="n">confounds</span> <span class="n">array</span><span class="o">.</span>
 </pre></div>
 </div>
 </div>
@@ -196,8 +196,7 @@ This is done by the function <strong>nilearn.image.high_variance_confounds</stro
 <h2>Do my counfounds model noise properly? Voxel-to-voxel connectivity tells!<a class="headerlink" href="#do-my-counfounds-model-noise-properly-voxel-to-voxel-connectivity-tells" title="Permalink to this headline">¶</a></h2>
 <p>Check the relevance of chosen confounds: The distribution of voxel-to-voxel
 correlations should be tight and approximately centered to zero.</p>
-<p>Compute voxel-wise time series with and without confounds removal,
-using NiftiMasker.</p>
+<p>Compute voxel-wise time series without confounds removal, using NiftiMasker.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nilearn.input_data</span> <span class="kn">import</span> <a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a>
 
 <span class="n">brain_masker</span> <span class="o">=</span> <a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="p">(</span><span class="n">detrend</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="s1">&#39;nilearn_cache&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -207,10 +206,35 @@ using NiftiMasker.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">fit</span><span class="p">]</span> <span class="n">Loading</span> <span class="n">data</span> <span class="kn">from</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">salma</span><span class="o">/</span><span class="n">nilearn_data</span><span class="o">/</span><span class="n">zurich_retest</span><span class="o">/</span><span class="n">baseline</span><span class="o">/</span><span class="mi">1367</span><span class="o">/</span><span class="n">rsfMRI</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
 <span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">fit</span><span class="p">]</span> <span class="n">Computing</span> <span class="n">the</span> <span class="n">mask</span>
+<span class="n">________________________________________________________________________________</span>
+<span class="p">[</span><span class="n">Memory</span><span class="p">]</span> <span class="n">Calling</span> <span class="n">nilearn</span><span class="o">.</span><span class="n">masking</span><span class="o">.</span><span class="n">compute_background_mask</span><span class="o">...</span>
+<span class="n">compute_background_mask</span><span class="p">(</span><span class="s1">&#39;/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">__________________________________________compute_background_mask</span> <span class="o">-</span> <span class="mf">1.1</span><span class="n">s</span><span class="p">,</span> <span class="mf">0.0</span><span class="nb">min</span>
 <span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">fit</span><span class="p">]</span> <span class="n">Resampling</span> <span class="n">mask</span>
+<span class="n">________________________________________________________________________________</span>
+<span class="p">[</span><span class="n">Memory</span><span class="p">]</span> <span class="n">Calling</span> <span class="n">nilearn</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">resampling</span><span class="o">.</span><span class="n">resample_img</span><span class="o">...</span>
+<span class="n">resample_img</span><span class="p">(</span><span class="o">&lt;</span><span class="n">nibabel</span><span class="o">.</span><span class="n">nifti1</span><span class="o">.</span><span class="n">Nifti1Image</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x2b0b832a77d0</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">target_shape</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_affine</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="n">_____________________________________________________resample_img</span> <span class="o">-</span> <span class="mf">0.0</span><span class="n">s</span><span class="p">,</span> <span class="mf">0.0</span><span class="nb">min</span>
+<span class="n">________________________________________________________________________________</span>
+<span class="p">[</span><span class="n">Memory</span><span class="p">]</span> <span class="n">Calling</span> <span class="n">nilearn</span><span class="o">.</span><span class="n">input_data</span><span class="o">.</span><span class="n">nifti_masker</span><span class="o">.</span><span class="n">filter_and_mask</span><span class="o">...</span>
+<span class="n">filter_and_mask</span><span class="p">(</span><span class="s1">&#39;/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">nibabel</span><span class="o">.</span><span class="n">nifti1</span><span class="o">.</span><span class="n">Nifti1Image</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x2b0b832a77d0</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">{</span> <span class="s1">&#39;detrend&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+  <span class="s1">&#39;dtype&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;high_pass&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;low_pass&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;sample_mask&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;sessions&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;smoothing_fwhm&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;standardize&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+  <span class="s1">&#39;t_r&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;target_affine&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;target_shape&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">confounds</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">memory_level</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="n">Memory</span><span class="p">(</span><span class="n">cachedir</span><span class="o">=</span><span class="s1">&#39;nilearn_cache/joblib&#39;</span><span class="p">),</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">transform_single_imgs</span><span class="p">]</span> <span class="n">Loading</span> <span class="n">data</span> <span class="kn">from</span> <span class="nn">Nifti1Image</span><span class="p">(</span><span class="s1">&#39;/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz&#39;</span><span class="p">)</span>
+<span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">transform_single_imgs</span><span class="p">]</span> <span class="n">Extracting</span> <span class="n">region</span> <span class="n">signals</span>
+<span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">transform_single_imgs</span><span class="p">]</span> <span class="n">Cleaning</span> <span class="n">extracted</span> <span class="n">signals</span>
+<span class="n">__________________________________________________filter_and_mask</span> <span class="o">-</span> <span class="mf">2.1</span><span class="n">s</span><span class="p">,</span> <span class="mf">0.0</span><span class="nb">min</span>
 </pre></div>
 </div>
-<p>Next, compute the voxel-to-voxel correlations. We Use only 1% of voxels,
+<p>Next, compute the voxel-to-voxel correlations. We use only 1% of voxels,
 to save computation time.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 
@@ -228,6 +252,25 @@ to save computation time.</p>
 <div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">fit</span><span class="p">]</span> <span class="n">Loading</span> <span class="n">data</span> <span class="kn">from</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">salma</span><span class="o">/</span><span class="n">nilearn_data</span><span class="o">/</span><span class="n">zurich_retest</span><span class="o">/</span><span class="n">baseline</span><span class="o">/</span><span class="mi">1367</span><span class="o">/</span><span class="n">rsfMRI</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
 <span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">fit</span><span class="p">]</span> <span class="n">Computing</span> <span class="n">the</span> <span class="n">mask</span>
 <span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">fit</span><span class="p">]</span> <span class="n">Resampling</span> <span class="n">mask</span>
+<span class="n">________________________________________________________________________________</span>
+<span class="p">[</span><span class="n">Memory</span><span class="p">]</span> <span class="n">Calling</span> <span class="n">nilearn</span><span class="o">.</span><span class="n">input_data</span><span class="o">.</span><span class="n">nifti_masker</span><span class="o">.</span><span class="n">filter_and_mask</span><span class="o">...</span>
+<span class="n">filter_and_mask</span><span class="p">(</span><span class="s1">&#39;/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz&#39;</span><span class="p">,</span> <span class="o">&lt;</span><span class="n">nibabel</span><span class="o">.</span><span class="n">nifti1</span><span class="o">.</span><span class="n">Nifti1Image</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x2b0b83152350</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">{</span> <span class="s1">&#39;detrend&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+  <span class="s1">&#39;dtype&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;high_pass&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;low_pass&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;sample_mask&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;sessions&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;smoothing_fwhm&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;standardize&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+  <span class="s1">&#39;t_r&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;target_affine&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+  <span class="s1">&#39;target_shape&#39;</span><span class="p">:</span> <span class="kc">None</span><span class="p">},</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">confounds</span><span class="o">=</span><span class="p">[</span> <span class="n">array</span><span class="p">([[</span> <span class="mf">0.055905</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span>  <span class="mf">0.120548</span><span class="p">],</span>
+       <span class="o">...</span><span class="p">,</span>
+       <span class="p">[</span> <span class="mf">0.035185</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span>  <span class="mf">0.01258</span> <span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">float32</span><span class="p">)],</span> <span class="n">memory_level</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="n">Memory</span><span class="p">(</span><span class="n">cachedir</span><span class="o">=</span><span class="s1">&#39;nilearn_cache/joblib&#39;</span><span class="p">),</span> <span class="n">copy</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">transform_single_imgs</span><span class="p">]</span> <span class="n">Loading</span> <span class="n">data</span> <span class="kn">from</span> <span class="nn">Nifti1Image</span><span class="p">(</span><span class="s1">&#39;/home/salma/nilearn_data/zurich_retest/baseline/1367/rsfMRI.nii.gz&#39;</span><span class="p">)</span>
+<span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">transform_single_imgs</span><span class="p">]</span> <span class="n">Extracting</span> <span class="n">region</span> <span class="n">signals</span>
+<span class="p">[</span><a href="http://nilearn.github.io/modules/generated/nilearn.input_data.NiftiMasker.html#nilearn.input_data.NiftiMasker" class="sphx-glr-code-links" tooltip="Link to documentation for nilearn.input_data.NiftiMasker"><span class="n">NiftiMasker</span></a><span class="o">.</span><span class="n">transform_single_imgs</span><span class="p">]</span> <span class="n">Cleaning</span> <span class="n">extracted</span> <span class="n">signals</span>
+<span class="n">__________________________________________________filter_and_mask</span> <span class="o">-</span> <span class="mf">2.9</span><span class="n">s</span><span class="p">,</span> <span class="mf">0.0</span><span class="nb">min</span>
 </pre></div>
 </div>
 <p>Plot now the histograms of both raw and cleaned correlations.</p>
@@ -251,7 +294,7 @@ to save computation time.</p>
 <img alt="../../_images/sphx_glr_plot_confounds_001.png" class="align-center" src="../../_images/sphx_glr_plot_confounds_001.png" />
 <p>The correlations distribution is wider after statistical CompCor, so these
 confounds are not well suited to our case.</p>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  1.998 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  8.536 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_confounds.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_confounds.py</span></code></a></div>
