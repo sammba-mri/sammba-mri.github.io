@@ -96,11 +96,7 @@ this parameter impacts the brain segmentation
 
  Out::
 
-    /home/salma/nilearn_data/zurich_retest/baseline/1366/3DRARE_corrected_unifized_clfrac0pt10_histo_brain_mask.nii.gz
-    /home/salma/nilearn_data/zurich_retest/baseline/1366/3DRARE_corrected_unifized_histo_brain_mask.nii.gz
-    /home/salma/nilearn_data/zurich_retest/baseline/1366/3DRARE_corrected_unifized_clfrac0pt90_histo_brain_mask.nii.gz
-    /home/salma/nilearn_data/zurich_retest/baseline/1366/3DRARE_corrected_histo_brain_mask.nii.gz
-                    x extent  y extend  z extend    volume
+    x extent  y extend  z extend    volume
 
     fraction 0.10       9.69     14.70      6.93    373.50
     fraction 0.20       9.75     14.60      6.94    384.19
@@ -163,7 +159,7 @@ Check out the results
 
 
 
-**Total running time of the script:** ( 0 minutes  57.822 seconds)
+**Total running time of the script:** ( 1 minutes  1.284 seconds)
 
 
 

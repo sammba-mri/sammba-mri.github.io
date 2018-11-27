@@ -87,8 +87,7 @@
 <li class="toctree-l3"><a class="reference internal" href="plot_confounds.html">Confounds exploration</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">ICA on mouse</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#retrieve-the-fmri-data">Retrieve the fMRI data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#load-the-template">Load the template</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#load-the-brain-mask-of-the-template">Load the brain mask of the template</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#load-the-template-and-its-brain-mask">Load the template and its brain mask</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#register-to-the-template">Register to the template</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#run-ica">Run ICA</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#visualize-the-components">Visualize the components</a></li>
@@ -176,52 +175,27 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="load-the-template">
-<h2>Load the template<a class="headerlink" href="#load-the-template" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="load-the-template-and-its-brain-mask">
+<h2>Load the template and its brain mask<a class="headerlink" href="#load-the-template-and-its-brain-mask" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">dorr</span> <span class="o">=</span> <span class="n">data_fetchers</span><span class="o">.</span><span class="n">fetch_atlas_dorr_2008</span><span class="p">(</span><span class="n">downsample</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">)</span>
-<span class="n">template</span> <span class="o">=</span> <span class="n">dorr</span><span class="o">.</span><span class="n">t2</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="load-the-brain-mask-of-the-template">
-<h2>Load the brain mask of the template<a class="headerlink" href="#load-the-brain-mask-of-the-template" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
-
 <span class="n">dorr_masks</span> <span class="o">=</span> <span class="n">data_fetchers</span><span class="o">.</span><span class="n">fetch_masks_dorr_2008</span><span class="p">(</span><span class="n">downsample</span><span class="o">=</span><span class="s1">&#39;100&#39;</span><span class="p">)</span>
-<span class="n">template_brain_mask</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;dorr_100_mask.nii.gz&#39;</span><span class="p">)</span>
-<span class="n">dorr_masks</span><span class="o">.</span><span class="n">brain</span><span class="o">.</span><span class="n">to_filename</span><span class="p">(</span><span class="n">template_brain_mask</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Path to template is {} and to the brain mask is {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dorr</span><span class="o">.</span><span class="n">t2</span><span class="p">,</span>
+      <span class="n">dorr_masks</span><span class="o">.</span><span class="n">brain</span><span class="p">))</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span>  <span class="kc">True</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span>
- <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span>
- <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span>  <span class="kc">True</span>
- <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span>
- <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span>
- <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span>
- <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span>
- <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span>
- <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span>
- <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span> <span class="kc">False</span><span class="p">]</span>
-<span class="p">[</span> <span class="mi">8</span> <span class="mi">68</span><span class="p">]</span>
-<span class="p">[</span>  <span class="mi">0</span>   <span class="mi">2</span>   <span class="mi">4</span>   <span class="mi">5</span>   <span class="mi">6</span>   <span class="mi">7</span>   <span class="mi">8</span>   <span class="mi">9</span>  <span class="mi">10</span>  <span class="mi">11</span>  <span class="mi">12</span>  <span class="mi">13</span>  <span class="mi">14</span>  <span class="mi">16</span>  <span class="mi">17</span>  <span class="mi">18</span>  <span class="mi">19</span>  <span class="mi">20</span>
-  <span class="mi">22</span>  <span class="mi">23</span>  <span class="mi">25</span>  <span class="mi">43</span>  <span class="mi">44</span>  <span class="mi">45</span>  <span class="mi">47</span>  <span class="mi">51</span>  <span class="mi">52</span>  <span class="mi">53</span>  <span class="mi">54</span>  <span class="mi">55</span>  <span class="mi">57</span>  <span class="mi">59</span>  <span class="mi">61</span>  <span class="mi">63</span>  <span class="mi">64</span>  <span class="mi">66</span>
-  <span class="mi">68</span>  <span class="mi">76</span>  <span class="mi">77</span>  <span class="mi">85</span>  <span class="mi">95</span>  <span class="mi">99</span> <span class="mi">100</span> <span class="mi">101</span> <span class="mi">102</span> <span class="mi">103</span> <span class="mi">105</span> <span class="mi">106</span> <span class="mi">107</span> <span class="mi">109</span> <span class="mi">112</span> <span class="mi">113</span> <span class="mi">114</span> <span class="mi">115</span>
- <span class="mi">116</span> <span class="mi">118</span> <span class="mi">119</span> <span class="mi">120</span> <span class="mi">122</span> <span class="mi">123</span> <span class="mi">124</span> <span class="mi">125</span> <span class="mi">130</span> <span class="mi">131</span> <span class="mi">133</span> <span class="mi">140</span> <span class="mi">143</span> <span class="mi">144</span> <span class="mi">145</span> <span class="mi">146</span> <span class="mi">150</span> <span class="mi">151</span>
- <span class="mi">152</span> <span class="mi">153</span> <span class="mi">154</span> <span class="mi">155</span> <span class="mi">156</span> <span class="mi">157</span> <span class="mi">159</span> <span class="mi">161</span> <span class="mi">164</span> <span class="mi">166</span> <span class="mi">168</span> <span class="mi">174</span> <span class="mi">176</span> <span class="mi">180</span> <span class="mi">181</span> <span class="mi">185</span> <span class="mi">187</span> <span class="mi">190</span>
- <span class="mi">194</span> <span class="mi">199</span> <span class="mi">202</span> <span class="mi">204</span> <span class="mi">205</span> <span class="mi">207</span> <span class="mi">209</span> <span class="mi">210</span> <span class="mi">211</span> <span class="mi">212</span> <span class="mi">213</span> <span class="mi">214</span> <span class="mi">215</span> <span class="mi">216</span> <span class="mi">218</span> <span class="mi">219</span> <span class="mi">222</span> <span class="mi">223</span>
- <span class="mi">225</span> <span class="mi">230</span> <span class="mi">240</span> <span class="mi">242</span> <span class="mi">245</span> <span class="mi">247</span> <span class="mi">250</span><span class="p">]</span>
+<div class="sphx-glr-script-out highlight-default"><div class="highlight"><pre><span></span><span class="n">Path</span> <span class="n">to</span> <span class="n">template</span> <span class="ow">is</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">salma</span><span class="o">/</span><span class="n">nilearn_data</span><span class="o">/</span><span class="n">dorr_2008</span><span class="o">/</span><span class="n">Dorr_2008_average_100um</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span> <span class="ow">and</span> <span class="n">to</span> <span class="n">the</span> <span class="n">brain</span> <span class="n">mask</span> <span class="ow">is</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">salma</span><span class="o">/</span><span class="n">nilearn_data</span><span class="o">/</span><span class="n">dorr_2008</span><span class="o">/</span><span class="n">dorr_2008_brain_mask_100</span><span class="o">.</span><span class="n">nii</span><span class="o">.</span><span class="n">gz</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="register-to-the-template">
 <h2>Register to the template<a class="headerlink" href="#register-to-the-template" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sammba.registration</span> <span class="kn">import</span> <span class="n">TemplateRegistrator</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">sammba.registration</span> <span class="kn">import</span> <span class="n">TemplateRegistrator</span>
 
 <span class="n">registrator</span> <span class="o">=</span> <span class="n">TemplateRegistrator</span><span class="p">(</span><span class="n">brain_volume</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">caching</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-                                  <span class="n">template</span><span class="o">=</span><span class="n">template</span><span class="p">,</span> <span class="n">use_rats_tool</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-                                  <span class="n">template_brain_mask</span><span class="o">=</span><span class="n">template_brain_mask</span><span class="p">,</span>
-                                  <span class="n">registration_kind</span><span class="o">=</span><span class="s1">&#39;affine&#39;</span><span class="p">)</span>
+                                  <span class="n">template</span><span class="o">=</span><span class="n">dorr</span><span class="o">.</span><span class="n">t2</span><span class="p">,</span> <span class="n">use_rats_tool</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                                  <span class="n">template_brain_mask</span><span class="o">=</span><span class="n">dorr_masks</span><span class="o">.</span><span class="n">brain</span><span class="p">)</span>
 
 <span class="n">registered_funcs</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">anat</span><span class="p">,</span> <span class="n">func</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">retest</span><span class="o">.</span><span class="n">anat</span><span class="p">,</span> <span class="n">retest</span><span class="o">.</span><span class="n">func</span><span class="p">):</span>
@@ -259,7 +233,7 @@
 </pre></div>
 </div>
 <img alt="../../_images/sphx_glr_plot_ica_001.png" class="align-center" src="../../_images/sphx_glr_plot_ica_001.png" />
-<p><strong>Total running time of the script:</strong> ( 37 minutes  4.369 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 574 minutes  29.807 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/plot_ica.py" download=""><code class="xref download docutils literal"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_ica.py</span></code></a></div>
