@@ -1,187 +1,255 @@
 
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>sammba.registration.TemplateRegistrator &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
-  
 
-  
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/gallery.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sammba-MRI:Small mammals NeuroImaging in Python &#8212; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
+    <link rel="stylesheet" href="../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/gallery.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="../_static/copybutton.js"></script>
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="sammba.registration.Coregistrator" href="sammba.registration.Coregistrator.html" />
-    <link rel="prev" title="sammba.registration.FMRISession" href="sammba.registration.FMRISession.html" /> 
+    <link rel="next" title="5.3.7. sammba.registration.Coregistrator" href="sammba.registration.Coregistrator.html" />
+    <link rel="prev" title="5.3.5. sammba.registration.FMRISession" href="sammba.registration.FMRISession.html" />
+<meta content="True" name="HandheldFriendly">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="keywords" content="sammba-mri, neuroimaging, python, small animal, rodent, mouse, rat">
 
-  
-  <script src="../_static/js/modernizr.min.js"></script>
 
-</head>
+<script type="text/javascript">
+function updateTopMenuPosition(height, width) {
+    if($(window).scrollTop() > height && $(window).outerWidth() > 1024) {
+        //begin to scroll
+        $('.related-wrapper').css("z-index", 1000)
+        $('.related-wrapper').css("position", "sticky")
+        $('.related-wrapper').css("top", 0)
+        $('.related-wrapper').css("width", width)
+    } else {
+        //lock it back into place
+        $('.related-wrapper').css("position", "relative")
+        $('.related-wrapper').css("top", 0)
+    }
+}
 
-<body class="wy-body-for-nav">
+$(function() {
+    var banner_height = $('#logo-banner').outerHeight()
+    var banner_width = $('#logo-banner').outerWidth()
+    var width = $('.related-wrapper').css("height", $('.related').outerHeight())
 
-   
-  <div class="wy-grid-for-nav">
+    updateTopMenuPosition(banner_height, width)
 
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+    $(window).scroll(function(event) {
+        updateTopMenuPosition(banner_height, width)
+    });
 
-          
-            <a href="../index.html" class="icon icon-home"> sammba-MRI
-          
+    $(window).resize(function(event) {
+        var banner_width = $('#logo-banner').outerWidth()
+        var menu_height = $('.related').outerHeight()
+        $('.related').css("width", banner_width)
+        $('.related-wrapper').css("height", menu_height)
+        updateTopMenuPosition(banner_height, width)
+    })
+});
+</script>
+<script type="text/javascript">
+function updateSideBarPosition(top, offset, sections) {
+    var pos = $(window).scrollTop()
+    // Lock the table of content to a fixed position once we scroll enough
+    var topShift = 2 * offset
+    if(pos > top + topShift + 1) {
+        // begin to scroll with sticky menu bar
+        var topShift = -topShift + 1
+        if ($(window).outerWidth() < 1024) {
+            // compensate top menu that disappears
+            topShift -= offset + 1
+        }
+        $('.sphinxsidebarwrapper').css("position", "fixed")
+        $('.sphinxsidebarwrapper').css("top", topShift)
+    }
+    else {
+        //lock it back into place
+        $('.sphinxsidebarwrapper').css("position", "relative")
+        $('.sphinxsidebarwrapper').css("top",0)
+    }
 
-          
-          </a>
+    // Highlight the current section
+    i = 0
+    current_section = 0
+    $('a.internal').removeClass('active')
+    for(i in sections) {
+        if(sections[i] > pos) {
+            break
+        };
+        if($('a.internal[href$="' + i + '"]').is(':visible')){
+            current_section = i
+        };
+    }
+    $('a.internal[href$="' + current_section + '"]').addClass('active')
+    $('a.internal[href$="' + current_section + '"]').parent().addClass('active')
+}
 
-          
-            
-            
-          
+$(function () {
+    // Lock the table of content to a fixed position once we scroll enough
+    var tocOffset = $('.related-wrapper').outerHeight()
+    var marginTop = parseFloat($('.sphinxsidebarwrapper').css('margin-top').replace(/auto/, 0))
+    var top = $('.sphinxsidebarwrapper').offset().top - marginTop
+    sections = {}
+    url = document.URL.replace(/#.*$/, "")
 
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+    // Grab positions of our sections
+    $('.headerlink').each(function(){
+        sections[this.href.replace(url, '')] = $(this).offset().top - 50
+    });
+
+    updateSideBarPosition(top, tocOffset, sections)
+
+    $(window).scroll(function(event) {
+        updateSideBarPosition(top, tocOffset, sections)
+    });
+
+    $(window).resize(function(event) {
+        tocOffset = $('.related-wrapper').outerHeight()
+        updateSideBarPosition(top, tocOffset, sections)
+    });
+});
+</script>
+
+
+<script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-41920728-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+  </head><body>
+<div id="logo-banner">
+  <!-- A tag cloud to make it easy for people to find what they are
+                         looking for -->
+ <div class="tags">
+  <ul>
+    <li>
+      <big><a href="../auto_examples/01_template/plot_register.html">Template creation</a></big>
+    </li>
+    <li>
+      <small><a href="../auto_examples/02_preprocessing/plot_fmri_coregistration.html">fMRI preprocessing</a></small>
+    </li>
+    <li>
+      <a href="../modules/reference.html#module-sammba.data_fetchers">Datasets</a>
+    </li>
+  </ul>
+ </div>
+
+  <div class="banner">
+    <h1>Sammba-MRI:</h1>
+    <h2>Small mammals NeuroImaging in Python</h2>
+  </div>
+  <div class="search_form">
+    <div class="gcse-search" id="cse" style="width: 100%;"></div>
+    <script>
+      (function() {
+        var cx = '017289614950330089114:elrt9qoutrq';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+  </div>
 </div>
 
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../user_guide.html">User guide: table of contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../auto_examples/index.html">Gallery of Examples</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../reference.html">sammba-MRI API Reference</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.io_conversions"><code class="docutils literal"><span class="pre">sammba.io_conversions</span></code>: From scanner to NIFTI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.data_fetchers"><code class="docutils literal"><span class="pre">sammba.data_fetchers</span></code>: Datasets and atlas</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../reference.html#module-sammba.registration"><code class="docutils literal"><span class="pre">sammba.registration</span></code>: Registration utilities</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="sammba.registration.anats_to_common.html">sammba.registration.anats_to_common</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sammba.registration.anats_to_template.html">sammba.registration.anats_to_template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sammba.registration.fmri_sessions_to_template.html">sammba.registration.fmri_sessions_to_template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sammba.registration.coregister_fmri_session.html">sammba.registration.coregister_fmri_session</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sammba.registration.create_pipeline_graph.html">sammba.registration.create_pipeline_graph</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sammba.registration.FMRISession.html">sammba.registration.FMRISession</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">sammba.registration.TemplateRegistrator</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sammba.registration.Coregistrator.html">sammba.registration.Coregistrator</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../reference.html#module-sammba.segmentation"><code class="docutils literal"><span class="pre">sammba.segmentation</span></code>: Segmentation utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../reference.html#external-tools-wrapped-in-python">External tools wrapped in python</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../authors.html">Contributors and Acknowledgements</a></li>
-</ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">sammba-MRI</a>
-        
-      </nav>
 
 
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
+<div class=related-wrapper>
     
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-          <li><a href="../reference.html">sammba-MRI API Reference</a> &raquo;</li>
-        
-      <li>sammba.registration.TemplateRegistrator</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a></li>
+        <li class="right" >
+          <a href="sammba.registration.Coregistrator.html" title="5.3.7. sammba.registration.Coregistrator"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="sammba.registration.FMRISession.html" title="5.3.5. sammba.registration.FMRISession"
+             accesskey="P">previous</a> |</li>
+<li><a href="../index.html">Sammba-MRI Home</a> |&nbsp;</li>
+<li><a href="../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="../auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="../reference.html">Reference</a> |&nbsp;</li>
+<li id="navbar-about"><a href="../authors.html">About</a>|&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../user_guide.html" >User guide: table of contents</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../reference.html" accesskey="U">5. sammba-MRI API Reference</a> &#187;</li> 
+      </ul>
+    </div>
+</div>
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+
+<h4> Giving credit </h4>
+  <ul class="simple">
+    <li><p>Please consider <a href="../authors.html#citing">citing the
+                    papers</a>.</p></li>
   </ul>
 
-  
-  <hr/>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="sammba.registration.FMRISession.html"
+                        title="previous chapter">5.3.5. sammba.registration.FMRISession</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="sammba.registration.Coregistrator.html"
+                        title="next chapter">5.3.7. sammba.registration.Coregistrator</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
             
   <div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">This page is a reference documentation. It only explains the class
+<p class="admonition-title">Note</p>
+<p>This page is a reference documentation. It only explains the class
 signature, and not how to use it. Please refer to the
 <a class="reference internal" href="../user_guide.html#user-guide"><span class="std std-ref">user guide</span></a> for the big picture.</p>
 </div>
 <div class="section" id="sammba-registration-templateregistrator">
-<h1>sammba.registration.TemplateRegistrator<a class="headerlink" href="#sammba-registration-templateregistrator" title="Permalink to this headline">¶</a></h1>
+<h1>5.3.6. sammba.registration.TemplateRegistrator<a class="headerlink" href="#sammba-registration-templateregistrator" title="Permalink to this headline">¶</a></h1>
 <dl class="class">
 <dt id="sammba.registration.TemplateRegistrator">
-<em class="property">class </em><code class="descclassname">sammba.registration.</code><code class="descname">TemplateRegistrator</code><span class="sig-paren">(</span><em>template</em>, <em>brain_volume</em>, <em>template_brain_mask=None</em>, <em>dilated_template_mask=None</em>, <em>output_dir=None</em>, <em>caching=False</em>, <em>verbose=True</em>, <em>use_rats_tool=True</em>, <em>clipping_fraction=0.2</em>, <em>convergence=0.005</em>, <em>registration_kind='nonlinear'</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">sammba.registration.</code><code class="sig-name descname">TemplateRegistrator</code><span class="sig-paren">(</span><em class="sig-param">template</em>, <em class="sig-param">brain_volume</em>, <em class="sig-param">template_brain_mask=None</em>, <em class="sig-param">dilated_template_mask=None</em>, <em class="sig-param">output_dir=None</em>, <em class="sig-param">caching=False</em>, <em class="sig-param">verbose=True</em>, <em class="sig-param">use_rats_tool=True</em>, <em class="sig-param">clipping_fraction=0.2</em>, <em class="sig-param">convergence=0.005</em>, <em class="sig-param">registration_kind='nonlinear'</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class for registering anatomical and possibly other modality images from
 one animal to a given head template.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>template</strong> : str</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>template</strong> : str</p>
 <blockquote>
 <div><p>Path to the head template image.</p>
 </div></blockquote>
@@ -222,88 +290,98 @@ Otherwise, a histogram-based brain segmentation is used.</p>
 </div></blockquote>
 <p><strong>clipping_fraction</strong> : float or None, optional</p>
 <blockquote>
-<div><p>Clip level fraction is passed to
-sammba.externals.nipype.interfaces.afni.Unifize, to tune
-the bias correction step done prior to brain mask segmentation.
+<div><p>Clip level fraction is passed to nipype.interfaces.afni.Unifize, to
+tune the bias correction step done prior to brain mask segmentation.
 Only values between 0.1 and 0.9 are accepted. Smaller fractions tend to
 make the mask larger.
 If None, no unifization is done for brain mask computation.</p>
 </div></blockquote>
 <p><strong>convergence</strong> : float, optional</p>
 <blockquote>
-<div><p>Convergence limit, passed to
-sammba.externals.nipype.interfaces.afni.Allineate</p>
+<div><p>Convergence limit, passed to nipype.interfaces.afni.Allineate</p>
 </div></blockquote>
 <p><strong>registration_kind</strong> : one of {‘rigid’, ‘affine’, ‘nonlinear’}, optional</p>
-<blockquote class="last">
+<blockquote>
 <div><p>The allowed transform kind from the anatomical image to the template.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 <p class="rubric">Attributes</p>
-<table border="1" class="docutils">
+<table class="docutils align-default">
 <colgroup>
-<col width="21%" />
-<col width="79%" />
+<col style="width: 21%" />
+<col style="width: 79%" />
 </colgroup>
-<tbody valign="top">
-<tr class="row-odd"><td><cite>template_brain_</cite></td>
-<td>(str) Path to the brain extracted file from the template image</td>
+<tbody>
+<tr class="row-odd"><td><p><cite>template_brain_</cite></p></td>
+<td><p>(str) Path to the brain extracted file from the template image</p></td>
 </tr>
-<tr class="row-even"><td><cite>anat_brain_</cite></td>
-<td>(str) Path to the brain extracted file from the anatomical image</td>
+<tr class="row-even"><td><p><cite>anat_brain_</cite></p></td>
+<td><p>(str) Path to the brain extracted file from the anatomical image</p></td>
 </tr>
 </tbody>
 </table>
 <dl class="method">
 <dt id="sammba.registration.TemplateRegistrator.__init__">
-<code class="descname">__init__</code><span class="sig-paren">(</span><em>template</em>, <em>brain_volume</em>, <em>template_brain_mask=None</em>, <em>dilated_template_mask=None</em>, <em>output_dir=None</em>, <em>caching=False</em>, <em>verbose=True</em>, <em>use_rats_tool=True</em>, <em>clipping_fraction=0.2</em>, <em>convergence=0.005</em>, <em>registration_kind='nonlinear'</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.__init__" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">template</em>, <em class="sig-param">brain_volume</em>, <em class="sig-param">template_brain_mask=None</em>, <em class="sig-param">dilated_template_mask=None</em>, <em class="sig-param">output_dir=None</em>, <em class="sig-param">caching=False</em>, <em class="sig-param">verbose=True</em>, <em class="sig-param">use_rats_tool=True</em>, <em class="sig-param">clipping_fraction=0.2</em>, <em class="sig-param">convergence=0.005</em>, <em class="sig-param">registration_kind='nonlinear'</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize self.  See help(type(self)) for accurate signature.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="sammba.registration.TemplateRegistrator.fit_anat">
-<code class="descname">fit_anat</code><span class="sig-paren">(</span><em>anat_file</em>, <em>brain_mask_file=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.fit_anat" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit_anat</code><span class="sig-paren">(</span><em class="sig-param">anat_file</em>, <em class="sig-param">brain_mask_file=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.fit_anat" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimates registration from anatomical to template space.</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="sammba.registration.TemplateRegistrator.fit_modality">
-<code class="descname">fit_modality</code><span class="sig-paren">(</span><em>in_file</em>, <em>modality</em>, <em>slice_timing=True</em>, <em>t_r=None</em>, <em>prior_rigid_body_registration=False</em>, <em>voxel_size=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.fit_modality" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>Estimates registration from the space of a given modality to</dt>
-<dd>the template space.</dd>
-</dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>in_file</strong> : str</p>
+<code class="sig-name descname">fit_modality</code><span class="sig-paren">(</span><em class="sig-param">in_file</em>, <em class="sig-param">modality</em>, <em class="sig-param">slice_timing=True</em>, <em class="sig-param">t_r=None</em>, <em class="sig-param">prior_rigid_body_registration=None</em>, <em class="sig-param">reorient_only=False</em>, <em class="sig-param">voxel_size=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.fit_modality" title="Permalink to this definition">¶</a></dt>
+<dd><p>Estimates registration from the space of a given modality to
+the template space.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>in_file</strong> : str</p>
 <blockquote>
 <div><p>Path to the modality image. M0 file is expected for perfusion.</p>
 </div></blockquote>
 <p><strong>modality</strong> : one of {‘func’, ‘perf’}</p>
-<blockquote class="last">
+<blockquote>
 <div><p>Name of the modality.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+<p><strong>slice_timing</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, slice timing correction is performed</p>
+</div></blockquote>
+<p><strong>t_r</strong> : float, optional</p>
+<blockquote>
+<div><p>Repetition time, only needed for slice timing correction.</p>
+</div></blockquote>
+<p><strong>prior_rigid_body_registration</strong> : bool, optional</p>
+<blockquote>
+<div><p>If True, a rigid-body registration of the anat to the modality is
+performed prior to the warp. Useful if the images headers have
+missing/wrong information.
+NOTE: prior_rigid_body_registration is deprecated from 0.1 and
+will be removed in next release. Use <cite>reorient_only</cite> instead.</p>
+</div></blockquote>
+<p><strong>reorient_only</strong> :  bool, optional</p>
+<blockquote>
+<div><p>If True, the rigid-body registration of the anat to the func is
+not performed and only reorientation is done.</p>
+</div></blockquote>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="sammba.registration.TemplateRegistrator.fit_transform">
-<code class="descname">fit_transform</code><span class="sig-paren">(</span><em>X</em>, <em>y=None</em>, <em>**fit_params</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.fit_transform" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">fit_transform</code><span class="sig-paren">(</span><em class="sig-param">X</em>, <em class="sig-param">y=None</em>, <em class="sig-param">**fit_params</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.fit_transform" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit to data, then transform it.</p>
 <p>Fits transformer to X and y with optional parameters fit_params
 and returns a transformed version of X.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>X</strong> : numpy array of shape [n_samples, n_features]</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>X</strong> : numpy array of shape [n_samples, n_features]</p>
 <blockquote>
 <div><p>Training set.</p>
 </div></blockquote>
@@ -311,138 +389,140 @@ and returns a transformed version of X.</p>
 <blockquote>
 <div><p>Target values.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>X_new</strong> : numpy array of shape [n_samples, n_features_new]</p>
-<blockquote class="last">
+<p><strong>**fit_params</strong> : dict</p>
+<blockquote>
+<div><p>Additional fit parameters.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>X_new</strong> : numpy array of shape [n_samples, n_features_new]</p>
+<blockquote>
 <div><p>Transformed array.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="sammba.registration.TemplateRegistrator.get_params">
-<code class="descname">get_params</code><span class="sig-paren">(</span><em>deep=True</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.get_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">get_params</code><span class="sig-paren">(</span><em class="sig-param">deep=True</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.get_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>deep</strong> : boolean, optional</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>deep</strong> : bool, default=True</p>
 <blockquote>
 <div><p>If True, will return the parameters for this estimator and
 contained subobjects that are estimators.</p>
 </div></blockquote>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>params</strong> : mapping of string to any</p>
-<blockquote class="last">
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>params</strong> : mapping of string to any</p>
+<blockquote>
 <div><p>Parameter names mapped to their values.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="sammba.registration.TemplateRegistrator.inverse_transform_towards_modality">
-<code class="descname">inverse_transform_towards_modality</code><span class="sig-paren">(</span><em>in_file</em>, <em>modality</em>, <em>interpolation='wsinc5'</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.inverse_transform_towards_modality" title="Permalink to this definition">¶</a></dt>
-<dd><p>Trasnforms the given file from template space to modality space.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>in_file</strong> : str</p>
+<code class="sig-name descname">inverse_transform_towards_modality</code><span class="sig-paren">(</span><em class="sig-param">in_file</em>, <em class="sig-param">modality</em>, <em class="sig-param">interpolation='wsinc5'</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.inverse_transform_towards_modality" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms the given file from template space to modality space.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>in_file</strong> : str</p>
 <blockquote>
 <div><p>Path to the file in the same space as the modality image.</p>
 </div></blockquote>
-<p><strong>interpolation: one of {‘nearestneighbour’, ‘trilinear’, ‘tricubic’,</strong></p>
+<p><strong>interpolation</strong> : one of {‘nearestneighbour’, ‘trilinear’, ‘tricubic’,</p>
 <blockquote>
 <div><blockquote>
 <div><p>‘triquintic’, ‘wsinc5’}, optional</p>
 </div></blockquote>
 <p>The interpolation method used for the transformed file.</p>
 </div></blockquote>
-<p><strong>voxel_size: 3-tuple or None, optional</strong></p>
-<blockquote class="last">
+<p><strong>voxel_size</strong> : 3-tuple or None, optional</p>
+<blockquote>
 <div><p>The target voxels size. If None, the final voxels size will match
 the template.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>transformed_file</strong> : str</p>
+<blockquote>
+<div><p>Path to the transformed file, in template space.</p>
+</div></blockquote>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="sammba.registration.TemplateRegistrator.segment">
-<code class="descname">segment</code><span class="sig-paren">(</span><em>in_file</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.segment" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">segment</code><span class="sig-paren">(</span><em class="sig-param">in_file</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.segment" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bias field correction and brain extraction</p>
 </dd></dl>
 
 <dl class="method">
 <dt id="sammba.registration.TemplateRegistrator.set_params">
-<code class="descname">set_params</code><span class="sig-paren">(</span><em>**params</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.set_params" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">set_params</code><span class="sig-paren">(</span><em class="sig-param">**params</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.set_params" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
 (such as pipelines). The latter have parameters of the form
-<code class="docutils literal"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
+<code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s possible to update each
 component of a nested object.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">self</td>
-</tr>
-</tbody>
-</table>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>**params</strong> : dict</p>
+<blockquote>
+<div><p>Estimator parameters.</p>
+</div></blockquote>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>self</strong> : object</p>
+<blockquote>
+<div><p>Estimator instance.</p>
+</div></blockquote>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="sammba.registration.TemplateRegistrator.transform_anat_like">
-<code class="descname">transform_anat_like</code><span class="sig-paren">(</span><em>in_file</em>, <em>interpolation='wsinc5'</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.transform_anat_like" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>Transforms the given in_file from anatomical space to template</dt>
-<dd>space.</dd>
-</dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>in_file: str</strong></p>
+<code class="sig-name descname">transform_anat_like</code><span class="sig-paren">(</span><em class="sig-param">in_file</em>, <em class="sig-param">interpolation='wsinc5'</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.transform_anat_like" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms the given in_file from anatomical space to template
+space.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>in_file</strong> : str</p>
 <blockquote>
 <div><p>Path to the file in the same space as the anatomical image.</p>
 </div></blockquote>
-<p><strong>interpolation: one of {‘nearestneighbour’, ‘trilinear’, ‘tricubic’,</strong></p>
-<blockquote class="last">
+<p><strong>interpolation</strong> : one of {‘nearestneighbour’, ‘trilinear’, ‘tricubic’,</p>
+<blockquote>
 <div><blockquote>
 <div><p>‘triquintic’, ‘wsinc5’}, optional</p>
 </div></blockquote>
 <p>The interpolation method used for the transformed file.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>transformed_file</strong> : str</p>
+<blockquote>
+<div><p>Path to the transformed file, in template space.</p>
+</div></blockquote>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="method">
 <dt id="sammba.registration.TemplateRegistrator.transform_modality_like">
-<code class="descname">transform_modality_like</code><span class="sig-paren">(</span><em>in_file</em>, <em>modality</em>, <em>interpolation='wsinc5'</em>, <em>voxel_size=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.transform_modality_like" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt>Transforms the given file from the space of the given modality to</dt>
-<dd>the template space. If the given modality has been corrected for
-EPI distorsions, the same correction is applied.</dd>
-</dl>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><p class="first"><strong>in_file</strong> : str</p>
+<code class="sig-name descname">transform_modality_like</code><span class="sig-paren">(</span><em class="sig-param">in_file</em>, <em class="sig-param">modality</em>, <em class="sig-param">interpolation='wsinc5'</em>, <em class="sig-param">voxel_size=None</em><span class="sig-paren">)</span><a class="headerlink" href="#sammba.registration.TemplateRegistrator.transform_modality_like" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms the given file from the space of the given modality to
+the template space. If the given modality has been corrected for
+EPI distorsions, the same correction is applied.</p>
+<dl class="field-list">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>in_file</strong> : str</p>
 <blockquote>
 <div><p>Path to the file in the same space as the modality image.</p>
 </div></blockquote>
@@ -458,14 +538,18 @@ EPI distorsions, the same correction is applied.</dd>
 <p>The interpolation method used for the transformed file.</p>
 </div></blockquote>
 <p><strong>voxel_size</strong> : 3-tuple or None, optional</p>
-<blockquote class="last">
+<blockquote>
 <div><p>The target voxels size. If None, the final voxels size will match
 the template.</p>
 </div></blockquote>
-</td>
-</tr>
-</tbody>
-</table>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>transformed_file</strong> : str</p>
+<blockquote>
+<div><p>Path to the transformed file, in template space.</p>
+</div></blockquote>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -473,69 +557,18 @@ the template.</p>
 <div style='clear:both'></div></div>
 
 
-           </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="sammba.registration.Coregistrator.html" class="btn btn-neutral float-right" title="sammba.registration.Coregistrator" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="sammba.registration.FMRISession.html" class="btn btn-neutral" title="sammba.registration.FMRISession" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2017, The sammba-MRI developers.
-
-    </p>
-  </div> 
-
-</footer>
-
         </div>
       </div>
+      <div class="clearer"></div>
+    </div>
 
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+    <div class="footer">
+            &copy; 2017, The sammba-MRI developers.
+        <span style="padding-left: 5ex;">
+          <a href="../_sources/generated/sammba.registration.TemplateRegistrator.rst.txt"
+        	 rel="nofollow">Show this page source</a>
+        </span>
+    </div>
+  </body>
 </html>

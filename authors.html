@@ -1,153 +1,239 @@
 
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Contributors and Acknowledgements &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
-  
 
-  
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sammba-MRI:Small mammals NeuroImaging in Python &#8212; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="interfaces.preproc_tools" href="interfaces/generated/sammba.interfaces.preproc_tools.html" /> 
+    <link rel="prev" title="6.3.2. ICA on mouse" href="auto_examples/03_connectivity/plot_ica.html" />
+<meta content="True" name="HandheldFriendly">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="keywords" content="sammba-mri, neuroimaging, python, small animal, rodent, mouse, rat">
 
-  
-  <script src="_static/js/modernizr.min.js"></script>
 
-</head>
+<script type="text/javascript">
+function updateTopMenuPosition(height, width) {
+    if($(window).scrollTop() > height && $(window).outerWidth() > 1024) {
+        //begin to scroll
+        $('.related-wrapper').css("z-index", 1000)
+        $('.related-wrapper').css("position", "sticky")
+        $('.related-wrapper').css("top", 0)
+        $('.related-wrapper').css("width", width)
+    } else {
+        //lock it back into place
+        $('.related-wrapper').css("position", "relative")
+        $('.related-wrapper').css("top", 0)
+    }
+}
 
-<body class="wy-body-for-nav">
+$(function() {
+    var banner_height = $('#logo-banner').outerHeight()
+    var banner_width = $('#logo-banner').outerWidth()
+    var width = $('.related-wrapper').css("height", $('.related').outerHeight())
 
-   
-  <div class="wy-grid-for-nav">
+    updateTopMenuPosition(banner_height, width)
 
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+    $(window).scroll(function(event) {
+        updateTopMenuPosition(banner_height, width)
+    });
 
-          
-            <a href="index.html" class="icon icon-home"> sammba-MRI
-          
+    $(window).resize(function(event) {
+        var banner_width = $('#logo-banner').outerWidth()
+        var menu_height = $('.related').outerHeight()
+        $('.related').css("width", banner_width)
+        $('.related-wrapper').css("height", menu_height)
+        updateTopMenuPosition(banner_height, width)
+    })
+});
+</script>
+<script type="text/javascript">
+function updateSideBarPosition(top, offset, sections) {
+    var pos = $(window).scrollTop()
+    // Lock the table of content to a fixed position once we scroll enough
+    var topShift = 2 * offset
+    if(pos > top + topShift + 1) {
+        // begin to scroll with sticky menu bar
+        var topShift = -topShift + 1
+        if ($(window).outerWidth() < 1024) {
+            // compensate top menu that disappears
+            topShift -= offset + 1
+        }
+        $('.sphinxsidebarwrapper').css("position", "fixed")
+        $('.sphinxsidebarwrapper').css("top", topShift)
+    }
+    else {
+        //lock it back into place
+        $('.sphinxsidebarwrapper').css("position", "relative")
+        $('.sphinxsidebarwrapper').css("top",0)
+    }
 
-          
-          </a>
+    // Highlight the current section
+    i = 0
+    current_section = 0
+    $('a.internal').removeClass('active')
+    for(i in sections) {
+        if(sections[i] > pos) {
+            break
+        };
+        if($('a.internal[href$="' + i + '"]').is(':visible')){
+            current_section = i
+        };
+    }
+    $('a.internal[href$="' + current_section + '"]').addClass('active')
+    $('a.internal[href$="' + current_section + '"]').parent().addClass('active')
+}
 
-          
-            
-            
-          
+$(function () {
+    // Lock the table of content to a fixed position once we scroll enough
+    var tocOffset = $('.related-wrapper').outerHeight()
+    var marginTop = parseFloat($('.sphinxsidebarwrapper').css('margin-top').replace(/auto/, 0))
+    var top = $('.sphinxsidebarwrapper').offset().top - marginTop
+    sections = {}
+    url = document.URL.replace(/#.*$/, "")
 
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+    // Grab positions of our sections
+    $('.headerlink').each(function(){
+        sections[this.href.replace(url, '')] = $(this).offset().top - 50
+    });
+
+    updateSideBarPosition(top, tocOffset, sections)
+
+    $(window).scroll(function(event) {
+        updateSideBarPosition(top, tocOffset, sections)
+    });
+
+    $(window).resize(function(event) {
+        tocOffset = $('.related-wrapper').outerHeight()
+        updateSideBarPosition(top, tocOffset, sections)
+    });
+});
+</script>
+
+
+<script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-41920728-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+  </head><body>
+<div id="logo-banner">
+  <!-- A tag cloud to make it easy for people to find what they are
+                         looking for -->
+ <div class="tags">
+  <ul>
+    <li>
+      <big><a href="auto_examples/01_template/plot_register.html">Template creation</a></big>
+    </li>
+    <li>
+      <small><a href="auto_examples/02_preprocessing/plot_fmri_coregistration.html">fMRI preprocessing</a></small>
+    </li>
+    <li>
+      <a href="modules/reference.html#module-sammba.data_fetchers">Datasets</a>
+    </li>
+  </ul>
+ </div>
+
+  <div class="banner">
+    <h1>Sammba-MRI:</h1>
+    <h2>Small mammals NeuroImaging in Python</h2>
+  </div>
+  <div class="search_form">
+    <div class="gcse-search" id="cse" style="width: 100%;"></div>
+    <script>
+      (function() {
+        var cx = '017289614950330089114:elrt9qoutrq';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+  </div>
 </div>
 
-          
-        </div>
 
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User guide: table of contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Gallery of Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">sammba-MRI API Reference</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributors and Acknowledgements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#external-projects-used-and-papers-to-cite">External projects used and papers to cite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#people">People</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#funding">Funding</a></li>
+
+<div class=related-wrapper>
+    
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a></li>
+        <li class="right" >
+          <a href="auto_examples/03_connectivity/plot_ica.html" title="6.3.2. ICA on mouse"
+             accesskey="P">previous</a> |</li>
+<li><a href="index.html">Sammba-MRI Home</a> |&nbsp;</li>
+<li><a href="user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="reference.html">Reference</a> |&nbsp;</li>
+<li id="navbar-about"><a href="#">About</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+</div>
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+
+<h4> Giving credit </h4>
+  <ul class="simple">
+    <li><p>Please consider <a href="##citing">citing the
+                    papers</a>.</p></li>
+  </ul>
+
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Contributors and Acknowledgements</a><ul>
+<li><a class="reference internal" href="#external-projects-used-and-papers-to-cite">External projects used and papers to cite</a></li>
+<li><a class="reference internal" href="#people">People</a></li>
+<li><a class="reference internal" href="#funding">Funding</a></li>
 </ul>
 </li>
 </ul>
 
-            
-          
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="auto_examples/03_connectivity/plot_ica.html"
+                        title="previous chapter">6.3.2. ICA on mouse</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
-    </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">sammba-MRI</a>
-        
-      </nav>
-
-
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>Contributors and Acknowledgements</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
-  </ul>
-
-  
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
             
   <div class="section" id="contributors-and-acknowledgements">
 <h1>Contributors and Acknowledgements<a class="headerlink" href="#contributors-and-acknowledgements" title="Permalink to this headline">¶</a></h1>
@@ -155,7 +241,7 @@
 <h2>External projects used and papers to cite<a class="headerlink" href="#external-projects-used-and-papers-to-cite" title="Permalink to this headline">¶</a></h2>
 <p>sammba-mri is essentially a wrapper for a number of other tools, adapting them
 for use with small mammal brain MRI. There is not yet a publication about
-sammba-MRI itself. If you use it, please cite the tool name <code class="docutils literal"><span class="pre">SaMmBa-MRI</span></code> and
+sammba-MRI itself. If you use it, please cite the tool name <code class="docutils literal notranslate"><span class="pre">SaMmBa-MRI</span></code> and
 the website address.</p>
 <p>DICOM import uses the dcmdump tool of <a class="reference external" href="http://dicom.offis.de/dcmtk.php.en">OFFIS dcmtk</a>. Export to NIfTI uses <a class="reference external" href="http://nipy.org/nibabel/">nibabel</a>. Understanding the affine was greatly aided by
 reading common.py from <a class="reference external" href="http://dicom2nifti.readthedocs.io/en/latest/">dicom2nifti</a>.</p>
@@ -191,67 +277,18 @@ Association France Alzheimer and Fondation Plan Alzheimer.</p>
 </div>
 
 
-           </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-      
-        <a href="interfaces/generated/sammba.interfaces.preproc_tools.html" class="btn btn-neutral" title="interfaces.preproc_tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2017, The sammba-MRI developers.
-
-    </p>
-  </div> 
-
-</footer>
-
         </div>
       </div>
+      <div class="clearer"></div>
+    </div>
 
-    </section>
-
-  </div>
-  
-
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+    <div class="footer">
+            &copy; 2017, The sammba-MRI developers.
+        <span style="padding-left: 5ex;">
+          <a href="_sources/authors.rst.txt"
+        	 rel="nofollow">Show this page source</a>
+        </span>
+    </div>
+  </body>
 </html>

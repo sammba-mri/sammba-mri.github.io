@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sammba-MRI:Small mammals NeuroImaging in Python &#8212; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
+    <link rel="stylesheet" href="../../_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/gallery.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="6. Gallery of Examples" href="../../auto_examples/index.html" />
+    <link rel="prev" title="5.5.1. sammba.graphs.create_pipeline_graph" href="../../generated/sammba.graphs.create_pipeline_graph.html" />
+<meta content="True" name="HandheldFriendly">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="keywords" content="sammba-mri, neuroimaging, python, small animal, rodent, mouse, rat">
+
+
+<script type="text/javascript">
+function updateTopMenuPosition(height, width) {
+    if($(window).scrollTop() > height && $(window).outerWidth() > 1024) {
+        //begin to scroll
+        $('.related-wrapper').css("z-index", 1000)
+        $('.related-wrapper').css("position", "sticky")
+        $('.related-wrapper').css("top", 0)
+        $('.related-wrapper').css("width", width)
+    } else {
+        //lock it back into place
+        $('.related-wrapper').css("position", "relative")
+        $('.related-wrapper').css("top", 0)
+    }
+}
+
+$(function() {
+    var banner_height = $('#logo-banner').outerHeight()
+    var banner_width = $('#logo-banner').outerWidth()
+    var width = $('.related-wrapper').css("height", $('.related').outerHeight())
+
+    updateTopMenuPosition(banner_height, width)
+
+    $(window).scroll(function(event) {
+        updateTopMenuPosition(banner_height, width)
+    });
+
+    $(window).resize(function(event) {
+        var banner_width = $('#logo-banner').outerWidth()
+        var menu_height = $('.related').outerHeight()
+        $('.related').css("width", banner_width)
+        $('.related-wrapper').css("height", menu_height)
+        updateTopMenuPosition(banner_height, width)
+    })
+});
+</script>
+<script type="text/javascript">
+function updateSideBarPosition(top, offset, sections) {
+    var pos = $(window).scrollTop()
+    // Lock the table of content to a fixed position once we scroll enough
+    var topShift = 2 * offset
+    if(pos > top + topShift + 1) {
+        // begin to scroll with sticky menu bar
+        var topShift = -topShift + 1
+        if ($(window).outerWidth() < 1024) {
+            // compensate top menu that disappears
+            topShift -= offset + 1
+        }
+        $('.sphinxsidebarwrapper').css("position", "fixed")
+        $('.sphinxsidebarwrapper').css("top", topShift)
+    }
+    else {
+        //lock it back into place
+        $('.sphinxsidebarwrapper').css("position", "relative")
+        $('.sphinxsidebarwrapper').css("top",0)
+    }
+
+    // Highlight the current section
+    i = 0
+    current_section = 0
+    $('a.internal').removeClass('active')
+    for(i in sections) {
+        if(sections[i] > pos) {
+            break
+        };
+        if($('a.internal[href$="' + i + '"]').is(':visible')){
+            current_section = i
+        };
+    }
+    $('a.internal[href$="' + current_section + '"]').addClass('active')
+    $('a.internal[href$="' + current_section + '"]').parent().addClass('active')
+}
+
+$(function () {
+    // Lock the table of content to a fixed position once we scroll enough
+    var tocOffset = $('.related-wrapper').outerHeight()
+    var marginTop = parseFloat($('.sphinxsidebarwrapper').css('margin-top').replace(/auto/, 0))
+    var top = $('.sphinxsidebarwrapper').offset().top - marginTop
+    sections = {}
+    url = document.URL.replace(/#.*$/, "")
+
+    // Grab positions of our sections
+    $('.headerlink').each(function(){
+        sections[this.href.replace(url, '')] = $(this).offset().top - 50
+    });
+
+    updateSideBarPosition(top, tocOffset, sections)
+
+    $(window).scroll(function(event) {
+        updateSideBarPosition(top, tocOffset, sections)
+    });
+
+    $(window).resize(function(event) {
+        tocOffset = $('.related-wrapper').outerHeight()
+        updateSideBarPosition(top, tocOffset, sections)
+    });
+});
+</script>
+
+
+<script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-41920728-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+  </head><body>
+<div id="logo-banner">
+  <!-- A tag cloud to make it easy for people to find what they are
+                         looking for -->
+ <div class="tags">
+  <ul>
+    <li>
+      <big><a href="../../auto_examples/01_template/plot_register.html">Template creation</a></big>
+    </li>
+    <li>
+      <small><a href="../../auto_examples/02_preprocessing/plot_fmri_coregistration.html">fMRI preprocessing</a></small>
+    </li>
+    <li>
+      <a href="../../modules/reference.html#module-sammba.data_fetchers">Datasets</a>
+    </li>
+  </ul>
+ </div>
+
+  <div class="banner">
+    <h1>Sammba-MRI:</h1>
+    <h2>Small mammals NeuroImaging in Python</h2>
+  </div>
+  <div class="search_form">
+    <div class="gcse-search" id="cse" style="width: 100%;"></div>
+    <script>
+      (function() {
+        var cx = '017289614950330089114:elrt9qoutrq';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+  </div>
+</div>
+
+
+
+<div class=related-wrapper>
+    
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a></li>
+        <li class="right" >
+          <a href="../../auto_examples/index.html" title="6. Gallery of Examples"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../../generated/sammba.graphs.create_pipeline_graph.html" title="5.5.1. sammba.graphs.create_pipeline_graph"
+             accesskey="P">previous</a> |</li>
+<li><a href="../../index.html">Sammba-MRI Home</a> |&nbsp;</li>
+<li><a href="../../user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="../../auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="../../reference.html">Reference</a> |&nbsp;</li>
+<li id="navbar-about"><a href="../../authors.html">About</a>|&nbsp;</li>
+
+          <li class="nav-item nav-item-1"><a href="../../user_guide.html" >User guide: table of contents</a> &#187;</li>
+          <li class="nav-item nav-item-2"><a href="../../reference.html" accesskey="U">5. sammba-MRI API Reference</a> &#187;</li> 
+      </ul>
+    </div>
+</div>
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+
+<h4> Giving credit </h4>
+  <ul class="simple">
+    <li><p>Please consider <a href="../../authors.html#citing">citing the
+                    papers</a>.</p></li>
+  </ul>
+
+  <h3><a href="../../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5.6.1. segmentation.interfaces</a><ul>
+<li><a class="reference internal" href="#histogrammask">5.6.1.1. HistogramMask</a><ul>
+<li><a class="reference internal" href="#examples">5.6.1.1.1. Examples</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mathmorphomask">5.6.1.2. MathMorphoMask</a><ul>
+<li><a class="reference internal" href="#id1">5.6.1.2.1. Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../../generated/sammba.graphs.create_pipeline_graph.html"
+                        title="previous chapter">5.5.1. sammba.graphs.create_pipeline_graph</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../auto_examples/index.html"
+                        title="next chapter">6. Gallery of Examples</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="segmentation-interfaces">
+<h1>5.6.1. segmentation.interfaces<a class="headerlink" href="#segmentation-interfaces" title="Permalink to this headline">¶</a></h1>
+<span class="target" id="sammba-segmentation-interfaces-histogrammask"></span><div class="section" id="histogrammask">
+<span id="index-0"></span><h2>5.6.1.1. HistogramMask<a class="headerlink" href="#histogrammask" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="None">Link to code</a></p>
+<p>Interface for nilearn.masking.compute_epi_mask, based on T. Nichols
+heuristics.</p>
+<div class="section" id="examples">
+<h3>5.6.1.1.1. Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sammba.segmentation</span> <span class="kn">import</span> <span class="n">HistogramMask</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nichols_masker</span> <span class="o">=</span> <span class="n">HistogramMask</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nichols_masker</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">in_file</span> <span class="o">=</span> <span class="s1">&#39;structural.nii&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">nichols_masker</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">volume_threshold</span> <span class="o">=</span> <span class="mi">1650</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">nichols_masker</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>  
+</pre></div>
+</div>
+<p>Inputs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[Mandatory]
+in_file: (a file name)
+        Input Image
+
+[Optional]
+closing: (an integer (int or long), nipype default value: 0)
+        Number of binary closing iterations to post-process the mask.
+        [default: 10]
+connected: (a boolean, nipype default value: True)
+        keep only the largest connect component
+dilation_size: (a tuple of the form: (a value of type &#39;int&#39;, a value
+         of type &#39;int&#39;, a value of type &#39;int&#39;), nipype default value: (1, 1,
+         2))
+        Element size for binary dilation if needed
+ignore_exception: (a boolean, nipype default value: False)
+        Print an error message instead of throwing an exception in case the
+        interface fails to run
+intensity_threshold: (an integer (int or long))
+        Intensity threshold. [default: 500]
+lower_cutoff: (a float, nipype default value: 0.2)
+        lower fraction of the histogram to be discarded. In case of failure,
+        it is usually advisable to increase lower_cutoff [default: 0.2]
+opening: (an integer (int or long), nipype default value: 5)
+        Order of the morphological opening to perform, to keep only large
+        structures. This step is useful to remove parts of the skull that
+        might have been included. If the opening order is `n` &gt; 0, 2`n`
+        closing operations are performed after estimation of the largest
+        connected constituent, followed by `n` erosions. This corresponds to
+        1 opening operation of order `n` followed by a closing operator of
+        order `n`. Note that turning off opening (opening=0) will also
+        prevent any smoothing applied to the image during the mask
+        computation. [default: 2]
+out_file: (a file name)
+        Output Image
+upper_cutoff: (a float, nipype default value: 0.85)
+        upper fraction of the histogram to be discarded.[default: 0.85]
+verbose: (a boolean, nipype default value: False)
+        be very verbose
+volume_threshold: (an integer (int or long), nipype default value:
+         1650)
+        Volume threshold. [default: 1650]
+</pre></div>
+</div>
+<p>Outputs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out_file</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span> <span class="n">file</span> <span class="n">name</span><span class="p">)</span>
+        <span class="n">Brain</span> <span class="n">mask</span> <span class="n">file</span>
+</pre></div>
+</div>
+<span class="target" id="sammba-segmentation-interfaces-mathmorphomask"></span></div>
+</div>
+<div class="section" id="mathmorphomask">
+<span id="index-1"></span><h2>5.6.1.2. MathMorphoMask<a class="headerlink" href="#mathmorphomask" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="None">Link to code</a></p>
+<p>Wraps command <strong>RATS_MM</strong></p>
+<p>Mathemetical morphology stage for RATS, as described in:
+RATS: Rapid Automatic Tissue Segmentation in rodent brain MRI. Journal
+of neuroscience methods (2014) vol. 221 pp. 175 - 182.</p>
+<p>Author(s): Ipek Oguz, Milan Sonka</p>
+<div class="section" id="id1">
+<h3>5.6.1.2.1. Examples<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">sammba.segmentation</span> <span class="kn">import</span> <span class="n">MathMorphoMask</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rats_masker</span> <span class="o">=</span> <span class="n">MathMorphoMask</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rats_masker</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">in_file</span> <span class="o">=</span> <span class="s1">&#39;structural.nii&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rats_masker</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">intensity_threshold</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">rats_masker</span><span class="o">.</span><span class="n">cmdline</span>  
+<span class="go">&#39;RATS_MM structural.nii structural_morpho_mask.nii -t 1000&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">res</span> <span class="o">=</span> <span class="n">rats_masker</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>  
+</pre></div>
+</div>
+<p>Inputs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Mandatory</span><span class="p">]</span>
+<span class="n">in_file</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span> <span class="n">file</span> <span class="n">name</span><span class="p">)</span>
+        <span class="n">Input</span> <span class="n">Image</span>
+        <span class="n">flag</span><span class="p">:</span> <span class="o">%</span><span class="n">s</span><span class="p">,</span> <span class="n">position</span><span class="p">:</span> <span class="mi">0</span>
+
+<span class="p">[</span><span class="n">Optional</span><span class="p">]</span>
+<span class="n">args</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span> <span class="n">unicode</span> <span class="n">string</span><span class="p">)</span>
+        <span class="n">Additional</span> <span class="n">parameters</span> <span class="n">to</span> <span class="n">the</span> <span class="n">command</span>
+        <span class="n">flag</span><span class="p">:</span> <span class="o">%</span><span class="n">s</span>
+<span class="n">environ</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span> <span class="n">dictionary</span> <span class="k">with</span> <span class="n">keys</span> <span class="n">which</span> <span class="n">are</span> <span class="n">a</span> <span class="n">newbytes</span> <span class="ow">or</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">a</span>
+         <span class="n">newstr</span> <span class="ow">or</span> <span class="kc">None</span> <span class="ow">and</span> <span class="k">with</span> <span class="n">values</span> <span class="n">which</span> <span class="n">are</span> <span class="n">a</span> <span class="n">newbytes</span> <span class="ow">or</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">a</span>
+         <span class="n">newstr</span> <span class="ow">or</span> <span class="kc">None</span><span class="p">,</span> <span class="n">nipype</span> <span class="n">default</span> <span class="n">value</span><span class="p">:</span> <span class="p">{})</span>
+        <span class="n">Environment</span> <span class="n">variables</span>
+<span class="n">ignore_exception</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span> <span class="n">boolean</span><span class="p">,</span> <span class="n">nipype</span> <span class="n">default</span> <span class="n">value</span><span class="p">:</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="n">Print</span> <span class="n">an</span> <span class="n">error</span> <span class="n">message</span> <span class="n">instead</span> <span class="n">of</span> <span class="n">throwing</span> <span class="n">an</span> <span class="n">exception</span> <span class="ow">in</span> <span class="n">case</span> <span class="n">the</span>
+        <span class="n">interface</span> <span class="n">fails</span> <span class="n">to</span> <span class="n">run</span>
+<span class="n">intensity_threshold</span><span class="p">:</span> <span class="p">(</span><span class="n">an</span> <span class="n">integer</span> <span class="p">(</span><span class="nb">int</span> <span class="ow">or</span> <span class="n">long</span><span class="p">))</span>
+        <span class="n">Intensity</span> <span class="n">threshold</span> <span class="p">(</span><span class="n">the</span> <span class="n">parameter</span> <span class="n">T</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">paper</span><span class="p">)</span><span class="o">.</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="mi">500</span><span class="p">]</span>
+        <span class="n">flag</span><span class="p">:</span> <span class="o">-</span><span class="n">t</span> <span class="o">%</span><span class="n">s</span>
+<span class="n">out_file</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span> <span class="n">file</span> <span class="n">name</span><span class="p">)</span>
+        <span class="n">Output</span> <span class="n">Image</span>
+        <span class="n">flag</span><span class="p">:</span> <span class="o">%</span><span class="n">s</span><span class="p">,</span> <span class="n">position</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">volume_threshold</span><span class="p">:</span> <span class="p">(</span><span class="n">an</span> <span class="n">integer</span> <span class="p">(</span><span class="nb">int</span> <span class="ow">or</span> <span class="n">long</span><span class="p">))</span>
+        <span class="n">Volume</span> <span class="n">threshold</span> <span class="p">(</span><span class="n">the</span> <span class="n">parameter</span> <span class="n">V</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">paper</span><span class="p">)</span><span class="o">.</span> <span class="p">[</span><span class="n">default</span><span class="p">:</span> <span class="mi">1650</span><span class="p">]</span>
+        <span class="n">flag</span><span class="p">:</span> <span class="o">-</span><span class="n">v</span> <span class="o">%</span><span class="n">s</span>
+</pre></div>
+</div>
+<p>Outputs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">out_file</span><span class="p">:</span> <span class="p">(</span><span class="n">a</span> <span class="n">file</span> <span class="n">name</span><span class="p">)</span>
+        <span class="n">Brain</span> <span class="n">mask</span> <span class="n">file</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+
+    <div class="footer">
+            &copy; 2017, The sammba-MRI developers.
+        <span style="padding-left: 5ex;">
+          <a href="../../_sources/interfaces/generated/sammba.segmentation.interfaces.rst.txt"
+        	 rel="nofollow">Show this page source</a>
+        </span>
+    </div>
+  </body>
+</html>

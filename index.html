@@ -1,247 +1,251 @@
 
-
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Sammba-MRI - Documentation &mdash; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
-  
 
-  
-  
-  
-  
-
-  
-
-  
-  
-    
-
-  
-
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Sammba-MRI:Small mammals NeuroImaging in Python &#8212; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/gallery.css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <script type="text/javascript" src="_static/copybutton.js"></script>
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="User guide: table of contents" href="user_guide.html" /> 
+    <link rel="next" title="User guide: table of contents" href="user_guide.html" />
+<meta content="True" name="HandheldFriendly">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<meta name="keywords" content="sammba-mri, neuroimaging, python, small animal, rodent, mouse, rat">
 
-  
-  <script src="_static/js/modernizr.min.js"></script>
 
-</head>
+<script type="text/javascript">
+function updateTopMenuPosition(height, width) {
+    if($(window).scrollTop() > height && $(window).outerWidth() > 1024) {
+        //begin to scroll
+        $('.related-wrapper').css("z-index", 1000)
+        $('.related-wrapper').css("position", "sticky")
+        $('.related-wrapper').css("top", 0)
+        $('.related-wrapper').css("width", width)
+    } else {
+        //lock it back into place
+        $('.related-wrapper').css("position", "relative")
+        $('.related-wrapper').css("top", 0)
+    }
+}
 
-<body class="wy-body-for-nav">
+$(function() {
+    var banner_height = $('#logo-banner').outerHeight()
+    var banner_width = $('#logo-banner').outerWidth()
+    var width = $('.related-wrapper').css("height", $('.related').outerHeight())
 
-   
-  <div class="wy-grid-for-nav">
+    updateTopMenuPosition(banner_height, width)
 
-    
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
-          
+    $(window).scroll(function(event) {
+        updateTopMenuPosition(banner_height, width)
+    });
 
-          
-            <a href="#" class="icon icon-home"> sammba-MRI
-          
+    $(window).resize(function(event) {
+        var banner_width = $('#logo-banner').outerWidth()
+        var menu_height = $('.related').outerHeight()
+        $('.related').css("width", banner_width)
+        $('.related-wrapper').css("height", menu_height)
+        updateTopMenuPosition(banner_height, width)
+    })
+});
+</script>
+<script type="text/javascript" src="_static/jquery.jcarousel.min.js"></script>
+<script type="text/javascript">
+(function($) {
+    $(function() {
+	$('.jcarousel').jcarousel();
+        $('.jcarousel-control-prev')
+            .on('active.jcarouselcontrol', function() {
+                $(this).removeClass('inactive');
+            })
+            .on('inactive.jcarouselcontrol', function() {
+                $(this).addClass('inactive');
+            })
+            .jcarouselControl({
+                target: '-=1'
+            });
 
-          
-          </a>
+        $('.jcarousel-control-next')
+            .on('active.jcarouselcontrol', function() {
+                $(this).removeClass('inactive');
+            })
+            .on('inactive.jcarouselcontrol', function() {
+                $(this).addClass('inactive');
+            })
+            .jcarouselControl({
+                target: '+=1'
+            });
 
-          
-            
-            
-          
+        $('.jcarousel-pagination')
+            .on('active.jcarouselpagination', 'a', function() {
+                $(this).addClass('active');
+            })
+            .on('inactive.jcarouselpagination', 'a', function() {
+                $(this).removeClass('active');
+            })
+            .jcarouselPagination();
+    });
+})(jQuery);
+</script>
 
-          
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+
+<script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-41920728-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+  </head><body>
+<div id="logo-banner">
+  <!-- A tag cloud to make it easy for people to find what they are
+                         looking for -->
+ <div class="tags">
+  <ul>
+    <li>
+      <big><a href="auto_examples/01_template/plot_register.html">Template creation</a></big>
+    </li>
+    <li>
+      <small><a href="auto_examples/02_preprocessing/plot_fmri_coregistration.html">fMRI preprocessing</a></small>
+    </li>
+    <li>
+      <a href="modules/reference.html#module-sammba.data_fetchers">Datasets</a>
+    </li>
+  </ul>
+ </div>
+
+  <div class="banner">
+    <h1>Sammba-MRI:</h1>
+    <h2>Small mammals NeuroImaging in Python</h2>
+  </div>
+  <div class="search_form">
+    <div class="gcse-search" id="cse" style="width: 100%;"></div>
+    <script>
+      (function() {
+        var cx = '017289614950330089114:elrt9qoutrq';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+      })();
+    </script>
+  </div>
 </div>
 
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User guide: table of contents</a></li>
-<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Gallery of Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">sammba-MRI API Reference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="authors.html">Contributors and Acknowledgements</a></li>
-</ul>
-
-            
-          
-        </div>
-      </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="#">sammba-MRI</a>
-        
-      </nav>
 
 
-      <div class="wy-nav-content">
-        
-        <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
-  <ul class="wy-breadcrumbs">
+<div class=related-wrapper>
     
-      <li><a href="#">Docs</a> &raquo;</li>
-        
-      <li>Sammba-MRI - Documentation</li>
-    
-    
-      <li class="wy-breadcrumbs-aside">
-        
-            
-        
-      </li>
-    
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a></li>
+        <li class="right" >
+          <a href="user_guide.html" title="User guide: table of contents"
+             accesskey="N">next</a> |</li>
+<li><a href="#">Sammba-MRI Home</a> |&nbsp;</li>
+<li><a href="user_guide.html">User Guide</a> |&nbsp;</li>
+<li><a href="auto_examples/index.html">Examples</a> |&nbsp;</li>
+<li><a href="reference.html">Reference</a> |&nbsp;</li>
+<li id="navbar-about"><a href="authors.html">About</a>|&nbsp;</li>
+ 
+      </ul>
+    </div>
+</div>
+
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+
+<h4> News </h4>
+  <ul>
+      <li><p> <strong>June 22th 2018</strong>: Poster presented in APPNING conference
+      </p></li>
+  </ul>
+  <ul>
+      <li><p> <strong>Ongoing</strong>:
+          <a href="whats_new.html"</a>What's new</em>.
+      </p></li>
   </ul>
 
-  
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-            
-  <div class="section" id="sammba-mri-documentation">
-<h1>Sammba-MRI - Documentation<a class="headerlink" href="#sammba-mri-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="user_guide.html">User guide: table of contents</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html">1. Introduction: Sammba-MRI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="dataorg.html">2. Data organization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MRI_reg.html">3. Registering several MRI images and creating a template</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Cereb_Atrophy.html">4. Measuring regional brain volumes</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="auto_examples/index.html">Gallery of Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="auto_examples/index.html#template-creation">Template creation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="auto_examples/index.html#fmri-spatial-preprocessing">fMRI spatial preprocessing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="auto_examples/index.html#functional-connectivity">Functional connectivity</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="reference.html">sammba-MRI API Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#module-sammba.io_conversions"><code class="docutils literal"><span class="pre">sammba.io_conversions</span></code>: From scanner to NIFTI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#module-sammba.data_fetchers"><code class="docutils literal"><span class="pre">sammba.data_fetchers</span></code>: Datasets and atlas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#module-sammba.registration"><code class="docutils literal"><span class="pre">sammba.registration</span></code>: Registration utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#module-sammba.segmentation"><code class="docutils literal"><span class="pre">sammba.segmentation</span></code>: Segmentation utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reference.html#external-tools-wrapped-in-python">External tools wrapped in python</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="authors.html">Contributors and Acknowledgements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="authors.html#external-projects-used-and-papers-to-cite">External projects used and papers to cite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authors.html#people">People</a></li>
-<li class="toctree-l2"><a class="reference internal" href="authors.html#funding">Funding</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/n0017usHG0U?rel=0" frameborder="0" allowfullscreen></iframe></div>
+<h4> Software </h4>
+  <ul class="simple">
+    <li>
+      <div id="download-container">
+	<a href="introduction.html#installation" class="btn btn-primary">Installation</a>
+      </div>
+    </li>
+  </ul>
+<h4> Development </h4>
+  <ul class="simple">
+    <li><p><a class="reference external"
+	href="https://github.com/sammba-mri/sammba-mri">Sammba-MRI on GitHub</a></p></li>
+    <li><p>All material Free Software: <strong>BSD license</strong> (3 clause).</p></li>
+    <li><p><a href="authors.html">Authors</a></p></li>
+    <li><p><a href="development.html">Contributing</a></p></li>
+  </ul>
 
 
-           </div>
-           
-          </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="user_guide.html" class="btn btn-neutral float-right" title="User guide: table of contents" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
+
+<h4> Giving credit </h4>
+  <ul class="simple">
+    <li><p>Please consider <a href="authors.html#citing">citing the
+                    papers</a>.</p></li>
+  </ul>
+
+  <h4>Next topic</h4>
+  <p class="topless"><a href="user_guide.html"
+                        title="next chapter">User guide: table of contents</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
     </div>
-  
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2017, The sammba-MRI developers.
-
-    </p>
-  </div> 
-
-</footer>
-
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
       </div>
 
-    </section>
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/n0017usHG0U?rel=0" frameborder="0" allowfullscreen></iframe>
 
-  </div>
-  
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
 
-
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/copybutton.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-  
-
-  <script type="text/javascript" src="_static/js/theme.js"></script>
-
-  <script type="text/javascript">
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+    <div class="footer">
+            &copy; 2017, The sammba-MRI developers.
+        <span style="padding-left: 5ex;">
+          <a href="_sources/index.rst.txt"
+        	 rel="nofollow">Show this page source</a>
+        </span>
+    </div>
+  </body>
 </html>

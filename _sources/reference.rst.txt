@@ -49,6 +49,8 @@ sammba-MRI API Reference
    fetch_atlas_dorr_2008
    fetch_atlas_waxholm_rat_2014
    fetch_masks_dorr_2008
+   fetch_atlas_lemur_mircen_2019
+   fetch_lemur_mircen_2019_t2
 
 .. _registration_ref:
 
@@ -71,7 +73,6 @@ sammba-MRI API Reference
    anats_to_template
    fmri_sessions_to_template
    coregister_fmri_session
-   create_pipeline_graph
 
 
 **Classes**:
@@ -106,18 +107,25 @@ sammba-MRI API Reference
    brain_extraction_report
 
 
-**Classes**:
+.. _graphs_ref:
 
-.. currentmodule:: sammba.segmentation
+:mod:`sammba.graphs`: Pipelines graphs
+==================================================
+
+.. automodule:: sammba.graphs
+   :no-members:
+   :no-inherited-members:
+
+**Functions**:
+
+.. currentmodule:: sammba.graphs
 
 .. autosummary::
    :toctree: generated/
-   :template: class.rst
+   :template: function.rst
 
-   MathMorphoMask
-   HistogramMask
+   create_pipeline_graph
 
-.. _interfaces_ref:
 
 External tools wrapped in python
 ================================
@@ -125,5 +133,5 @@ External tools wrapped in python
 .. toctree::
    :maxdepth: 2
 
-   interfaces/generated/sammba.interfaces.preproc_tools.rst
+   interfaces/generated/sammba.segmentation.interfaces.rst
 
