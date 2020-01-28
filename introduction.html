@@ -3,17 +3,26 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Sammba-MRI:Small mammals NeuroImaging in Python &#8212; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/gallery.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="2. Data organization" href="dataorg.html" />
     <link rel="prev" title="User guide: table of contents" href="user_guide.html" />
@@ -134,7 +143,8 @@ $(function () {
         })();
     </script>
 
-  </head><body>
+  </head>
+  <body>
 <div id="logo-banner">
   <!-- A tag cloud to make it easy for people to find what they are
                          looking for -->
@@ -209,19 +219,22 @@ $(function () {
                     papers</a>.</p></li>
   </ul>
 
-  <h3><a href="index.html">Table of Contents</a></h3>
+	   <div class="sidebartoc">
+  <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">1. Introduction: Sammba-MRI</a><ul>
-<li><a class="reference internal" href="#what-is-sammba-mri-small-mammals-neuroimaging-with-python">1.1. What is sammba-MRI: small mammals neuroimaging with Python</a></li>
-<li><a class="reference internal" href="#dependencies">1.2. Dependencies</a></li>
-<li><a class="reference internal" href="#installation">1.3. Installation</a><ul>
-<li><a class="reference internal" href="#installing-required-neuroimaging-software">1.3.1. Installing required neuroimaging software</a></li>
-<li><a class="reference internal" href="#installing-sammba-mri">1.3.2. Installing sammba-MRI</a></li>
+<li><a class="reference internal" href="#what-is-sammba-mri-small-mammal-neuroimaging-with-python">1.1. What is sammba-MRI: small-mammal neuroimaging with Python</a></li>
+<li><a class="reference internal" href="#first-install-dependencies">1.2. First: Install dependencies</a><ul>
+<li><a class="reference internal" href="#installing-python-packages">1.2.1. Installing Python packages</a></li>
+<li><a class="reference internal" href="#installing-required-neuroimaging-software">1.2.2. Installing required neuroimaging software</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#second-install-sammba-mri">1.3. Second: Install sammba-MRI</a></li>
+<li><a class="reference internal" href="#third-run-sammba-mri">1.4. Third: Run sammba-MRI</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
+</div>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="user_guide.html"
@@ -229,16 +242,11 @@ $(function () {
   <h4>Next topic</h4>
   <p class="topless"><a href="dataorg.html"
                         title="next chapter">2. Data organization</a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
         </div>
       </div>
 
@@ -252,95 +260,105 @@ $(function () {
 <div class="contents local topic" id="contents">
 <p class="topic-title first"><strong>Contents</strong></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#what-is-sammba-mri-small-mammals-neuroimaging-with-python" id="id1">What is sammba-MRI: small mammals neuroimaging with Python</a></p></li>
-<li><p><a class="reference internal" href="#dependencies" id="id2">Dependencies</a></p></li>
-<li><p><a class="reference internal" href="#installation" id="id3">Installation</a></p></li>
+<li><a class="reference internal" href="#what-is-sammba-mri-small-mammal-neuroimaging-with-python" id="id2">What is sammba-MRI: small-mammal neuroimaging with Python</a></li>
+<li><a class="reference internal" href="#first-install-dependencies" id="id3">First: Install dependencies</a></li>
+<li><a class="reference internal" href="#second-install-sammba-mri" id="id4">Second: Install sammba-MRI</a></li>
+<li><a class="reference internal" href="#third-run-sammba-mri" id="id5">Third: Run sammba-MRI</a></li>
 </ul>
 </div>
-<div class="section" id="what-is-sammba-mri-small-mammals-neuroimaging-with-python">
-<h2><a class="toc-backref" href="#id1">1.1. What is sammba-MRI: small mammals neuroimaging with Python</a><a class="headerlink" href="#what-is-sammba-mri-small-mammals-neuroimaging-with-python" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="what-is-sammba-mri-small-mammal-neuroimaging-with-python">
+<h2><a class="toc-backref" href="#id2">1.1. What is sammba-MRI: small-mammal neuroimaging with Python</a><a class="headerlink" href="#what-is-sammba-mri-small-mammal-neuroimaging-with-python" title="Permalink to this headline">¶</a></h2>
 <p>Sammba-MRI provides <strong>easy-to-use</strong> pipelines to process and analyze small mammals brain MRI multimodal images.
-Sammba-MRI will perform automatically several critical steps for MR image analysis.</p>
-<p>° Conversion of Bruker DICOM filles to NIFTI-1</p>
-<p>° Image quality check</p>
+Sammba-MRI will perform automatically several critical steps for MRI image analysis.</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><strong>Conversion</strong> of Bruker DICOM files to NIFTI-1</p>
+</li>
+<li><p class="first"><strong>Image quality assessment</strong>:</p>
 <blockquote>
 <div><p>° Image registration and creation of a template</p>
 <p>° Transformation of individual dataset to the template (or to an atlas)</p>
-<p>° Evaluation of cerebral atrophy on the basis of an atlas</p>
+<p>° Evaluation of regional cerebral atrophy on the basis of an atlas</p>
 <p>° Estimation of cerebral perfusion maps from FAIR EPI images</p>
 <p>° Resting state fMRI analysis connectivity  and brain images visualization are straightforward with nilearn once the registration is performed.</p>
 </div></blockquote>
-<p>Sammba-MRI integrates functionalities from a number of other packages (listed under the dependencies section below)
-Examples include (but are not restricted to) mouse models of Alzheimer disease.</p>
+</li>
+</ul>
+</div></blockquote>
+<p>Sammba-MRI integrates functionalities from other packages (listed under the dependencies section below).
+Examples include (but are not restricted to) mouse models of Alzheimer disease and mouse lemur.</p>
 </div>
-<div class="section" id="dependencies">
-<h2><a class="toc-backref" href="#id2">1.2. Dependencies</a><a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
-<p>The required dependencies to use the package are the software:</p>
+<div class="section" id="first-install-dependencies">
+<h2><a class="toc-backref" href="#id3">1.2. First: Install dependencies</a><a class="headerlink" href="#first-install-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>For now, sammba-MRI has been tested only on Linux environment.
+Install the complete scientific Python distribution <a class="reference external" href="https://www.anaconda.com/distribution">Anaconda</a>. It contains all requirements of sammba-MRI.
+Then, install the version control system <a class="reference external" href="https://git-scm.com">Git</a>.</p>
+<div class="section" id="installing-python-packages">
+<h3>1.2.1. Installing Python packages<a class="headerlink" href="#installing-python-packages" title="Permalink to this headline">¶</a></h3>
+<p>Sammba-MRI requires a Python environment and the following packages:</p>
 <ul class="simple">
-<li><p>FSL &gt;= 5.0</p></li>
-<li><p>AFNI</p></li>
-<li><p>ANTS</p></li>
-<li><p><a class="reference external" href="http://www.iibi.uiowa.edu/content/rats-overview/">RATS</a> for brain extraction</p></li>
+<li>setuptools</li>
+<li>ipython</li>
+<li><a class="reference external" href="https://nipype.readthedocs.io/en/latest/users/install.html">Nipype</a> &gt;= 1.0.4</li>
+<li><a class="reference external" href="http://nilearn.github.io/introduction.html#installing-nilearn/">Nilearn</a> &gt;= 0.4.0</li>
+<li>Numpy &gt;= 1.14</li>
+<li>SciPy &gt;= 0.19</li>
+<li><a class="reference external" href="https://nipy.org/nibabel/installation.html">Nibabel</a> &gt;= 2.0.2</li>
+<li>Sklearn &gt;= 0.19</li>
 </ul>
-<p>as well as the Python packages:</p>
-<ul class="simple">
-<li><p>setuptools</p></li>
-<li><p>Numpy &gt;= 1.14</p></li>
-<li><p>SciPy &gt;= 0.19</p></li>
-<li><p>Nibabel &gt;= 2.0.2</p></li>
-<li><p>Nilearn &gt;= 0.4.0</p></li>
-<li><p>Sklearn &gt;= 0.19</p></li>
-<li><p>Nipype &gt;= 1.0.4</p></li>
-</ul>
-<p>If you are running the examples, matplotlib &gt;= 1.5.1 is required.</p>
+<p>Our <a class="reference external" href="https://sammba-mri.github.io/auto_examples/index.html">examples</a> require a plotting library: matplotlib &gt;= 1.5.1</p>
 <p>If you want to run the tests, you need nose &gt;= 1.2.1 and doctest-ignore-unicode.</p>
 <p>If you want to convert DICOM files to NIFTI files, you will need the
 <a class="reference external" href="http://support.dcmtk.org/docs/index.html">DICOM ToolKit (DCMTK)</a> package</p>
 </div>
-<div class="section" id="installation">
-<h2><a class="toc-backref" href="#id3">1.3. Installation</a><a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="installing-required-neuroimaging-software">
-<h3>1.3.1. Installing required neuroimaging software<a class="headerlink" href="#installing-required-neuroimaging-software" title="Permalink to this headline">¶</a></h3>
-<p><strong>FSL</strong>: Follow the instructions
-from <a class="reference external" href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation">FSL official installation guide</a>. To be able to run FSL, your system first needs to know where the software is installed at. On a Ubuntu system, this is usually under <code class="docutils literal notranslate"><span class="pre">/usr/share/fsl</span></code>. Therefore, add the following code to your  <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file. (To open and edit your .bashrc file on Ubuntu, use the following command: gedit  <code class="docutils literal notranslate"><span class="pre">~/.bashrc</span></code>):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#FSL
+<h3>1.2.2. Installing required neuroimaging software<a class="headerlink" href="#installing-required-neuroimaging-software" title="Permalink to this headline">¶</a></h3>
+<p><strong>FSL</strong> (version 5.0):
+Follow the instructions from <a class="reference external" href="https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/FslInstallation">FSL official installation guide</a>. To be able to run FSL, your system first needs to know where the software is installed. On a Ubuntu system, this is usually under <code class="docutils literal"><span class="pre">/usr/share/fsl</span></code>. Therefore, add the following code to your  <code class="docutils literal"><span class="pre">.bashrc</span></code> file. (To open and edit your .bashrc file on Ubuntu, use the following command: gedit  <code class="docutils literal"><span class="pre">~/.bashrc</span></code>):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>#FSL
 FSLDIR=/usr/share/fsl
 . ${FSLDIR}/5.0/etc/fslconf/fsl.sh
 PATH=${FSLDIR}/5.0/bin:${PATH}
 export FSLDIR PATH
 </pre></div>
 </div>
-<p><strong>AFNI</strong>: If you have access to <a class="reference external" href="http://neuro.debian.net">Neurodebian</a>, simply install the <a class="reference external" href="http://neuro.debian.net/pkgs/afni.html">AFNI package</a> through Neurodebian. Otherwise, go to <a class="reference external" href="https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/background_install/main_toc.html">AFNI installation page</a>. Then add the following lines of code to your  <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># AFNI
+<p><strong>AFNI</strong>:
+If you have access to <a class="reference external" href="http://neuro.debian.net">Neurodebian</a>, then simply install the <a class="reference external" href="http://neuro.debian.net/pkgs/afni.html">AFNI package</a> through Neurodebian. Otherwise, go to <a class="reference external" href="https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/background_install/main_toc.html">AFNI installation page</a>. Then add the following lines of code to your  <code class="docutils literal"><span class="pre">.bashrc</span></code> file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span># AFNI
 export PATH=/usr/lib/afni/bin:$PATH
 </pre></div>
 </div>
-<p><strong>ANTs</strong>: The recommended way to install ANTs is to build it from source for your own system. Go to the ANTs section in <a class="reference external" href="http://miykael.github.io/nipype-beginner-s-guide/installation.html">Michael Notter’s excellent tutorial</a> and follow each step. After the installation is complete, add the following lines  to your  <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code> file</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># ANTs
+<p><strong>ANTs</strong>:
+To install ANTS, we recommend that you build it from source for your own system. Go to the ANTs section in <a class="reference external" href="http://miykael.github.io/nipype-beginner-s-guide/installation.html">Michael Notter’s excellent tutorial</a> and follow each step. When the installation is complete, add the following lines  to your  <code class="docutils literal"><span class="pre">.bashrc</span></code> file</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span># ANTs
 export PATH=/usr/local/antsbin/bin:$PATH
 export ANTSPATH=/usr/local/antsbin/bin/
 </pre></div>
 </div>
+<p><strong>RATS</strong>:
+<a class="reference external" href="http://www.iibi.uiowa.edu/content/rats-overview/">RATS</a> allows brain extraction.</p>
 </div>
-<div class="section" id="installing-sammba-mri">
-<h3>1.3.2. Installing sammba-MRI<a class="headerlink" href="#installing-sammba-mri" title="Permalink to this headline">¶</a></h3>
-<p>For the moment, sammba-MRI has been tested only on Linux environment.
-First install the scientific Python distribution <a class="reference external" href="https://www.anaconda.com/distribution">Anaconda</a> and the version control system <a class="reference external" href="https://git-scm.com">Git</a>. Then install the Python modules <a class="reference external" href="https://nipype.readthedocs.io/en/latest/users/install.html">nipype</a> and <a class="reference external" href="http://nilearn.github.io/introduction.html#installing-nilearn/">nilearn</a>.</p>
-<p>Sammba-mri is available as a development version. To download the source code, run the shell command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">sammba</span><span class="o">-</span><span class="n">mri</span><span class="o">/</span><span class="n">sammba</span><span class="o">-</span><span class="n">mri</span><span class="o">.</span><span class="n">git</span>
+</div>
+<div class="section" id="second-install-sammba-mri">
+<h2><a class="toc-backref" href="#id4">1.3. Second: Install sammba-MRI</a><a class="headerlink" href="#second-install-sammba-mri" title="Permalink to this headline">¶</a></h2>
+<p>Sammba-MRI is available as a development version.The most recent sammba-MRI version is found on <a class="reference external" href="https://git-scm.com">Git</a> Run the following command
+as a shell command (not a Python command):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">sammba</span><span class="o">-</span><span class="n">mri</span><span class="o">/</span><span class="n">sammba</span><span class="o">-</span><span class="n">mri</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
-<p>This will create a directory <code class="docutils literal notranslate"><span class="pre">sammba-mri</span></code>. You now need to change to this directory and install the package by running (again, as a shell command):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">sammba</span><span class="o">-</span><span class="n">mri</span>
+<p>A <code class="docutils literal"><span class="pre">sammba-mri</span></code> directory is created. Now, you need to change to this directory and install the package by running (again, as a shell command):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">sammba</span><span class="o">-</span><span class="n">mri</span>
 <span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">install</span> <span class="o">--</span><span class="n">user</span>
 </pre></div>
 </div>
-<p>To check your installation, open IPython by writing “ipython” in the terminal and pressing “Enter” and type in the following line and press “Enter”:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">sammba</span>
+</div>
+<div class="section" id="third-run-sammba-mri">
+<h2><a class="toc-backref" href="#id5">1.4. Third: Run sammba-MRI</a><a class="headerlink" href="#third-run-sammba-mri" title="Permalink to this headline">¶</a></h2>
+<p>To check your installation, open IPython by writing “ipython” in the terminal and type in the following line</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="kn">import</span> <span class="nn">sammba</span>
 </pre></div>
 </div>
-<p>If no error occurs, you have installed sammba correctly.</p>
-</div>
+<p>If no error occurs, you have installed sammba-MRI correctly.</p>
 </div>
 </div>
 
