@@ -3,17 +3,26 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Sammba-MRI:Small mammals NeuroImaging in Python &#8212; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/gallery.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="5.1.1. sammba.io_conversions.dcm_to_nii" href="generated/sammba.io_conversions.dcm_to_nii.html" />
     <link rel="prev" title="4. Measuring regional brain volumes" href="Cereb_Atrophy.html" />
@@ -134,7 +143,8 @@ $(function () {
         })();
     </script>
 
-  </head><body>
+  </head>
+  <body>
 <div id="logo-banner">
   <!-- A tag cloud to make it easy for people to find what they are
                          looking for -->
@@ -209,20 +219,22 @@ $(function () {
                     papers</a>.</p></li>
   </ul>
 
-  <h3><a href="index.html">Table of Contents</a></h3>
+	   <div class="sidebartoc">
+  <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">5. sammba-MRI API Reference</a><ul>
-<li><a class="reference internal" href="#module-sammba.io_conversions">5.1. <code class="xref py py-mod docutils literal notranslate"><span class="pre">sammba.io_conversions</span></code>: From scanner to NIFTI</a></li>
-<li><a class="reference internal" href="#module-sammba.data_fetchers">5.2. <code class="xref py py-mod docutils literal notranslate"><span class="pre">sammba.data_fetchers</span></code>: Datasets and atlas</a></li>
-<li><a class="reference internal" href="#module-sammba.registration">5.3. <code class="xref py py-mod docutils literal notranslate"><span class="pre">sammba.registration</span></code>: Registration utilities</a><ul>
+<li><a class="reference internal" href="#">5. List of commands from sammba-MRI</a><ul>
+<li><a class="reference internal" href="#module-sammba.io_conversions">5.1. <code class="docutils literal"><span class="pre">sammba.io_conversions</span></code>: From scanner (DICOM files from Bruker) to NIFTI</a></li>
+<li><a class="reference internal" href="#module-sammba.data_fetchers">5.2. <code class="docutils literal"><span class="pre">sammba.data_fetchers</span></code>: To fetch specific datasets and atlas</a></li>
+<li><a class="reference internal" href="#module-sammba.registration">5.3. <code class="docutils literal"><span class="pre">sammba.registration</span></code>: Registration utilities</a><ul>
 </ul>
 </li>
-<li><a class="reference internal" href="#module-sammba.segmentation">5.4. <code class="xref py py-mod docutils literal notranslate"><span class="pre">sammba.segmentation</span></code>: Segmentation utilities</a></li>
-<li><a class="reference internal" href="#module-sammba.graphs">5.5. <code class="xref py py-mod docutils literal notranslate"><span class="pre">sammba.graphs</span></code>: Pipelines graphs</a></li>
+<li><a class="reference internal" href="#module-sammba.segmentation">5.4. <code class="docutils literal"><span class="pre">sammba.segmentation</span></code>: Segmentation utilities</a></li>
+<li><a class="reference internal" href="#module-sammba.graphs">5.5. <code class="docutils literal"><span class="pre">sammba.graphs</span></code>: Pipeline graphs</a></li>
 <li><a class="reference internal" href="#external-tools-wrapped-in-python">5.6. External tools wrapped in python</a></li>
 </ul>
 </li>
 </ul>
+</div>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="Cereb_Atrophy.html"
@@ -230,16 +242,11 @@ $(function () {
   <h4>Next topic</h4>
   <p class="topless"><a href="generated/sammba.io_conversions.dcm_to_nii.html"
                         title="next chapter">5.1.1. sammba.io_conversions.dcm_to_nii</a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
         </div>
       </div>
 
@@ -248,143 +255,149 @@ $(function () {
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="sammba-mri-api-reference">
-<h1>5. sammba-MRI API Reference<a class="headerlink" href="#sammba-mri-api-reference" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="list-of-commands-from-sammba-mri">
+<h1>5. List of commands from sammba-MRI<a class="headerlink" href="#list-of-commands-from-sammba-mri" title="Permalink to this headline">¶</a></h1>
+<p>Sammba-MRI is an application programming interface (API). Its modules are
+presented underneath.</p>
 <div class="contents local topic" id="list-of-modules">
 <p class="topic-title first"><strong>List of modules</strong></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#module-sammba.io_conversions" id="id1"><a class="reference internal" href="#module-sammba.io_conversions" title="sammba.io_conversions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sammba.io_conversions</span></code></a>: From scanner to NIFTI</a></p></li>
-<li><p><a class="reference internal" href="#module-sammba.data_fetchers" id="id2"><a class="reference internal" href="#module-sammba.data_fetchers" title="sammba.data_fetchers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sammba.data_fetchers</span></code></a>: Datasets and atlas</a></p></li>
-<li><p><a class="reference internal" href="#module-sammba.registration" id="id3"><a class="reference internal" href="#module-sammba.registration" title="sammba.registration"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sammba.registration</span></code></a>: Registration utilities</a></p></li>
-<li><p><a class="reference internal" href="#module-sammba.segmentation" id="id4"><a class="reference internal" href="#module-sammba.segmentation" title="sammba.segmentation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sammba.segmentation</span></code></a>: Segmentation utilities</a></p></li>
-<li><p><a class="reference internal" href="#module-sammba.graphs" id="id5"><a class="reference internal" href="#module-sammba.graphs" title="sammba.graphs"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sammba.graphs</span></code></a>: Pipelines graphs</a></p></li>
-<li><p><a class="reference internal" href="#external-tools-wrapped-in-python" id="id6">External tools wrapped in python</a></p></li>
+<li><a class="reference internal" href="#module-sammba.io_conversions" id="id1"><a class="reference internal" href="#module-sammba.io_conversions" title="sammba.io_conversions"><code class="xref py py-mod docutils literal"><span class="pre">sammba.io_conversions</span></code></a>: From scanner (DICOM files from Bruker) to NIFTI</a></li>
+<li><a class="reference internal" href="#module-sammba.data_fetchers" id="id2"><a class="reference internal" href="#module-sammba.data_fetchers" title="sammba.data_fetchers"><code class="xref py py-mod docutils literal"><span class="pre">sammba.data_fetchers</span></code></a>: To fetch specific datasets and atlas</a></li>
+<li><a class="reference internal" href="#module-sammba.registration" id="id3"><a class="reference internal" href="#module-sammba.registration" title="sammba.registration"><code class="xref py py-mod docutils literal"><span class="pre">sammba.registration</span></code></a>: Registration utilities</a></li>
+<li><a class="reference internal" href="#module-sammba.segmentation" id="id4"><a class="reference internal" href="#module-sammba.segmentation" title="sammba.segmentation"><code class="xref py py-mod docutils literal"><span class="pre">sammba.segmentation</span></code></a>: Segmentation utilities</a></li>
+<li><a class="reference internal" href="#module-sammba.graphs" id="id5"><a class="reference internal" href="#module-sammba.graphs" title="sammba.graphs"><code class="xref py py-mod docutils literal"><span class="pre">sammba.graphs</span></code></a>: Pipeline graphs</a></li>
+<li><a class="reference internal" href="#external-tools-wrapped-in-python" id="id6">External tools wrapped in python</a></li>
 </ul>
 </div>
 <div class="section" id="module-sammba.io_conversions">
-<span id="sammba-io-conversions-from-scanner-to-nifti"></span><span id="io-conversions-ref"></span><h2><a class="toc-backref" href="#id1">5.1. <a class="reference internal" href="#module-sammba.io_conversions" title="sammba.io_conversions"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sammba.io_conversions</span></code></a>: From scanner to NIFTI</a><a class="headerlink" href="#module-sammba.io_conversions" title="Permalink to this headline">¶</a></h2>
+<span id="sammba-io-conversions-from-scanner-dicom-files-from-bruker-to-nifti"></span><span id="io-conversions-ref"></span><h2><a class="toc-backref" href="#id1">5.1. <a class="reference internal" href="#module-sammba.io_conversions" title="sammba.io_conversions"><code class="xref py py-mod docutils literal"><span class="pre">sammba.io_conversions</span></code></a>: From scanner (DICOM files from Bruker) to NIFTI</a><a class="headerlink" href="#module-sammba.io_conversions" title="Permalink to this headline">¶</a></h2>
 <p><strong>Functions</strong>:</p>
-<table class="longtable docutils align-default">
+<table border="1" class="longtable docutils">
 <colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sammba.io_conversions.dcm_to_nii.html#sammba.io_conversions.dcm_to_nii" title="sammba.io_conversions.dcm_to_nii"><code class="xref py py-obj docutils literal notranslate"><span class="pre">dcm_to_nii</span></code></a>(dcmdump_path, dicom_filename, …)</p></td>
-<td><p>Converts Bruker Paravision enhanced multiframe DICOM files into NIfTI-1 format.</p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.io_conversions.dcm_to_nii.html#sammba.io_conversions.dcm_to_nii" title="sammba.io_conversions.dcm_to_nii"><code class="xref py py-obj docutils literal"><span class="pre">dcm_to_nii</span></code></a>(dcmdump_path,&nbsp;dicom_filename,&nbsp;…)</td>
+<td>Converts Bruker Paravision enhanced multiframe DICOM files into NIfTI-1 format.</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/sammba.io_conversions.recursive_dcm_to_nii.html#sammba.io_conversions.recursive_dcm_to_nii" title="sammba.io_conversions.recursive_dcm_to_nii"><code class="xref py py-obj docutils literal notranslate"><span class="pre">recursive_dcm_to_nii</span></code></a>(dcmdump_path, …)</p></td>
-<td><p>Traverses recursively subdirectories of a given session directory and converts all DICOM files to NIFTI files.</p></td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sammba.io_conversions.recursive_dcm_to_nii.html#sammba.io_conversions.recursive_dcm_to_nii" title="sammba.io_conversions.recursive_dcm_to_nii"><code class="xref py py-obj docutils literal"><span class="pre">recursive_dcm_to_nii</span></code></a>(dcmdump_path,&nbsp;…)</td>
+<td>Traverses recursively subdirectories of a given session directory and converts all DICOM files to NIFTI files.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="module-sammba.data_fetchers">
-<span id="sammba-data-fetchers-datasets-and-atlas"></span><span id="data-fetchers-ref"></span><h2><a class="toc-backref" href="#id2">5.2. <a class="reference internal" href="#module-sammba.data_fetchers" title="sammba.data_fetchers"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sammba.data_fetchers</span></code></a>: Datasets and atlas</a><a class="headerlink" href="#module-sammba.data_fetchers" title="Permalink to this headline">¶</a></h2>
+<span id="sammba-data-fetchers-to-fetch-specific-datasets-and-atlas"></span><span id="data-fetchers-ref"></span><h2><a class="toc-backref" href="#id2">5.2. <a class="reference internal" href="#module-sammba.data_fetchers" title="sammba.data_fetchers"><code class="xref py py-mod docutils literal"><span class="pre">sammba.data_fetchers</span></code></a>: To fetch specific datasets and atlas</a><a class="headerlink" href="#module-sammba.data_fetchers" title="Permalink to this headline">¶</a></h2>
 <p>Helper functions to download NeuroImaging mouse datasets and atlases</p>
 <p><strong>Functions</strong>:</p>
-<table class="longtable docutils align-default">
+<table border="1" class="longtable docutils">
 <colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sammba.data_fetchers.fetch_zurich_test_retest.html#sammba.data_fetchers.fetch_zurich_test_retest" title="sammba.data_fetchers.fetch_zurich_test_retest"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetch_zurich_test_retest</span></code></a>([subjects, …])</p></td>
-<td><p>Download and loads the ETH-Zurich test-retest dataset.</p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.data_fetchers.fetch_zurich_test_retest.html#sammba.data_fetchers.fetch_zurich_test_retest" title="sammba.data_fetchers.fetch_zurich_test_retest"><code class="xref py py-obj docutils literal"><span class="pre">fetch_zurich_test_retest</span></code></a>([subjects,&nbsp;…])</td>
+<td>Download and loads the ETH-Zurich test-retest dataset.</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/sammba.data_fetchers.fetch_zurich_anesthesiant.html#sammba.data_fetchers.fetch_zurich_anesthesiant" title="sammba.data_fetchers.fetch_zurich_anesthesiant"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetch_zurich_anesthesiant</span></code></a>([subjects, url, …])</p></td>
-<td><p>Download and loads the ETH-Zurich anesthesiant dataset.</p></td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sammba.data_fetchers.fetch_zurich_anesthesiant.html#sammba.data_fetchers.fetch_zurich_anesthesiant" title="sammba.data_fetchers.fetch_zurich_anesthesiant"><code class="xref py py-obj docutils literal"><span class="pre">fetch_zurich_anesthesiant</span></code></a>([subjects,&nbsp;url,&nbsp;…])</td>
+<td>Download and loads the ETH-Zurich anesthesiant dataset.</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sammba.data_fetchers.fetch_atlas_dorr_2008.html#sammba.data_fetchers.fetch_atlas_dorr_2008" title="sammba.data_fetchers.fetch_atlas_dorr_2008"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetch_atlas_dorr_2008</span></code></a>([image_format, …])</p></td>
-<td><p>Download and load Dorr et al.</p></td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.data_fetchers.fetch_atlas_dorr_2008.html#sammba.data_fetchers.fetch_atlas_dorr_2008" title="sammba.data_fetchers.fetch_atlas_dorr_2008"><code class="xref py py-obj docutils literal"><span class="pre">fetch_atlas_dorr_2008</span></code></a>([image_format,&nbsp;…])</td>
+<td>Download and load Dorr et al.</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/sammba.data_fetchers.fetch_atlas_waxholm_rat_2014.html#sammba.data_fetchers.fetch_atlas_waxholm_rat_2014" title="sammba.data_fetchers.fetch_atlas_waxholm_rat_2014"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetch_atlas_waxholm_rat_2014</span></code></a>([data_dir, …])</p></td>
-<td><p>Download and load Pape et al. rat atlas (dated 2014), downsampled</p></td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sammba.data_fetchers.fetch_atlas_waxholm_rat_2014.html#sammba.data_fetchers.fetch_atlas_waxholm_rat_2014" title="sammba.data_fetchers.fetch_atlas_waxholm_rat_2014"><code class="xref py py-obj docutils literal"><span class="pre">fetch_atlas_waxholm_rat_2014</span></code></a>([data_dir,&nbsp;…])</td>
+<td>Download and load Pape et al.</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sammba.data_fetchers.fetch_masks_dorr_2008.html#sammba.data_fetchers.fetch_masks_dorr_2008" title="sammba.data_fetchers.fetch_masks_dorr_2008"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetch_masks_dorr_2008</span></code></a>([image_format, …])</p></td>
-<td><p>Downloads DORR 2008 atlas first, then uses its labels to produce tissue masks.</p></td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.data_fetchers.fetch_masks_dorr_2008.html#sammba.data_fetchers.fetch_masks_dorr_2008" title="sammba.data_fetchers.fetch_masks_dorr_2008"><code class="xref py py-obj docutils literal"><span class="pre">fetch_masks_dorr_2008</span></code></a>([image_format,&nbsp;…])</td>
+<td>Downloads DORR 2008 atlas first, then uses its labels to produce tissue masks.</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/sammba.data_fetchers.fetch_atlas_lemur_mircen_2019.html#sammba.data_fetchers.fetch_atlas_lemur_mircen_2019" title="sammba.data_fetchers.fetch_atlas_lemur_mircen_2019"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetch_atlas_lemur_mircen_2019</span></code></a>([data_dir, …])</p></td>
-<td><p>Download and load the MIRCen mouse lemur atlas and average (dated 2017)</p></td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sammba.data_fetchers.fetch_atlas_lemur_mircen_2019.html#sammba.data_fetchers.fetch_atlas_lemur_mircen_2019" title="sammba.data_fetchers.fetch_atlas_lemur_mircen_2019"><code class="xref py py-obj docutils literal"><span class="pre">fetch_atlas_lemur_mircen_2019</span></code></a>([data_dir,&nbsp;…])</td>
+<td>Download and load the MIRCen mouse lemur atlas and average (dated 2017)</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sammba.data_fetchers.fetch_lemur_mircen_2019_t2.html#sammba.data_fetchers.fetch_lemur_mircen_2019_t2" title="sammba.data_fetchers.fetch_lemur_mircen_2019_t2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fetch_lemur_mircen_2019_t2</span></code></a>([subjects, …])</p></td>
-<td><p>Download and loads the mouse lemur template dataset.</p></td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.data_fetchers.fetch_lemur_mircen_2019_t2.html#sammba.data_fetchers.fetch_lemur_mircen_2019_t2" title="sammba.data_fetchers.fetch_lemur_mircen_2019_t2"><code class="xref py py-obj docutils literal"><span class="pre">fetch_lemur_mircen_2019_t2</span></code></a>([subjects,&nbsp;…])</td>
+<td>Download and loads the mouse lemur template dataset.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="module-sammba.registration">
-<span id="sammba-registration-registration-utilities"></span><span id="registration-ref"></span><h2><a class="toc-backref" href="#id3">5.3. <a class="reference internal" href="#module-sammba.registration" title="sammba.registration"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sammba.registration</span></code></a>: Registration utilities</a><a class="headerlink" href="#module-sammba.registration" title="Permalink to this headline">¶</a></h2>
+<span id="sammba-registration-registration-utilities"></span><span id="registration-ref"></span><h2><a class="toc-backref" href="#id3">5.3. <a class="reference internal" href="#module-sammba.registration" title="sammba.registration"><code class="xref py py-mod docutils literal"><span class="pre">sammba.registration</span></code></a>: Registration utilities</a><a class="headerlink" href="#module-sammba.registration" title="Permalink to this headline">¶</a></h2>
 <p><strong>Functions</strong>:</p>
-<table class="longtable docutils align-default">
+<table border="1" class="longtable docutils">
 <colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sammba.registration.anats_to_common.html#sammba.registration.anats_to_common" title="sammba.registration.anats_to_common"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anats_to_common</span></code></a>(anat_filenames, write_dir, …)</p></td>
-<td><p>Create common template from native anatomical images and achieve their registration to it.</p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.registration.anats_to_common.html#sammba.registration.anats_to_common" title="sammba.registration.anats_to_common"><code class="xref py py-obj docutils literal"><span class="pre">anats_to_common</span></code></a>(anat_filenames,&nbsp;write_dir,&nbsp;…)</td>
+<td>Create common template from native anatomical images and achieve their registration to it.</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/sammba.registration.anats_to_template.html#sammba.registration.anats_to_template" title="sammba.registration.anats_to_template"><code class="xref py py-obj docutils literal notranslate"><span class="pre">anats_to_template</span></code></a>(anat_filenames, …[, …])</p></td>
-<td><p>DEPRECATED: Function ‘anats_to_template’ has been replaced by function ‘anat_to_template’ and will be removed in future release.</p></td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sammba.registration.anats_to_template.html#sammba.registration.anats_to_template" title="sammba.registration.anats_to_template"><code class="xref py py-obj docutils literal"><span class="pre">anats_to_template</span></code></a>(*args,&nbsp;**kwargs)</td>
+<td>DEPRECATED: Function ‘anats_to_template’ has been replaced by function ‘anat_to_template’ and will be removed in future release.</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sammba.registration.fmri_sessions_to_template.html#sammba.registration.fmri_sessions_to_template" title="sammba.registration.fmri_sessions_to_template"><code class="xref py py-obj docutils literal notranslate"><span class="pre">fmri_sessions_to_template</span></code></a>(sessions, t_r, …)</p></td>
-<td><p>DEPRECATED: Function ‘fmri_sessions_to_template’ is deprecated and will be removed in future release.</p></td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.registration.fmri_sessions_to_template.html#sammba.registration.fmri_sessions_to_template" title="sammba.registration.fmri_sessions_to_template"><code class="xref py py-obj docutils literal"><span class="pre">fmri_sessions_to_template</span></code></a>(*args,&nbsp;**kwargs)</td>
+<td>DEPRECATED: Function ‘fmri_sessions_to_template’ is deprecated and will be removed in future release.</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/sammba.registration.coregister_fmri_session.html#sammba.registration.coregister_fmri_session" title="sammba.registration.coregister_fmri_session"><code class="xref py py-obj docutils literal notranslate"><span class="pre">coregister_fmri_session</span></code></a>(session_data, t_r, …)</p></td>
-<td><p>DEPRECATED: Function ‘coregister_fmri_session’ is deprecated and will be removed in future release.</p></td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sammba.registration.coregister_fmri_session.html#sammba.registration.coregister_fmri_session" title="sammba.registration.coregister_fmri_session"><code class="xref py py-obj docutils literal"><span class="pre">coregister_fmri_session</span></code></a>(*args,&nbsp;**kwargs)</td>
+<td>DEPRECATED: Function ‘coregister_fmri_session’ is deprecated and will be removed in future release.</td>
 </tr>
 </tbody>
 </table>
 <p><strong>Classes</strong>:</p>
-<table class="longtable docutils align-default">
+<table border="1" class="longtable docutils">
 <colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sammba.registration.FMRISession.html#sammba.registration.FMRISession" title="sammba.registration.FMRISession"><code class="xref py py-obj docutils literal notranslate"><span class="pre">FMRISession</span></code></a>([func, anat, animal_id])</p></td>
-<td><p>Encapsulation for fMRI data, relative to preprocessing.</p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.registration.FMRISession.html#sammba.registration.FMRISession" title="sammba.registration.FMRISession"><code class="xref py py-obj docutils literal"><span class="pre">FMRISession</span></code></a>([func,&nbsp;anat,&nbsp;animal_id])</td>
+<td>Encapsulation for fMRI data, relative to preprocessing.</td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="generated/sammba.registration.TemplateRegistrator.html#sammba.registration.TemplateRegistrator" title="sammba.registration.TemplateRegistrator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TemplateRegistrator</span></code></a>(template, brain_volume)</p></td>
-<td><p>Class for registering anatomical and possibly other modality images from one animal to a given head template.</p></td>
+<tr class="row-even"><td><a class="reference internal" href="generated/sammba.registration.TemplateRegistrator.html#sammba.registration.TemplateRegistrator" title="sammba.registration.TemplateRegistrator"><code class="xref py py-obj docutils literal"><span class="pre">TemplateRegistrator</span></code></a>(template,&nbsp;brain_volume)</td>
+<td>Class for registering anatomical and possibly other modality images from one animal to a given head template.</td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sammba.registration.Coregistrator.html#sammba.registration.Coregistrator" title="sammba.registration.Coregistrator"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Coregistrator</span></code></a>([brain_volume, output_dir, …])</p></td>
-<td><p>Class for registering anatomical image to perfusion/functional images from one animal in native space.</p></td>
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.registration.Coregistrator.html#sammba.registration.Coregistrator" title="sammba.registration.Coregistrator"><code class="xref py py-obj docutils literal"><span class="pre">Coregistrator</span></code></a>([brain_volume,&nbsp;output_dir,&nbsp;…])</td>
+<td>Class for registering anatomical image to perfusion/functional images from one animal in native space.</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="module-sammba.segmentation">
-<span id="sammba-segmentation-segmentation-utilities"></span><span id="segmentation-ref"></span><h2><a class="toc-backref" href="#id4">5.4. <a class="reference internal" href="#module-sammba.segmentation" title="sammba.segmentation"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sammba.segmentation</span></code></a>: Segmentation utilities</a><a class="headerlink" href="#module-sammba.segmentation" title="Permalink to this headline">¶</a></h2>
+<span id="sammba-segmentation-segmentation-utilities"></span><span id="segmentation-ref"></span><h2><a class="toc-backref" href="#id4">5.4. <a class="reference internal" href="#module-sammba.segmentation" title="sammba.segmentation"><code class="xref py py-mod docutils literal"><span class="pre">sammba.segmentation</span></code></a>: Segmentation utilities</a><a class="headerlink" href="#module-sammba.segmentation" title="Permalink to this headline">¶</a></h2>
 <p><strong>Functions</strong>:</p>
-<table class="longtable docutils align-default">
+<table border="1" class="longtable docutils">
 <colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sammba.segmentation.brain_extraction_report.html#sammba.segmentation.brain_extraction_report" title="sammba.segmentation.brain_extraction_report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">brain_extraction_report</span></code></a>(head_file, brain_volume)</p></td>
-<td><p><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
-</p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.segmentation.brain_extraction_report.html#sammba.segmentation.brain_extraction_report" title="sammba.segmentation.brain_extraction_report"><code class="xref py py-obj docutils literal"><span class="pre">brain_extraction_report</span></code></a>(head_file,&nbsp;brain_volume)</td>
+<td><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="module-sammba.graphs">
-<span id="sammba-graphs-pipelines-graphs"></span><span id="graphs-ref"></span><h2><a class="toc-backref" href="#id5">5.5. <a class="reference internal" href="#module-sammba.graphs" title="sammba.graphs"><code class="xref py py-mod docutils literal notranslate"><span class="pre">sammba.graphs</span></code></a>: Pipelines graphs</a><a class="headerlink" href="#module-sammba.graphs" title="Permalink to this headline">¶</a></h2>
+<span id="sammba-graphs-pipeline-graphs"></span><span id="graphs-ref"></span><h2><a class="toc-backref" href="#id5">5.5. <a class="reference internal" href="#module-sammba.graphs" title="sammba.graphs"><code class="xref py py-mod docutils literal"><span class="pre">sammba.graphs</span></code></a>: Pipeline graphs</a><a class="headerlink" href="#module-sammba.graphs" title="Permalink to this headline">¶</a></h2>
 <p><strong>Functions</strong>:</p>
-<table class="longtable docutils align-default">
+<table border="1" class="longtable docutils">
 <colgroup>
-<col style="width: 10%" />
-<col style="width: 90%" />
+<col width="10%" />
+<col width="90%" />
 </colgroup>
-<tbody>
-<tr class="row-odd"><td><p><a class="reference internal" href="generated/sammba.graphs.create_pipeline_graph.html#sammba.graphs.create_pipeline_graph" title="sammba.graphs.create_pipeline_graph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">create_pipeline_graph</span></code></a>(pipeline_name, graph_file)</p></td>
-<td><p>Creates pipeline graph for a given piepline.</p></td>
+<tbody valign="top">
+<tr class="row-odd"><td><a class="reference internal" href="generated/sammba.graphs.create_pipeline_graph.html#sammba.graphs.create_pipeline_graph" title="sammba.graphs.create_pipeline_graph"><code class="xref py py-obj docutils literal"><span class="pre">create_pipeline_graph</span></code></a>(pipeline_name,&nbsp;graph_file)</td>
+<td>Creates pipeline graph for a given piepline.</td>
 </tr>
 </tbody>
 </table>

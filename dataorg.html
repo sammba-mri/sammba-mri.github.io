@@ -3,17 +3,26 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Sammba-MRI:Small mammals NeuroImaging in Python &#8212; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/gallery.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="3. Registering several MRI images and creating a template" href="MRI_reg.html" />
     <link rel="prev" title="1. Introduction: Sammba-MRI" href="introduction.html" />
@@ -134,7 +143,8 @@ $(function () {
         })();
     </script>
 
-  </head><body>
+  </head>
+  <body>
 <div id="logo-banner">
   <!-- A tag cloud to make it easy for people to find what they are
                          looking for -->
@@ -209,13 +219,15 @@ $(function () {
                     papers</a>.</p></li>
   </ul>
 
-  <h3><a href="index.html">Table of Contents</a></h3>
+	   <div class="sidebartoc">
+  <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">2. Data organization</a><ul>
-<li><a class="reference internal" href="#conversion-from-dicom-bruker-dicom-to-nifti-1">2.1. conversion from Dicom (Bruker-Dicom) to NIfTI-1</a></li>
+<li><a class="reference internal" href="#">2. Data conversion</a><ul>
+<li><a class="reference internal" href="#data-conversion-from-dicom-bruker-dicom-to-nifti-1-format">2.1. Data conversion: from DICOM (Bruker-Dicom) to NIfTI-1 format</a></li>
 </ul>
 </li>
 </ul>
+</div>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="introduction.html"
@@ -223,16 +235,11 @@ $(function () {
   <h4>Next topic</h4>
   <p class="topless"><a href="MRI_reg.html"
                         title="next chapter">3. Registering several MRI images and creating a template</a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
         </div>
       </div>
 
@@ -241,23 +248,32 @@ $(function () {
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="data-organization">
-<h1>2. Data organization<a class="headerlink" href="#data-organization" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="data-conversion">
+<h1>2. Data conversion<a class="headerlink" href="#data-conversion" title="Permalink to this headline">¶</a></h1>
 <div class="contents local topic" id="contents">
 <p class="topic-title first"><strong>Contents</strong></p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#conversion-from-dicom-bruker-dicom-to-nifti-1" id="id1">conversion from Dicom (Bruker-Dicom) to NIfTI-1</a></p></li>
+<li><a class="reference internal" href="#data-conversion-from-dicom-bruker-dicom-to-nifti-1-format" id="id1">Data conversion: from DICOM (Bruker-Dicom) to NIfTI-1 format</a></li>
 </ul>
 </div>
-<div class="section" id="conversion-from-dicom-bruker-dicom-to-nifti-1">
-<h2><a class="toc-backref" href="#id1">2.1. conversion from Dicom (Bruker-Dicom) to NIfTI-1</a><a class="headerlink" href="#conversion-from-dicom-bruker-dicom-to-nifti-1" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><dl class="simple">
-<dt>Sammba-MRI provides <strong>easy-to-use</strong> conversion from Dicom (Bruker-Dicom) to NIfTI-1. Two options are available:</dt><dd><p>For a single file &gt; io_conversions.dcm_to_nii (‘/usr/bin/dcmdump’, Dicom_input, Saved_Nifty_dir)
-For several files &gt; io_conversions.recursive_dcm_to_nii(‘/usr/bin/dcmdump’, session_dir, Saved_Nifty_dir)</p>
-</dd>
-</dl>
-</div></blockquote>
+<div class="section" id="data-conversion-from-dicom-bruker-dicom-to-nifti-1-format">
+<h2><a class="toc-backref" href="#id1">2.1. Data conversion: from DICOM (Bruker-Dicom) to NIfTI-1 format</a><a class="headerlink" href="#data-conversion-from-dicom-bruker-dicom-to-nifti-1-format" title="Permalink to this headline">¶</a></h2>
+<p>Sammba-MRI allows to convert Bruker Paravision enhanced multiframe DICOM files
+to the standard NIfTI-1 format. Extensive information such as date is also
+extracted. Depends on the number of file to be converted, two options are
+available:</p>
+<ul>
+<li><p class="first">To convert a <strong>single</strong> file, we use</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">io_conversions</span><span class="o">.</span><span class="n">dcm_to_nii</span><span class="p">(</span><span class="s1">&#39;/usr/bin/dcmdump&#39;</span><span class="p">,</span> <span class="n">Dicom_input</span><span class="p">,</span> <span class="n">Saved_Nifti_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">To convert <strong>several</strong> files, we use</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">io_conversions</span><span class="o">.</span><span class="n">recursive_dcm_to_nii</span><span class="p">(</span><span class="s1">&#39;/usr/bin/dcmdump&#39;</span><span class="p">,</span> <span class="n">session_dir</span><span class="p">,</span> <span class="n">Saved_Nifti_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
 </div>
 </div>
 
