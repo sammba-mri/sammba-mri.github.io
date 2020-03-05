@@ -3,17 +3,26 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Sammba-MRI:Small mammals NeuroImaging in Python &#8212; Multimodal Imaging of Neurodegenerative Diseases and Therapies</title>
     <link rel="stylesheet" href="_static/nature.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/gallery.css" />
-    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <script type="text/javascript" src="_static/language_data.js"></script>
     <script type="text/javascript" src="_static/copybutton.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="6.3.2. ICA on mouse" href="auto_examples/03_connectivity/plot_ica.html" />
 <meta content="True" name="HandheldFriendly">
@@ -133,7 +142,8 @@ $(function () {
         })();
     </script>
 
-  </head><body>
+  </head>
+  <body>
 <div id="logo-banner">
   <!-- A tag cloud to make it easy for people to find what they are
                          looking for -->
@@ -204,7 +214,8 @@ $(function () {
                     papers</a>.</p></li>
   </ul>
 
-  <h3><a href="index.html">Table of Contents</a></h3>
+	   <div class="sidebartoc">
+  <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Contributors and Acknowledgements</a><ul>
 <li><a class="reference internal" href="#external-projects-used-and-papers-to-cite">External projects used and papers to cite</a></li>
@@ -213,20 +224,16 @@ $(function () {
 </ul>
 </li>
 </ul>
+</div>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="auto_examples/03_connectivity/plot_ica.html"
                         title="previous chapter">6.3.2. ICA on mouse</a></p>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+
+<script type="text/javascript">$('#searchbox-ml').show(0);</script>
+<script type="text/javascript">$('#searchbox-site').show(0);</script>
+
+
         </div>
       </div>
 
@@ -239,35 +246,38 @@ $(function () {
 <h1>Contributors and Acknowledgements<a class="headerlink" href="#contributors-and-acknowledgements" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="external-projects-used-and-papers-to-cite">
 <h2>External projects used and papers to cite<a class="headerlink" href="#external-projects-used-and-papers-to-cite" title="Permalink to this headline">¶</a></h2>
-<p>sammba-mri is essentially a wrapper for a number of other tools, adapting them
+<p>Sammba-mri is essentially a wrapper for a number of other tools, adapting them
 for use with small mammal brain MRI. There is not yet a publication about
-sammba-MRI itself. If you use it, please cite the tool name <code class="docutils literal notranslate"><span class="pre">SaMmBa-MRI</span></code> and
+sammba-MRI itself. If you use it, please cite the tool name <code class="docutils literal"><span class="pre">Sammba-MRI</span></code> and
 the website address.</p>
 <p>DICOM import uses the dcmdump tool of <a class="reference external" href="http://dicom.offis.de/dcmtk.php.en">OFFIS dcmtk</a>. Export to NIfTI uses <a class="reference external" href="http://nipy.org/nibabel/">nibabel</a>. Understanding the affine was greatly aided by
 reading common.py from <a class="reference external" href="http://dicom2nifti.readthedocs.io/en/latest/">dicom2nifti</a>.</p>
 <p>Spatial normalization almost exclusively uses
 <a class="reference external" href="https://afni.nimh.nih.gov/">AFNI</a>, the exception being RATS, which is the
 usual option for the usually-used brain extraction step. If you do use RATS,
-<a class="reference external" href="http://www.iibi.uiowa.edu/content/rats-rapid-automatic-tissue-segmentation-rodent-brain-mri">cite the RATS reference papers.</a>
-File management and interfacing with these tools is handled by nipype (<a class="reference external" href="http://nipype.readthedocs.io/en/latest/">website</a> and <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pubmed/21897815">paper</a>).</p>
-<p>Nilearn is the package integrated for analysis of fMRI data, and was also used
+<a class="reference external" href="http://www.iibi.uiowa.edu/content/rats-rapid-automatic-tissue-segmentation-rodent-brain-mri">cite the RATS reference article.</a>
+File management and interfacing with these tools is handled by nipype (<a class="reference external" href="http://nipype.readthedocs.io/en/latest/">website</a> and <a class="reference external" href="https://www.ncbi.nlm.nih.gov/pubmed/21897815">article</a>).</p>
+<p>Nilearn is the package integrated for analysis of fMRI data, it was also used
 generate all the plots shown in the examples section. Please read <a class="reference external" href="http://nilearn.github.io/authors.html#citing-nilearn">how to  cite
 nilearn</a>.</p>
 </div>
 <div class="section" id="people">
 <h2>People<a class="headerlink" href="#people" title="Permalink to this headline">¶</a></h2>
-<p>sammba-mri was developed by members of the <a class="reference external" href="http://jacob.cea.fr/drf/ifrancoisjacob/Pages/Departements/MIRCen/themes/alzheimer-vieillissement-cerebral-modelisation.aspx">Multimodal Imaging of
+<p>Sammba-mri was developed by Salma Bougacha and Nachiket Nadkarni (<a class="reference external" href="http://jacob.cea.fr/drf/ifrancoisjacob/Pages/Departements/MIRCen/themes/alzheimer-vieillissement-cerebral-modelisation.aspx">Multimodal Integrative Imaging of
 Neurodegenerative Diseases and therapies</a>
-(MINDt) team at the Molecular Imaging Research Center (MIRCen) of the French
-Alternative Energies and Atomic Energy Commission (CEA).</p>
+-MIINDt team, Resp. Marc Dhenain) at the Laboratory of Neurodegenerative Diseases /
+Molecular Imaging Research Center (MIRCen) of the Centre National de la Recherche Scientifique
+(CNRS) / French Alternative Energies and Atomic Energy Commission (CEA) / Paris
+Saclay University.</p>
 <p>Internal initial working versions of the spatial normalization pipeline and
 automated measurement/processing for anatomical morphology, FAIR perfusion and
-resting state fMRI was developed by Nachiket Nadkarni using a mixture of shell
+resting state fMRI were developed by Nachiket Nadkarni using shell
 scripts, python and R.</p>
-<p>Salma Bougacha translated shell scripts into python leveraging nipype, plus set
-up the github repository and this website.</p>
-<p>Anne-Sophie Hérard saved us a massive outsourcing fee and came up with the
-name and acronym.</p>
+<p>Salma Bougacha translated shell scripts into python leveraging nipype, set up
+the github repository and this website.</p>
+<p>Marina Célestine</p>
+<p>Anne-Sophie Hérard came up with the “sammba-MRI” name and acronym.
+This saved us a massive outsourcing fees.</p>
 </div>
 <div class="section" id="funding">
 <h2>Funding<a class="headerlink" href="#funding" title="Permalink to this headline">¶</a></h2>
